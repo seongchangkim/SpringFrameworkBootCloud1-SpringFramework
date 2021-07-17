@@ -19,15 +19,19 @@
 		2021-07-14 로그인 권한 설정 추가
 		2021-07-15 로그인 커스텀 마이징 설정 추가 
 		authentication-success-handler-ref = "loginSuccessHandler"
+		2021-07-17 토큰 생성 비활성화
 	-->
-	
 	<security:http auto-config="true" use-expressions="true">
+		<security:csrf disabled="true"/>
 		<security:intercept-url pattern="/login" access="permitAll"/>
 		<security:intercept-url pattern="/register" access="permitAll"/>
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-		<security:form-login login-page="/login" login-processing-url="/cloud/login" 
+		<security:form-login login-page="/login" login-processing-url="/login" 
 							 username-parameter="id" password-parameter="password" />
 	</security:http>
+	
+	<!-- 2021-07-17 spring security css,js 적용 -->
+	<!--  <security:http pattern="/resources/**" security="none"/> -->
 	
 	<security:authentication-manager>
 		<security:authentication-provider>

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloud.porforio.UserMapper">
+<mapper namespace="com.cloud.porforio.user.mapper.UserMapper">
 	<insert id="insert">
-		insert into user(id, password, name, email, phonenumber, regdate) 
-			values(#{id},#{password},#{name},#{email},#{phonenumber},now())
+		insert into user(id, password, name, email, tel, regdate) 
+			values(#{id},#{password},#{name},#{email},#{tel},now())
 	</insert>
 </mapper>

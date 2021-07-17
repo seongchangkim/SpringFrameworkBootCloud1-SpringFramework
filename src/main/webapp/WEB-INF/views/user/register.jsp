@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 	<title>User Register</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<script>
@@ -17,7 +18,7 @@
 		
 		window.onload = function(){
 			var register = document.registerForm;
-			register.onsubmit = function(event){
+			register.onsubmit = function(){
 				if(register.password.value != register.r_password.value){
 					alert('비밀번호과 비밀번호 확인이 일치하지 않습니다.');
 					return false;
@@ -41,6 +42,12 @@
 					return false;
 				}
 				
+				if(!register.name.value){
+					alert('이름을 입력하세요!');
+					register.name.focus();
+					return false;
+				}
+				
 				if(!register.email.value){
 					alert('이메일을 입력하세요!');
 					register.email.focus();
@@ -56,7 +63,7 @@
 		};
 	</script>
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			   $(function () {
 				   		/* 전화번호를 입력시 하이폰 추가 */
 			            $('.tel').keydown(function (event) {
@@ -91,12 +98,16 @@
 		<input type="password" id="r_password">
 		<br>
 		
+		<label id="email">이름 : </label>
+		<input type="text" id ="name" name="name">
+		<br>
+		
 		<label id="email">이메일 : </label>
-		<input type="email" id ="email" name="email">
+		<input type="text" id ="email" name="email">
 		<br>
 		
 		<label id="tel">전화번호 : </label>
-		<input type="text" id="tel" name="tel">
+		<input type="text" id="tel" name="tel" class="tel">
 		<br>
 		
 		<input type="submit" value="가입">

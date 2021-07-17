@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/cloud")
 public class MainController {
 	
-	@GetMapping(value = "/main")
+	@GetMapping(value = "/user/main")
 	public String main() {
 		return "main";
 	}
