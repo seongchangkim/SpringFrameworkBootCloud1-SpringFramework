@@ -1,4 +1,4 @@
-package com.cloud.porforio;
+package com.cloud.porforio.admin.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/cloud")
-public class MainController {
-
-	@GetMapping("/")
-	public String main() {
+public class AdminController {
+	
+	@GetMapping("/admin")
+	public String admin() {
 		return "main";
 	}
 }

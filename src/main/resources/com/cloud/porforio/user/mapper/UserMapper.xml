@@ -7,4 +7,8 @@
 		insert into user(id, password, name, email, tel, regdate) 
 			values(#{id},#{password},#{name},#{email},#{tel},now())
 	</insert>
+	
+	<insert id="insertAuth">
+		insert into user_auth(id, auth) values(#{id},#{auth})
+	</insert>
 </mapper>

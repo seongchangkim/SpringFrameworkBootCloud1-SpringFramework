@@ -16,4 +16,11 @@ public class User {
 	private LocalDateTime updateDate;
 	private String deletedYN;
 	private String role;
+	
+	public User(String id, String role) {
+		this.id = id;
+		this.role = role;
+	}
+	
+	
 }

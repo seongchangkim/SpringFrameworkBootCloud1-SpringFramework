@@ -10,8 +10,8 @@
 	<div>
 		<a href="/community/main">로고</a>
 		
-		<button onclick="location.href='/community/login'">로그인</button>
-		<button onclick="location.href='/community/member/register'">회원가입</button>
+		<button onclick="location.href='/login'">로그인</button>
+		<button onclick="location.href='/register'">회원가입</button>
 	</div>
 </body>
 </html>

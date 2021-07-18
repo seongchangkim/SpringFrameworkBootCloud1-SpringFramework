@@ -32,7 +32,7 @@
 			}
 		};
 	</script>
-	<form action="/login" method="post" name="loginForm">
+	<form action="/cloud/login" method="post" name="loginForm">
 		<label id="id">아이디 : </label>
 		<input type="text" id="id" name="id">
 		<br>

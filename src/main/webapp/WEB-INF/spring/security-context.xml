@@ -8,7 +8,7 @@
 	<!-- 2021-07-15 Bcrypt 방식을 이용한 비밀번호 처리 추가  -->
 	<bean id="bcryptPasswordEncoder" 
 		  class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-	</bean>
+	</bean> 
 	
 	<!-- 2021-07-16 로그인 성공후 처리 Bean 등록 -->
 	<!--  <bean id="loginSuccessHandler" 
@@ -23,10 +23,11 @@
 	-->
 	<security:http auto-config="true" use-expressions="true">
 		<security:csrf disabled="true"/>
-		<security:intercept-url pattern="/login" access="permitAll"/>
-		<security:intercept-url pattern="/register" access="permitAll"/>
+		<security:intercept-url pattern="/cloud/login" access="permitAll"/>
+		<security:intercept-url pattern="/cloud/register" access="permitAll"/>
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-		<security:form-login login-page="/login" login-processing-url="/login" 
+		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" default-target-url="/cloud"
+							 authentication-failure-url = "/cloud/login"
 							 username-parameter="id" password-parameter="password" />
 	</security:http>
 	
@@ -35,9 +36,12 @@
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="user" password="userPw" authorities="hasRole('ROLE_USER')"/>
-			</security:user-service>
+			<security:jdbc-user-service data-source-ref="dataSource" 
+				users-by-username-query="select id, password, 1 as enabled from user where id = ?"
+				authorities-by-username-query = "select id, auth from user_auth where id = ?"/>
+			
+			<!-- 2021.07.18 bcrypt를 이용한 비밀번호 암호화 처리  -->
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
