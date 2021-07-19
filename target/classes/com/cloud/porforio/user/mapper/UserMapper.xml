@@ -11,4 +11,8 @@
 	<insert id="insertAuth">
 		insert into user_auth(id, auth) values(#{id},#{auth})
 	</insert>
+	
+	<select id="getUserInfo" resultType="com.cloud.porforio.domain.User">
+		select * from user where id = #{id} and password = #{password}
+	</select>
 </mapper>

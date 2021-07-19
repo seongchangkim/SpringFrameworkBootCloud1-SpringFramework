@@ -42,7 +42,8 @@
 		<br>
 		
 		<input type="submit" value="로그인"/>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	</form>
-	<button type="button" onclick="location.href='/register'">회원가입</button>
+	<button type="button" onclick="location.href='/cloud/register'">회원가입</button>
 </body>
 </html>

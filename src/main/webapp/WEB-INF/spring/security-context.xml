@@ -20,26 +20,47 @@
 		2021-07-15 로그인 커스텀 마이징 설정 추가 
 		authentication-success-handler-ref = "loginSuccessHandler"
 		2021-07-17 토큰 생성 비활성화
-	-->
+		2021-07-19 로그인 성공 url 설정 및 활성화
+		login-processing-url : 로그인 페이지 주소를 지정
+		default-target-url : 로그인 성공시 호출한 주소 지정
+		authentication-failture-url : 로그인 실패시 호출한 주소 지정
+		always-use-default-target="true" : default-target-url를 설정과 동시에 설정해야 함
+	--> 
 	<security:http auto-config="true" use-expressions="true">
-		<security:csrf disabled="true"/>
-		<security:intercept-url pattern="/cloud/login" access="permitAll"/>
-		<security:intercept-url pattern="/cloud/register" access="permitAll"/>
+		<!--  <security:csrf disabled="true"/> -->
+		<security:intercept-url pattern="/cloud/login" access="isAnonymous()"/>
+		<security:intercept-url pattern="/cloud/register" access="isAnonymous()"/>
+		<security:intercept-url pattern="/cloud/**" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" default-target-url="/cloud"
-							 authentication-failure-url = "/cloud/login"
+		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" default-target-url="/cloud/"
+							 authentication-failure-url = "/cloud/login" always-use-default-target="true"
 							 username-parameter="id" password-parameter="password" />
+		<security:session-management>
+			<!-- 2021-07-19 중복 로그인 방지 기능 추가 -->
+			<security:concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+		</security:session-management>
+		<!-- 
+			2021-07-19 spring security로 로그아웃 기능 구현
+			logout-url : 로그아웃 처리에 대한 url. form태그의 action 속성에 지정한 값.(default: POST /logout)
+			logout-success-url : 로그아웃 	성공 시, 이동할 url(cloud/login) 
+			invalidate-session : 로그아웃 성공 시, 삭제할 쿠키 이름 지정
+			success-handler-ref : 로그아웃 성공 시, logout-success-url이 아닌 핸들러로 리다이렉트
+		 -->
+		<security:logout logout-url="/logout"/>
 	</security:http>
 	
 	<!-- 2021-07-17 spring security css,js 적용 -->
 	<!--  <security:http pattern="/resources/**" security="none"/> -->
 	
+	
+				
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource" 
+			
+			<security:jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select id, password, 1 as enabled from user where id = ?"
 				authorities-by-username-query = "select id, auth from user_auth where id = ?"/>
-			
+				
 			<!-- 2021.07.18 bcrypt를 이용한 비밀번호 암호화 처리  -->
 			<security:password-encoder ref="bcryptPasswordEncoder"/>
 		</security:authentication-provider>
