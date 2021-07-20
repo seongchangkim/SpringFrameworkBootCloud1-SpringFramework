@@ -36,12 +36,25 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
-
 	@Override
-	public String findingId(String email, String tel, String name) {
+	public User findingId(String email, String tel, String name) {
 		return mapper.findingId(email,tel,name);
 	}
 
-		
-	
+	@Override
+	public String findingPassword(String email, String tel, String name, String inputId) {
+		return mapper.findingPassword(email,tel,name,inputId);
+	}
+
+	@Override
+	public boolean isUpdatePassword(String password, String id) {
+		return mapper.isUpdatePassword(password, id);
+	}
+
+	@Override
+	public String selectUserName(String id, String password) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String securityPw = encoder.encode(password);
+		return mapper.selectUserName(id, securityPw);
+	}	
 }

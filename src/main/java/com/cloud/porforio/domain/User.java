@@ -2,9 +2,13 @@ package com.cloud.porforio.domain;
 
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 	
 	private String id;
@@ -16,11 +20,4 @@ public class User {
 	private LocalDateTime updateDate;
 	private String deletedYN;
 	private String role;
-	
-	public User(String id, String role) {
-		this.id = id;
-		this.role = role;
-	}
-	
-	
 }

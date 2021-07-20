@@ -1,5 +1,7 @@
 package com.cloud.porforio.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,8 +51,8 @@ public class UserController {
 	
 	@PostMapping(value="findingId")
 	public String findingIdProcess(Model model, String email, String tel, String name) {
-		String id = service.findingId(email, tel, name);
-		model.addAttribute(id);
+		User user = service.findingId(email, tel, name);
+		model.addAttribute("user",user);
 		
 		return "/user/findingIdProcess";
 	}
@@ -58,5 +60,26 @@ public class UserController {
 	@GetMapping(value="findingPassword")
 	public String findingPassword() {
 		return "/user/findingPasswordForm";
+	}
+	
+	@PostMapping(value="findingPassword")
+	public String findingPasswordProcess(String email, String tel, String name, String inputId, HttpServletRequest req) {
+		String id = service.findingPassword(email, tel, name, inputId);
+		req.setAttribute("id",id);
+		
+		return "/user/updatePassword";
+	}
+	
+	@PostMapping(value="updatedPassword")
+	public String updatePassword(String password, String id, Model model) {
+		boolean isUpdatePassword = service.isUpdatePassword(password, id);
+		String name = service.selectUserName(id, password);
+		
+		if(isUpdatePassword) {
+			model.addAttribute("username", name);
+			return "/user/updatedPassword";
+		}else {
+			return "redircet:/user/updatePassword";
+		}
 	}
 }

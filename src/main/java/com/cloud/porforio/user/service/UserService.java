@@ -7,6 +7,11 @@ public interface UserService {
 	
 	void registerAuth(String id);
 	
-	String findingId(String email, String tel, String name);
+	User findingId(String email, String tel, String name);
 	
+	String findingPassword(String email, String tel, String name, String inputId);
+	
+	boolean isUpdatePassword(String password, String id);
+	
+	String selectUserName(String id, String password);
 }

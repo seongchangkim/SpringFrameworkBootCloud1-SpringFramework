@@ -68,7 +68,7 @@
 			   });
 			});
 		</script>
-	<form action="/cloud/findingId" method="post" name="findingPasswordForm">
+	<form action="/cloud/findingPassword" method="post" name="findingPasswordForm">
 		<label id="id">아이디 : </label>
 		<input type="text" name="id" id="id">
 		<br>

@@ -11,7 +11,11 @@ public interface UserMapper {
 	
 	public void insertAuth(@Param("id") String id,@Param("auth") String auth);
 	
+	public User findingId(@Param("email") String email, @Param("tel") String tel, @Param("name") String name);
+
+	public String findingPassword(@Param("email") String email, @Param("tel") String tel, @Param("name") String name, @Param("id") String inputId);
 	
-	
-	public String findingId(@Param("email") String email, @Param("tel") String tel, @Param("name") String name);
+	public boolean isUpdatePassword(@Param("password") String password, @Param("id") String id);
+
+	public String selectUserName(@Param("id") String id, @Param("password") String password);
 }
