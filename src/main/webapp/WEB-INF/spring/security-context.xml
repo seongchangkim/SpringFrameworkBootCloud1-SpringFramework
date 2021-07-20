@@ -27,18 +27,19 @@
 		always-use-default-target="true" : default-target-url를 설정과 동시에 설정해야 함
 	--> 
 	<security:http auto-config="true" use-expressions="true">
-		<!--  <security:csrf disabled="true"/> -->
-		<security:intercept-url pattern="/cloud/login" access="isAnonymous()"/>
+		<security:csrf disabled="true"/> 
+		<security:intercept-url pattern="/login" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/register" access="isAnonymous()"/>
+		<security:intercept-url pattern="/cloud/findingId" access="isAnonymous()"/>
+		<security:intercept-url pattern="/cloud/findingPassword" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/**" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" default-target-url="/cloud/"
-							 authentication-failure-url = "/cloud/login" always-use-default-target="true"
+		<security:form-login login-page="/login" login-processing-url="/login" default-target-url="/cloud/"
+							 authentication-failure-url = "/login" always-use-default-target="true"
 							 username-parameter="id" password-parameter="password" />
-		<security:session-management>
-			<!-- 2021-07-19 중복 로그인 방지 기능 추가 -->
-			<security:concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
-		</security:session-management>
+	  	<security:session-management invalid-session-url="/login"> 
+	  		<security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/> 
+	  	</security:session-management> 
 		<!-- 
 			2021-07-19 spring security로 로그아웃 기능 구현
 			logout-url : 로그아웃 처리에 대한 url. form태그의 action 속성에 지정한 값.(default: POST /logout)
@@ -46,7 +47,7 @@
 			invalidate-session : 로그아웃 성공 시, 삭제할 쿠키 이름 지정
 			success-handler-ref : 로그아웃 성공 시, logout-success-url이 아닌 핸들러로 리다이렉트
 		 -->
-		<security:logout logout-url="/logout"/>
+		<security:logout logout-url="/logout" delete-cookies="JSESSIONID"/> 
 	</security:http>
 	
 	<!-- 2021-07-17 spring security css,js 적용 -->

@@ -7,5 +7,6 @@ public interface UserService {
 	
 	void registerAuth(String id);
 	
-	User getUserInfo(String id, String password);
+	String findingId(String email, String tel, String name);
+	
 }

@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>User Register</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Finding Id Form</title>
 </head>
 <body>
 	<script>
@@ -17,46 +16,24 @@
 		//문서 앞에 선언해도 상관없게 되는 함수		
 		
 		window.onload = function(){
-			var register = document.registerForm;
-			register.onsubmit = function(){
-				if(register.password.value != register.r_password.value){
-					alert('비밀번호과 비밀번호 확인이 일치하지 않습니다.');
-					return false;
-				}
+			var findingIdForm = document.findingIdForm;
+			findingIdForm.onsubmit = function(){
 				
-				if(!register.id.value){
-					alert('아이디를 입력하세요!');
-					register.id.focus();
-					return false;
-				}
-				
-				if(!register.password.value){
-					alert('비밀번호를 입력하세요!');
-					register.password.focus();
-					return false;
-				}
-				
-				if(!register.r_password.value){
-					alert('비밀번호 확인을 입력하세요!');
-					register.r_password.focus();
-					return false;
-				}
-				
-				if(!register.name.value){
+				if(!findingIdForm.name.value){
 					alert('이름을 입력하세요!');
-					register.name.focus();
+					findingIdForm.name.focus();
 					return false;
 				}
 				
-				if(!register.email.value){
+				if(!findingIdForm.email.value){
 					alert('이메일을 입력하세요!');
-					register.email.focus();
+					findingIdForm.email.focus();
 					return false;
 				}
 				
-				if(!register.tel.value){
+				if(!findingIdForm.tel.value){
 					alert('전화번호를 입력하세요!');
-					register.tel.focus();
+					findingIdForm.tel.focus();
 					return false;
 				}
 			}
@@ -85,35 +62,18 @@
 			   });
 			});
 		</script>
-	<form action="/register" method="post" name="registerForm">
-		<label id="id">아이디 : </label>
-		<input type="text" id="id" name="id">
+	<form action="/cloud/findingId" method="post" name="findingIdForm">
+		<label id="name">이름 : </label>
+		<input type="text" name="name" id="name">
 		<br>
-		
-		<label id="password">비밀번호 : </label>
-		<input type="password" id="password" name="password">
-		<br>
-		
-		<label id="rw_password">비밀번호 확인 : </label>
-		<input type="password" id="r_password">
-		<br>
-		
-		<label id="email">이름 : </label>
-		<input type="text" id ="name" name="name">
-		<br>
-		
 		<label id="email">이메일 : </label>
-		<input type="text" id ="email" name="email">
+		<input type="text" name="email" id="email">
 		<br>
-		
 		<label id="tel">전화번호 : </label>
-		<input type="text" id="tel" name="tel" class="tel">
+		<input type="text" name="tel" id="tel">
 		<br>
-		
-		<input type="submit" value="가입">
+		<input type="submit" value="아이디 찾기">
 	</form>
 	<button onclick="javascript:history.back();">뒤로 가기</button>
-	
-	
 </body>
 </html>

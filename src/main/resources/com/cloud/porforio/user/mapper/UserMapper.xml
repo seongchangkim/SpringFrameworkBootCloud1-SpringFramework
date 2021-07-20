@@ -12,7 +12,7 @@
 		insert into user_auth(id, auth) values(#{id},#{auth})
 	</insert>
 	
-	<select id="getUserInfo" resultType="com.cloud.porforio.domain.User">
-		select * from user where id = #{id} and password = #{password}
+	<select id="findingId" resultType="string">
+		select id from user where email = #{email} and tel = #{tel} and name = #{name}
 	</select>
 </mapper>

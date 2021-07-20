@@ -36,9 +36,10 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+
 	@Override
-	public User getUserInfo(String id, String password) {
-		return mapper.getUserInfo(id, password);
+	public String findingId(String email, String tel, String name) {
+		return mapper.findingId(email,tel,name);
 	}
 
 		
