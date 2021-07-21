@@ -11,7 +11,5 @@ public interface UserService {
 	
 	String findingPassword(String email, String tel, String name, String inputId);
 	
-	boolean isUpdatePassword(String password, String id);
-	
-	String selectUserName(String id, String password);
+	boolean isUpdatePassword(String id, String password);
 }

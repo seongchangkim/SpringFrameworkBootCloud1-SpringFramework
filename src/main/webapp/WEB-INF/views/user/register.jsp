@@ -85,7 +85,7 @@
 			   });
 			});
 		</script>
-	<form action="/register" method="post" name="registerForm">
+	<form action="/cloud/register" method="post" name="registerForm">
 		<label id="id">아이디 : </label>
 		<input type="text" id="id" name="id">
 		<br>
@@ -110,6 +110,7 @@
 		<input type="text" id="tel" name="tel" class="tel">
 		<br>
 		
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="submit" value="가입">
 	</form>
 	<button onclick="javascript:history.back();">뒤로 가기</button>

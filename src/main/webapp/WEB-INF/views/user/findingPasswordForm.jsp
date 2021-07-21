@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>finding Password Form</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<script>
@@ -81,6 +82,7 @@
 		<label id="tel">전화번호 : </label>
 		<input type="text" name="tel" id="tel">
 		<br>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="submit" value="비밀번호 찾기">
 	</form>
 	<button onclick="javascript:history.back();">뒤로 가기</button>

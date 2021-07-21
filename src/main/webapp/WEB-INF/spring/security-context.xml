@@ -27,15 +27,16 @@
 		always-use-default-target="true" : default-target-url를 설정과 동시에 설정해야 함
 	--> 
 	<security:http auto-config="true" use-expressions="true">
-		<security:csrf disabled="true"/> 
-		<security:intercept-url pattern="/login" access="isAnonymous()"/>
+		<!--  <security:csrf disabled="true"/> --> 
+		<security:intercept-url pattern="/cloud/login" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/register" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/findingId" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/findingPassword" access="isAnonymous()"/>
+		<security:intercept-url pattern="/cloud/updatedPassword" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/**" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-		<security:form-login login-page="/login" login-processing-url="/login" default-target-url="/cloud/"
-							 authentication-failure-url = "/login" always-use-default-target="true"
+		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" default-target-url="/cloud/"
+							 authentication-failure-url = "/cloud/login" always-use-default-target="true"
 							 username-parameter="id" password-parameter="password" />
 	  	<security:session-management invalid-session-url="/login"> 
 	  		<security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/> 

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Finding Id Form</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<script>
@@ -73,6 +74,7 @@
 		<input type="text" name="tel" id="tel">
 		<br>
 		<input type="submit" value="아이디 찾기">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	</form>
 	<button onclick="javascript:history.back();">뒤로 가기</button>
 </body>

@@ -32,7 +32,7 @@
 			}
 		};
 	</script>
-	<form action="/login" method="post" name="loginForm">
+	<form action="/cloud/login" method="post" name="loginForm">
 		<label id="id">아이디 : </label>
 		<input type="text" id="id" name="id">
 		<br>
@@ -42,7 +42,7 @@
 		<br>
 		
 		<input type="submit" value="로그인"/>
-		<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> -->
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	</form>
 	<button type="button" onclick="location.href='/cloud/register'">회원가입</button>
 	<button type="button" onclick="location.href='/cloud/findingId'">아이디 찾기</button>

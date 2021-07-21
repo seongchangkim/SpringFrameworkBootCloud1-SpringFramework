@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" %>
 <!DOCTYPE html>
+<%
+	String id = (String)request.getAttribute("id");
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -29,16 +33,16 @@
 					return false;
 				}
 				
-				if(!updatePasswordForm.rw_password.value){
+				if(!updatePasswordForm.r_password.value){
 					alert('변경할 비밀번호 확인을 입력하세요!');
-					updatePasswordForm.rw_password.focus();
+					updatePasswordForm.r_password.focus();
 					return false;
 				}
 			}
 		};
 	</script>
-	<form action="/updatePassword" method="post" name="updatePasswordForm">
-		<input type="hidden" name = "id" value="${id}">
+	<form action="/cloud/updatePassword" method="post" name="updatePasswordForm">
+		<input type="hidden" name = "id" value="<%=id%>">
 		
 		<label id="password">변경할 비밀번호 : </label>
 		<input type="password" id="password" name="password">
@@ -48,7 +52,9 @@
 		<input type="password" id="r_password">
 		<br>
 		
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="submit" value="비밀번호 변경">
 	</form>
+	
 </body>
 </html>

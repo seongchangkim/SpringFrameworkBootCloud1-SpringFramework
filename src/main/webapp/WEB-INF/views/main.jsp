@@ -28,7 +28,7 @@
 			여기는 관리자 페이지입니다. 
 		</sec:authorize>
 		<form action="/logout" method="post">
-			<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> -->
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<button>로그아웃</button>
 		</form>
 	</div>

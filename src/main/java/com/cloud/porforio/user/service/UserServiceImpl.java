@@ -47,14 +47,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean isUpdatePassword(String password, String id) {
-		return mapper.isUpdatePassword(password, id);
-	}
-
-	@Override
-	public String selectUserName(String id, String password) {
+	public boolean isUpdatePassword(String id, String password) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String securityPw = encoder.encode(password);
-		return mapper.selectUserName(id, securityPw);
-	}	
+		return mapper.isUpdatePassword(id, password) == 1;
+	}
 }

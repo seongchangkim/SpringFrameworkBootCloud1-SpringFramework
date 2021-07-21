@@ -15,7 +15,5 @@ public interface UserMapper {
 
 	public String findingPassword(@Param("email") String email, @Param("tel") String tel, @Param("name") String name, @Param("id") String inputId);
 	
-	public boolean isUpdatePassword(@Param("password") String password, @Param("id") String id);
-
-	public String selectUserName(@Param("id") String id, @Param("password") String password);
+	public int isUpdatePassword(@Param("id") String id, @Param("password") String password);
 }

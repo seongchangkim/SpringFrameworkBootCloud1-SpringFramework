@@ -1,7 +1,5 @@
 package com.cloud.porforio.user.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,24 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cloud.porforio.domain.User;
 import com.cloud.porforio.user.service.UserService;
 
-import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Controller
-@AllArgsConstructor
 @RequestMapping("/cloud")
+@Log4j
 public class UserController {
 	
 	@Autowired
 	private UserService service;
 	
-	/*
-	@PostMapping(value="/login")
-	public void loginProcess(@RequestParam("id") String id, @RequestParam("password") String password, Model model) {
-		User user = service.getUserInfo(id,password);
-		
-		model.addAttribute("user",user);
+	@GetMapping(value="/login")
+	public String login(){
+		return "login";
 	}
-	*/
 	
 	@GetMapping(value="/register")
 	public String register() {
@@ -38,18 +32,19 @@ public class UserController {
 	
 	@PostMapping(value="/register")
 	public String register(User user) {
+		log.info(user);
 		service.registerAuth(user.getId());
 		service.register(user);
 		
 		return "redirect:/user/login";
 	}
 	
-	@GetMapping(value="findingId")
+	@GetMapping(value="/findingId")
 	public String findingId() {
 		return "/user/findingIdForm";
 	}
 	
-	@PostMapping(value="findingId")
+	@PostMapping(value="/findingId")
 	public String findingIdProcess(Model model, String email, String tel, String name) {
 		User user = service.findingId(email, tel, name);
 		model.addAttribute("user",user);
@@ -57,29 +52,34 @@ public class UserController {
 		return "/user/findingIdProcess";
 	}
 	
-	@GetMapping(value="findingPassword")
+	@GetMapping(value="/findingPassword")
 	public String findingPassword() {
 		return "/user/findingPasswordForm";
 	}
 	
-	@PostMapping(value="findingPassword")
-	public String findingPasswordProcess(String email, String tel, String name, String inputId, HttpServletRequest req) {
-		String id = service.findingPassword(email, tel, name, inputId);
-		req.setAttribute("id",id);
-		
+	@PostMapping(value="/findingPassword")
+	public String findingPasswordProcess(String email, String tel, String name, String id, Model model) {
+		String password = service.findingPassword(email, tel, name, id);
+		model.addAttribute("v_password",password);
+		model.addAttribute("id",id);
 		return "/user/updatePassword";
 	}
 	
-	@PostMapping(value="updatedPassword")
-	public String updatePassword(String password, String id, Model model) {
-		boolean isUpdatePassword = service.isUpdatePassword(password, id);
-		String name = service.selectUserName(id, password);
+	@GetMapping(value="/updatePassword")
+	public String updatePasswordForm() {
+		return "/user/updatePassword";
+	}
+	
+	@PostMapping(value="/updatePassword")
+	public String updatePassword(String id, String password) {
+		boolean isUpdatePassword = service.isUpdatePassword(id, password);
+		
+		log.info(isUpdatePassword);
 		
 		if(isUpdatePassword) {
-			model.addAttribute("username", name);
-			return "/user/updatedPassword";
-		}else {
-			return "redircet:/user/updatePassword";
+			
 		}
+		
+		return "/user/updatedPassword";
 	}
 }
