@@ -9,7 +9,9 @@ public interface UserService {
 	
 	User findingId(String email, String tel, String name);
 	
-	String findingPassword(String email, String tel, String name, String inputId);
+	String findingPassword(String email, String tel, String name);
 	
 	boolean isUpdatePassword(String id, String password);
+	
+	String selectName(String id);
 }

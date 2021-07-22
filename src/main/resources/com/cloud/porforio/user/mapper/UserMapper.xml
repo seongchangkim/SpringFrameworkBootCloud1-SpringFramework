@@ -30,4 +30,9 @@
 		   set password = #{password} 
 		 where id = #{id}
 	</update>
+	
+	<!-- 2021.07.22 사용자의 이름 검색 구현 -->
+	<select id="selectName" resultType="string">
+		select name from user where id = #{id}
+	</select>
 </mapper>

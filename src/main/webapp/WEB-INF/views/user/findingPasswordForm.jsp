@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>finding Password Form</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<title>finding Password Form</title>
+	<script src="/resources/js/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/findingpasswordstyle.css"/>">
 </head>
 <body>
 	<script>
@@ -50,7 +52,7 @@
 		$(document).ready(function() {
 			   $(function () {
 				   		/* 전화번호를 입력시 하이폰 추가 */
-			            $('.tel').keydown(function (event) {
+			            $('#tel').keydown(function (event) {
 			             var key = event.charCode || event.keyCode || 0;
 			             $text = $(this); 
 			             if (key !== 8 && key !== 9) {
@@ -69,22 +71,30 @@
 			   });
 			});
 		</script>
-	<form action="/cloud/findingPassword" method="post" name="findingPasswordForm">
-		<label id="id">아이디 : </label>
-		<input type="text" name="id" id="id">
-		<br>
-		<label id="name">이름 : </label>
-		<input type="text" name="name" id="name">
-		<br>
-		<label id="email">이메일 : </label>
-		<input type="text" name="email" id="email">
-		<br>
-		<label id="tel">전화번호 : </label>
-		<input type="text" name="tel" id="tel">
-		<br>
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<input type="submit" value="비밀번호 찾기">
-	</form>
-	<button onclick="javascript:history.back();">뒤로 가기</button>
+	<div class="findingPasswordForm">
+		<h2>Finding Password</h2>
+		<form action="/cloud/findingPassword" method="post" name="findingPasswordForm">
+			<div class="idForm">
+				<input type="text" id="id" name="id" placeholder="id">
+			</div>
+			
+			<div class="nameForm">
+				<input type="text" id="name" placeholder="name">
+			</div>
+			
+			<div class="emailForm">
+				<input type="text" id="email" name="email" placeholder="email">
+			</div>
+					
+			<div class="telForm">
+				<input type="text" id="tel" name="tel" class="tel" placeholder="tel">
+			</div>
+			
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="submit" value="finding Password" class="btn">
+		</form>
+		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
+	</div>
+	
 </body>
 </html>

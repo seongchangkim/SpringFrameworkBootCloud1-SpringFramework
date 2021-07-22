@@ -1,0 +1,130 @@
+@charset "UTF-8";
+*{
+	margin : 0px;
+	padding : 0px;
+	/* 
+		text-decoration : 글자에 밑줄, 윗줄, 가운데줄을 치거나 쳤던 줄을 없애줍니다. 
+		- underline : 밀줄
+		- overflow : 윗줄
+		- line-through : 가운데줄
+		- none : 줄 없음
+	*/
+	text-decoration : none;
+	font-family : sans-serif;
+}
+
+body{
+	background-color : #34495e;
+}
+
+.registerForm {
+	position:absolute;
+	width:300px;
+	height:730px;
+	padding: 30px, 20px;
+	background-color:#FFFFFF;
+	text-align:center;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	border-radius: 15px;
+}
+
+.registerForm h2{
+	margin: 30px;
+	padding: 10px;
+}
+
+#id, #pw, #name, #email, #tel, #r_pw{
+	width: 100%;
+	border:none;
+	outline:none;
+	color: #636e72;
+	font-size:16px;
+	height:25px;
+	background:none;
+}
+
+.idForm, .passForm, .nameForm, .emailForm, .telForm{
+	border-bottom: 2px solid #adadad;
+	margin: 30px;
+	padding: 10px;
+}
+
+.btn{
+	position:relative;
+	left:40%;
+	transform: translateX(-50%);
+	margin-bottom: 40px;
+	width: 80%;
+	height: 40px;
+	/*
+		선형 그래디언트(linear gradient)?
+		- 적용된 HTML 요소에 선형으로 그래디언트(gradient) 효과를 적용시켜 줍니다.
+		- 형식 : linear-gradient(진행방향, 색상지정점1, 색상지정점2, ...);
+	*/
+	background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+	/*
+		background-position 
+		- 배경 이미지의 위치를 정하는 속성
+		- 기본값 : 0% 0%
+		- 상속 : no
+		- 애니메이션 : Yes
+		- 버전 : CSS Level 1
+		- 문법 : background-position : x-position y-position | initial | inherit
+			x-position y-position : 가로 위치와 세로 위치를 정합니다
+			initial : 기본값으로 설정합니다.
+			inherit : 부모 요소의 속성값으로 상속받습니다. 
+	*/
+	background-position: left;
+	background-size: 200%;
+	color:white;
+	font-weight: bold;
+	border:none;
+	cursor:pointer;
+	transition:0.4s;
+	display:inline;
+}
+
+.btn:hover {
+  background-position: right;
+}
+
+.btn2{
+	position:relative;
+	left:40%;
+	transform: translateX(-50%);
+	margin-bottom: 40px;
+	width: 80%;
+	height: 40px;
+	/*
+		선형 그래디언트(linear gradient)?
+		- 적용된 HTML 요소에 선형으로 그래디언트(gradient) 효과를 적용시켜 줍니다.
+		- 형식 : linear-gradient(진행방향, 색상지정점1, 색상지정점2, ...);
+	*/
+	background: linear-gradient(125deg,#861406,#C38B84,#EEDEDC);
+	/*
+		background-position 
+		- 배경 이미지의 위치를 정하는 속성
+		- 기본값 : 0% 0%
+		- 상속 : no
+		- 애니메이션 : Yes
+		- 버전 : CSS Level 1
+		- 문법 : background-position : x-position y-position | initial | inherit
+			x-position y-position : 가로 위치와 세로 위치를 정합니다
+			initial : 기본값으로 설정합니다.
+			inherit : 부모 요소의 속성값으로 상속받습니다. 
+	*/
+	background-position: left;
+	background-size: 200%;
+	color:white;
+	font-weight: bold;
+	border:none;
+	cursor:pointer;
+	transition:0.4s;
+	display:inline;
+}
+
+.btn2:hover {
+  background-position: right;
+}

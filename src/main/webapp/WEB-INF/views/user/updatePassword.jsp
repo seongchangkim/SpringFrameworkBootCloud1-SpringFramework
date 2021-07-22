@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%
 	String id = (String)request.getAttribute("id");
 %>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<title>Update Password Form</title>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/loginstyle.css"/>">
 </head>
 <body>
 	<script>
@@ -41,20 +43,26 @@
 			}
 		};
 	</script>
-	<form action="/cloud/updatePassword" method="post" name="updatePasswordForm">
-		<input type="hidden" name = "id" value="<%=id%>">
+	<div class="updatePasswordForm">
+		<h2>Update Password</h2>
+		<form action="/cloud/updatePassword" method="post" name="updatePasswordForm">
+			<input type="hidden" name = "id" value="<%=id%>">
+			
+			<div class="passForm">
+				<input type="password" id="pw" name="password" placeholder="pw">
+			</div>
 		
-		<label id="password">변경할 비밀번호 : </label>
-		<input type="password" id="password" name="password">
-		<br>
-		
-		<label id="rw_password">변경할 비밀번호 확인 : </label>
-		<input type="password" id="r_password">
-		<br>
-		
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<input type="submit" value="비밀번호 변경">
-	</form>
+			<div class="passForm">
+				<input type="password" id="r_pw" name="password" placeholder="r_pw">
+			</div>
+			
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="submit" value="update password" class="btn">
+		</form>
+		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
+	</div>
+
+	
 	
 </body>
 </html>

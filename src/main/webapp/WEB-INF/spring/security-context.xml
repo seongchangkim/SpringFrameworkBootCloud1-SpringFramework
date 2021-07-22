@@ -14,13 +14,16 @@
 	<!--  <bean id="loginSuccessHandler" 
 		  class="com.cloud.porforio.security.LoginSuccessHandler">
 	</bean> -->
-	
+		
 	<!-- 
 		2021-07-14 로그인 권한 설정 추가
 		2021-07-15 로그인 커스텀 마이징 설정 추가 
 		authentication-success-handler-ref = "loginSuccessHandler"
 		2021-07-17 토큰 생성 비활성화
 		2021-07-19 로그인 성공 url 설정 및 활성화
+		2021-07-22 spring security css,js 적용
+		
+		login-form 태그
 		login-processing-url : 로그인 페이지 주소를 지정
 		default-target-url : 로그인 성공시 호출한 주소 지정
 		authentication-failture-url : 로그인 실패시 호출한 주소 지정
@@ -32,13 +35,13 @@
 		<security:intercept-url pattern="/cloud/register" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/findingId" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/findingPassword" access="isAnonymous()"/>
-		<security:intercept-url pattern="/cloud/updatedPassword" access="isAnonymous()"/>
+		<security:intercept-url pattern="/cloud/updatePassword" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/**" access="hasRole('ROLE_USER')"/>
-		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/resources/**" access="permitAll"/>
 		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" default-target-url="/cloud/"
 							 authentication-failure-url = "/cloud/login" always-use-default-target="true"
 							 username-parameter="id" password-parameter="password" />
-	  	<security:session-management invalid-session-url="/login"> 
+	  	<security:session-management invalid-session-url="/cloud/login"> 
 	  		<security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/> 
 	  	</security:session-management> 
 		<!-- 
@@ -50,12 +53,7 @@
 		 -->
 		<security:logout logout-url="/logout" delete-cookies="JSESSIONID"/> 
 	</security:http>
-	
-	<!-- 2021-07-17 spring security css,js 적용 -->
-	<!--  <security:http pattern="/resources/**" security="none"/> -->
-	
-	
-				
+		
 	<security:authentication-manager>
 		<security:authentication-provider>
 			

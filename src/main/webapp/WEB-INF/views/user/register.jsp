@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 	<title>User Register</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/resources/js/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/signupstyle.css"/>">
 </head>
 <body>
 	<script>
@@ -66,7 +68,7 @@
 		$(document).ready(function() {
 			   $(function () {
 				   		/* 전화번호를 입력시 하이폰 추가 */
-			            $('.tel').keydown(function (event) {
+			            $('#tel').keydown(function (event) {
 			             var key = event.charCode || event.keyCode || 0;
 			             $text = $(this); 
 			             if (key !== 8 && key !== 9) {
@@ -85,36 +87,38 @@
 			   });
 			});
 		</script>
-	<form action="/cloud/register" method="post" name="registerForm">
-		<label id="id">아이디 : </label>
-		<input type="text" id="id" name="id">
-		<br>
+		<div class="registerForm">
+			<h2>sign up</h2>
+			<form action="/cloud/register" method="post" name="registerForm">
+				<div class="idForm">
+					<input type="text" id="id" name="id" placeholder="id">
+				</div>
+				
+				<div class="passForm">
+					<input type="password" id="pw" name="password" placeholder="pw">
+				</div>
 		
-		<label id="password">비밀번호 : </label>
-		<input type="password" id="password" name="password">
-		<br>
+				<div class="passForm">
+					<input type="password" id="r_pw" placeholder="r_pw">
+				</div>
+				
+				<div class="nameForm">
+					<input type="text" id="name" name ="name" placeholder="name">
+				</div>
 		
-		<label id="rw_password">비밀번호 확인 : </label>
-		<input type="password" id="r_password">
-		<br>
+				<div class="emailForm">
+					<input type="text" id="email" name="email" placeholder="email">
+				</div>
+				
 		
-		<label id="email">이름 : </label>
-		<input type="text" id ="name" name="name">
-		<br>
+				<div class="telForm">
+					<input type="text" id="tel" name="tel" class="tel" placeholder="tel">
+				</div>
 		
-		<label id="email">이메일 : </label>
-		<input type="text" id ="email" name="email">
-		<br>
-		
-		<label id="tel">전화번호 : </label>
-		<input type="text" id="tel" name="tel" class="tel">
-		<br>
-		
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<input type="submit" value="가입">
-	</form>
-	<button onclick="javascript:history.back();">뒤로 가기</button>
-	
-	
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="submit" value="SIGN UP" class="btn">
+			</form>
+			<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
+		</div>
 </body>
 </html>

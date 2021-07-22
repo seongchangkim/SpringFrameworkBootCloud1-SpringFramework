@@ -42,14 +42,19 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public String findingPassword(String email, String tel, String name, String inputId) {
-		return mapper.findingPassword(email,tel,name,inputId);
+	public String findingPassword(String email, String tel, String name) {
+		return mapper.findingPassword(email,tel,name);
 	}
 
 	@Override
 	public boolean isUpdatePassword(String id, String password) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String securityPw = encoder.encode(password);
-		return mapper.isUpdatePassword(id, password) == 1;
+		return mapper.isUpdatePassword(id, securityPw) == 1;
+	}
+
+	@Override
+	public String selectName(String id) {
+		return mapper.selectName(id);
 	}
 }

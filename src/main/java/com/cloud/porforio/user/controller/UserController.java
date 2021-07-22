@@ -36,7 +36,7 @@ public class UserController {
 		service.registerAuth(user.getId());
 		service.register(user);
 		
-		return "redirect:/user/login";
+		return "redirect:/login";
 	}
 	
 	@GetMapping(value="/findingId")
@@ -59,27 +59,32 @@ public class UserController {
 	
 	@PostMapping(value="/findingPassword")
 	public String findingPasswordProcess(String email, String tel, String name, String id, Model model) {
-		String password = service.findingPassword(email, tel, name, id);
-		model.addAttribute("v_password",password);
-		model.addAttribute("id",id);
-		return "/user/updatePassword";
+		String password = service.findingPassword(email, tel, name);
+		if(password == null) {
+			return "/user/updatePassword";
+		}else {
+			model.addAttribute("v_password",password);
+			model.addAttribute("id",id);
+			return "/user/findingPasswordForm";
+		}
 	}
-	
+
 	@GetMapping(value="/updatePassword")
 	public String updatePasswordForm() {
 		return "/user/updatePassword";
 	}
-	
+
 	@PostMapping(value="/updatePassword")
-	public String updatePassword(String id, String password) {
-		boolean isUpdatePassword = service.isUpdatePassword(id, password);
+	public String updatePassword(String id, String password, Model model) {
 		
+		boolean isUpdatePassword = service.isUpdatePassword(id, password);
+		String name = service.selectName(id);
 		log.info(isUpdatePassword);
 		
 		if(isUpdatePassword) {
-			
+			model.addAttribute("name",name);
 		}
 		
-		return "/user/updatedPassword";
+		return "/user/complateUpdatePassword";
 	}
 }
