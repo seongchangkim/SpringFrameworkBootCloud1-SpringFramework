@@ -10,6 +10,20 @@
 		  class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 	</bean> 
 	
+	<bean id="passwordEncoder"
+		  class="com.cloud.porforio.security.CustomBcryptPasswordEncoder">
+	</bean>
+	
+	<!-- 2021-07-23 로그인 인증 클래스 빈 등록 -->
+	<bean id="authticationProvider"
+		  class="com.cloud.porforio.security.CustomAuthenticationProvider">
+	
+	</bean>
+	
+	<!-- 2021-07-23 로그인하기 위한 매퍼 클래스 빈 등록 -->
+	<bean id="userMapper" 
+		  class="com.cloud.porforio.user.mapper.UserMapper">
+	</bean>
 	<!-- 2021-07-16 로그인 성공후 처리 Bean 등록 -->
 	<!--  <bean id="loginSuccessHandler" 
 		  class="com.cloud.porforio.security.LoginSuccessHandler">
@@ -55,14 +69,8 @@
 	</security:http>
 		
 	<security:authentication-manager>
-		<security:authentication-provider>
-			
-			<security:jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select id, password, 1 as enabled from user where id = ?"
-				authorities-by-username-query = "select id, auth from user_auth where id = ?"/>
-				
-			<!-- 2021.07.18 bcrypt를 이용한 비밀번호 암호화 처리  -->
-			<security:password-encoder ref="bcryptPasswordEncoder"/>
+		<security:authentication-provider ref="authticationProvider"/>
+		<security:authentication-provider user-service-ref="userMapper">
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>

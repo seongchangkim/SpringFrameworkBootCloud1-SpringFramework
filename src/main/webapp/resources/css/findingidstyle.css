@@ -10,12 +10,12 @@ body{
 	background-color : #34495e;
 }
 
-.findingIdForm h2, .findingPasswordForm h2, .updatePasswordForm h2{
+.findingIdForm h2, updateUserInfoForm h2{
   text-align: center;
   margin: 30px;
 }
 
-.findingIdForm{
+.findingIdForm, updateUserInfoForm{
   position:absolute;
   width:300px;
   height:500px;

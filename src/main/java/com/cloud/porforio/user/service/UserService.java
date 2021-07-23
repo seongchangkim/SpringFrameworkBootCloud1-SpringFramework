@@ -14,4 +14,6 @@ public interface UserService {
 	boolean isUpdatePassword(String id, String password);
 	
 	String selectName(String id);
+	
+	String selectPassword(String id);
 }

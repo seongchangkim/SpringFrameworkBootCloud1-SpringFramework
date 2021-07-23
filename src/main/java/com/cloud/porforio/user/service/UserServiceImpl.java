@@ -2,6 +2,7 @@ package com.cloud.porforio.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.cloud.porforio.domain.User;
@@ -13,6 +14,9 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserMapper mapper;
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@Override
 	public void register(User user) {
 		// 회원 비밀번호를 암호화 인코딩
@@ -48,13 +52,18 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean isUpdatePassword(String id, String password) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String securityPw = encoder.encode(password);
-		return mapper.isUpdatePassword(id, securityPw) == 1;
+		User user = new User();
+		user.setPassword(passwordEncoder.encode(password));
+		return mapper.isUpdatePassword(id, password) == 1;
 	}
 
 	@Override
 	public String selectName(String id) {
 		return mapper.selectName(id);
+	}
+
+	@Override
+	public String selectPassword(String id) {
+		return mapper.selectPassword(id);
 	}
 }

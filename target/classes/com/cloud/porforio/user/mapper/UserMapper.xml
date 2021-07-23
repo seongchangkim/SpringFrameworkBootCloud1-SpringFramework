@@ -35,4 +35,19 @@
 	<select id="selectName" resultType="string">
 		select name from user where id = #{id}
 	</select>
+	
+	<!-- 2021.07.23 비밀번호 가져오기 -->
+	<select id="selectPassword" resultType="string">
+		select password from user where id= #{id};
+	</select>
+	
+	<!-- 2021.07.23 로그인 위한 기능 -->
+	<select id="selectUser" resultType="com.cloud.porforio.domain.User">
+		select * from user where id=#{id}
+	</select>
+	
+	<!-- 2021.07.23 로그인 권한 가져오기 -->
+	<select id="selectUserAuth" resultType="com.cloud.porforio.domain.UserAuth">
+		select * from user_auth where id=#{id}
+	</select>
 </mapper>

@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
+<%
+	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	Object principal = auth.getPrincipal();
+	
+	String id = "";
+	if(id != null){
+		id = auth.getName();
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Finding Id Form</title>
+	<title>Update User Info Password Verity Form</title>
 	<script src="/resources/js/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/findingidstyle.css"/>">
 </head>
@@ -19,24 +30,24 @@
 		//문서 앞에 선언해도 상관없게 되는 함수		
 		
 		window.onload = function(){
-			var findingIdForm = document.findingIdForm;
-			findingIdForm.onsubmit = function(){
+			var updateUserInfoForm = document.updateUserInfoForm;
+			updateUserInfoForm.onsubmit = function(){
 				
-				if(!findingIdForm.name.value){
+				if(!updateUserInfoForm.name.value){
 					alert('이름을 입력하세요!');
-					findingIdForm.name.focus();
+					updateUserInfoForm.name.focus();
 					return false;
 				}
 				
-				if(!findingIdForm.email.value){
+				if(!updateUserInfoForm.email.value){
 					alert('이메일을 입력하세요!');
-					findingIdForm.email.focus();
+					updateUserInfoForm.email.focus();
 					return false;
 				}
 				
-				if(!findingIdForm.tel.value){
+				if(!updateUserInfoForm.tel.value){
 					alert('전화번호를 입력하세요!');
-					findingIdForm.tel.focus();
+					updateUserInfoForm.tel.focus();
 					return false;
 				}
 			}
@@ -65,11 +76,13 @@
 			   });
 			});
 		</script>
-	<div class="findingIdForm">
+	<div class="updateUserInfoForm">
 		<h2>Finding ID</h2>
-		<form action="/cloud/findingId" method="post" name="findingIdForm">
+		<form action="/cloud/updateUserInfo" method="post" name="updateUserInfoForm">
+			<input type="hidden" name = "id" value="<%=id %>">
+			
 			<div class="nameForm">
-				<input type="text" id="name" name="name" placeholder="name">
+				<input type="text" id="name" name = "name" placeholder="name">
 			</div>
 			
 			<div class="emailForm">
