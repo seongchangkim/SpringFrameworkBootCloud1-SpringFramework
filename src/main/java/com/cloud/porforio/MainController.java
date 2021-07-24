@@ -8,7 +8,7 @@ public class MainController {
 
 	@GetMapping("/")
 	public String redirect() {
-		return "redirect:/main";
+		return "redirect:/cloud/";
 	}
 	@GetMapping("/cloud/")
 	public String main() {

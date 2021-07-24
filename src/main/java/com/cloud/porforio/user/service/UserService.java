@@ -8,12 +8,4 @@ public interface UserService {
 	void registerAuth(String id);
 	
 	User findingId(String email, String tel, String name);
-	
-	String findingPassword(String email, String tel, String name);
-	
-	boolean isUpdatePassword(String id, String password);
-	
-	String selectName(String id);
-	
-	String selectPassword(String id);
 }
