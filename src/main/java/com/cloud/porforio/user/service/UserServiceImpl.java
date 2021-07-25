@@ -55,4 +55,31 @@ public class UserServiceImpl implements UserService{
 	public String selectName(String id) {
 		return mapper.selectName(id);
 	}
+
+	@Override
+	public String selectPassword(String id) {
+		return mapper.selectPassword(id);
+	}
+
+	@Override
+	public User selectUserInfo(String id) {
+		return mapper.selectUserInfo(id);
+	}
+
+	@Override
+	public boolean updateUserInfo(User user) {
+		return mapper.updateUserInfo(user) == 1;
+	}
+
+	@Override
+	public boolean deleteUserInfo(String id) {
+		return mapper.deleteUserInfo(id) == 1;
+	}
+
+	@Override
+	public boolean deleteUserAuth(String id) {
+		return mapper.deleteUserAuth(id) == 1;
+	}
+	
+	
 }

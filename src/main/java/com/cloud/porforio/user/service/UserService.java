@@ -14,4 +14,14 @@ public interface UserService {
 	boolean isUpdatePassword(String id, String password);
 	
 	String selectName(String id);
+	
+	String selectPassword(String id);
+	
+	User selectUserInfo(String id);
+	
+	boolean updateUserInfo(User user);
+	
+	boolean deleteUserInfo(String id);
+	
+	boolean deleteUserAuth(String id);
 }

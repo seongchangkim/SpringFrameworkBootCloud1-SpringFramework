@@ -31,7 +31,8 @@
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<button>로그아웃</button>
 		</form>
-		<button onclick="location.href='/cloud/updateUserInfoPasswordVerity'">회원 정보 수정</button>
+		<button onclick="location.href='/cloud/updateUserInfoPasswordVerify'">회원 정보 수정</button>
+		<button onclick="location.href='/cloud/deleteUserInfoPasswordVerify'">회원 삭제</button>
 	</div>
 </body>
 </html>

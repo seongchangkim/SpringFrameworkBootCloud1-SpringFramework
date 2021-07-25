@@ -18,12 +18,13 @@ public class User{
 	private String tel;
 	private LocalDateTime regDate;
 	private LocalDateTime updateDate;
-	private String deletedYN;
-	private String role;
 	
-	
-	public User(String id, String password) {
+	public User(String id, String email, String name, String tel) {
 		this.id = id;
-		this.password = password;
+		this.email = email;
+		this.name = name;
+		this.tel = tel;
 	}
+	
+	
 }

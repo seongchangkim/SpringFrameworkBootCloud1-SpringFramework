@@ -1,22 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
-<%@ page import="org.springframework.security.core.Authentication" %>
-<%
-	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	Object principal = auth.getPrincipal();
-	
-	String id = "";
-	if(id != null){
-		id = auth.getName();
-	}
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Update User Info Password Verity Form</title>
+	<title>Update User Info</title>
 	<script src="/resources/js/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/findingidstyle.css"/>">
 </head>
@@ -57,7 +46,7 @@
 		$(document).ready(function() {
 			   $(function () {
 				   		/* 전화번호를 입력시 하이폰 추가 */
-			            $('.tel').keydown(function (event) {
+			            $('#tel').keydown(function (event) {
 			             var key = event.charCode || event.keyCode || 0;
 			             $text = $(this); 
 			             if (key !== 8 && key !== 9) {
@@ -77,28 +66,26 @@
 			});
 		</script>
 	<div class="updateUserInfoForm">
-		<h2>Finding ID</h2>
+		<h2>Update User Info</h2>
 		<form action="/cloud/updateUserInfo" method="post" name="updateUserInfoForm">
-			<input type="hidden" name = "id" value="<%=id %>">
+			<input type="hidden" name = "id" value="${user.getId()}">
 			
 			<div class="nameForm">
-				<input type="text" id="name" name = "name" placeholder="name">
+				<input type="text" id="name" name = "name" placeholder="name" value="${user.getName()}">
 			</div>
 			
 			<div class="emailForm">
-				<input type="text" id="email" name="email" placeholder="email">
+				<input type="text" id="email" name="email" placeholder="email" value="${user.getEmail()}">
 			</div>
 					
 			<div class="telForm">
-				<input type="text" id="tel" name="tel" class="tel" placeholder="tel">
+				<input type="text" id="tel" name="tel" placeholder="tel" value="${user.getTel()}">
 			</div>
 			
-			<input type="submit" value="finding pw" class="btn">
+			<input type="submit" value="UPDATE USER INFO" class="btn">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		</form>
 		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
 	</div>
-	
-	
 </body>
 </html>

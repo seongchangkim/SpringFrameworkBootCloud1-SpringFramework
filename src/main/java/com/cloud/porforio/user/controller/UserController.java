@@ -1,5 +1,7 @@
 package com.cloud.porforio.user.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,7 +66,7 @@ public class UserController {
 	@PostMapping(value="/findingPassword")
 	public String findingPasswordProcess(String email, String tel, String name, String id, Model model) {
 		String password = service.findingPassword(email, tel, name, id);
-		System.out.println(password);
+		
 		if(password != null) {
 			model.addAttribute("password",password);
 			model.addAttribute("id",id);
@@ -94,9 +96,57 @@ public class UserController {
 		}else {
 			return "/user/updatePassword";
 		}
+	}
+	
+	
+	@GetMapping(value="/updateUserInfoPasswordVerify")
+	public String updateUserInfoPrivacyForm() {
+		return "/user/updateUserInfoPasswordVerifyForm";
+	}
+	
+	@PostMapping(value="/updateUserInfoPasswordVerify")
+	public String updateUserInfoPrivacyForm(String id, String password, Model model) {
+		String v_password = service.selectPassword(id);
+		if(passwordEncoder.matches(password, v_password)) {
+			User user = service.selectUserInfo(id);
+			model.addAttribute("user",user);
+			return "/user/updateUserInfoForm";
+		}else {
+			return "/user/updateUserInfoPasswordVerifyForm"; 
+		}
+	}
+	
+	@PostMapping(value="/updateUserInfo")
+	public String updateUserInfo(User user) {
+		boolean isUpdateUserInfo = service.updateUserInfo(user);
 		
+		if(isUpdateUserInfo) {
+			return "main";
+		}else {
+			return "/user/updateUserInfoForm";
+		}
+	}
+	
+	@GetMapping(value="/deleteUserInfoPasswordVerify")
+	public String deleteUserInfoPasswordVerifyForm() {
+		return "/user/deleteUserInfoPasswordVerifyForm";
+	}
+	
+	@PostMapping(value="/deleteUserInfoPasswordVerify")
+	public String deleteUserInfoPasswordVerify(String id, String password, HttpSession session) {
+		String v_password = service.selectPassword(id);
+		boolean deleteUserInfo = service.deleteUserInfo(id);
+		boolean deleteUserAuth = service.deleteUserAuth(id);
 		
-		
-		
+		if(passwordEncoder.matches(password,v_password)) {
+			if(deleteUserInfo && deleteUserAuth) {
+				session.invalidate();
+				return "/redirect:/user/login";
+			}else {
+				return "/user/deleteUserInfoPasswordVerifyForm";
+			}
+		}else {
+			return "/user/deleteUserInfoPasswordVerifyForm";
+		}
 	}
 }
