@@ -10,8 +10,14 @@ public class MainController {
 	public String redirect() {
 		return "redirect:/cloud/";
 	}
+	
 	@GetMapping("/cloud/")
 	public String main() {
+		return "main";
+	}
+	
+	@GetMapping("/cloud/admin/")
+	public String mainAdmin() {
 		return "main";
 	}
 }

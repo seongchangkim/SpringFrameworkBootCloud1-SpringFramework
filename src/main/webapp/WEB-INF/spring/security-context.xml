@@ -14,10 +14,10 @@
 			  class="com.cloud.porforio.security.CustomPasswordEncoder">
 	
 	</bean>
-	<!-- 2021-07-16 로그인 성공후 처리 Bean 등록 -->
-	<!--  <bean id="loginSuccessHandler" 
-		  class="com.cloud.porforio.security.LoginSuccessHandler">
-	</bean> -->
+	<!-- 2021-07-25 로그인 성공후 처리 Bean 등록 -->
+	<bean id="loginSuccessHandler" 
+		  class="com.cloud.porforio.security.CustomLoginSuccessHandler">
+	</bean> 
 		
 	<!-- 
 		2021-07-14 로그인 권한 설정 추가
@@ -41,8 +41,10 @@
 		<security:intercept-url pattern="/cloud/findingPassword" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/updatePassword" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/**" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/cloud/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
-		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" default-target-url="/cloud/"
+		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" 
+							 authentication-success-handler-ref="loginSuccessHandler"
 							 authentication-failure-url = "/cloud/login" always-use-default-target="true"
 							 username-parameter="id" password-parameter="password" />
 	  	<security:session-management invalid-session-url="/cloud/login"> 
