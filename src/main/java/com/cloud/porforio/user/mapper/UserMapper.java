@@ -12,4 +12,10 @@ public interface UserMapper {
 	public void insertAuth(@Param("id") String id,@Param("auth") String auth);
 	
 	public User findingId(@Param("email") String email, @Param("tel") String tel, @Param("name") String name);
+
+	public String findingPassword(@Param("email") String email, @Param("tel") String tel, @Param("name") String name, @Param("id") String id);
+	
+	public int isUpdatePassword(@Param("id") String id, @Param("password") String password);
+
+	public String selectName(@Param("id") String id);
 }

@@ -206,6 +206,13 @@
     		<version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- 2021.07.25 jbcrypt 관련 jar 추가 -->
+		<dependency>
+    		<groupId>org.mindrot</groupId>
+    		<artifactId>jbcrypt</artifactId>
+    		<version>0.3m</version>
+		</dependency>
+		
 		<!-- 2021.07.13 lombok 설정 jar -->
 		<dependency>
     		<groupId>org.projectlombok</groupId>

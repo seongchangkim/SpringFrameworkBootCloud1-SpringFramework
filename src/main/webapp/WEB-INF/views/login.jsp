@@ -51,7 +51,7 @@
 		<div class="bottomText">
 			Don't you have ID? <a href="/cloud/register">sign up</a>
 			<br>
-			<a href="/cloud/findingId">finding ID</a>
+			<a href="/cloud/findingId">finding ID</a> | <a href="/cloud/findingPassword">finding Password</a>
 		</div>
 	</div>
 	

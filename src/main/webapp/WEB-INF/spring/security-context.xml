@@ -10,6 +10,10 @@
 		  class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 	</bean> 
 	
+	<bean id="passwordEncoder"
+			  class="com.cloud.porforio.security.CustomPasswordEncoder">
+	
+	</bean>
 	<!-- 2021-07-16 로그인 성공후 처리 Bean 등록 -->
 	<!--  <bean id="loginSuccessHandler" 
 		  class="com.cloud.porforio.security.LoginSuccessHandler">
@@ -62,7 +66,7 @@
 			/>
 			
 			<!-- 2021.07.18 bcrypt를 이용한 비밀번호 암호화 처리  -->
-			<security:password-encoder ref="bcryptPasswordEncoder"/>
+			<security:password-encoder ref="passwordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>

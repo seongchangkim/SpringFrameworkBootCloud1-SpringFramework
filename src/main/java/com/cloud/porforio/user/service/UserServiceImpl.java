@@ -40,4 +40,19 @@ public class UserServiceImpl implements UserService{
 	public User findingId(String email, String tel, String name) {
 		return mapper.findingId(email,tel,name);
 	}
+
+	@Override
+	public String findingPassword(String email, String tel, String name, String id) {
+		return mapper.findingPassword(email,tel,name, id);
+	}
+
+	@Override
+	public boolean isUpdatePassword(String id, String password) {
+		return mapper.isUpdatePassword(id, password) == 1;
+	}
+
+	@Override
+	public String selectName(String id) {
+		return mapper.selectName(id);
+	}
 }

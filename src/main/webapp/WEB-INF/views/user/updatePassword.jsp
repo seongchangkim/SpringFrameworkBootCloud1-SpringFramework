@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <%
 	String id = (String)request.getAttribute("id");
+	String password = (String)request.getAttribute("password");
 %>
 <html>
 <head>
@@ -24,20 +25,20 @@
 		window.onload = function(){
 			var findingPasswordForm = document.updatePasswordForm;
 			updatePasswordForm.onsubmit = function(){
-				if(updatePasswordForm.password.value != updatePasswordForm.r_password.value){
+				if(updatePasswordForm.pw.value != updatePasswordForm.r_pw.value){
 					alert('비밀번호과 비밀번호 확인이 일치하지 않습니다.');
 					return false;
 				}
 				
-				if(!updatePasswordForm.password.value){
+				if(!updatePasswordForm.pw.value){
 					alert('변경할 비밀번호를 입력하세요!');
-					updatePasswordForm.password.focus();
+					updatePasswordForm.pw.focus();
 					return false;
 				}
 				
-				if(!updatePasswordForm.r_password.value){
+				if(!updatePasswordForm.r_pw.value){
 					alert('변경할 비밀번호 확인을 입력하세요!');
-					updatePasswordForm.r_password.focus();
+					updatePasswordForm.r_pw.focus();
 					return false;
 				}
 			}
@@ -47,13 +48,14 @@
 		<h2>Update Password</h2>
 		<form action="/cloud/updatePassword" method="post" name="updatePasswordForm">
 			<input type="hidden" name = "id" value="<%=id%>">
+			<input type="hidden" name = "v_pw" value="<%=password%>">
 			
 			<div class="passForm">
 				<input type="password" id="pw" name="password" placeholder="pw">
 			</div>
 		
 			<div class="passForm">
-				<input type="password" id="r_pw" name="password" placeholder="r_pw">
+				<input type="password" id="r_pw" placeholder="r_pw">
 			</div>
 			
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

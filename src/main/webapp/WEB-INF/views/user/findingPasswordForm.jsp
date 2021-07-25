@@ -79,7 +79,7 @@
 			</div>
 			
 			<div class="nameForm">
-				<input type="text" id="name" placeholder="name">
+				<input type="text" id="name" name="name" placeholder="name">
 			</div>
 			
 			<div class="emailForm">

@@ -21,6 +21,7 @@ public class User{
 	private String deletedYN;
 	private String role;
 	
+	
 	public User(String id, String password) {
 		this.id = id;
 		this.password = password;
