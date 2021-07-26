@@ -12,6 +12,9 @@
 	if(principal != null){
 		name = auth.getName();
 	}
+	
+	String pagefile = request.getParameter("page");
+	if(pagefile==null) {pagefile="main";}
 %>
 <!DOCTYPE html>
 <html>
@@ -20,19 +23,9 @@
 	<title>main page</title>
 </head>
 <body>
+	<jsp:include page="left.jsp"></jsp:include>
 	<div>
-		<sec:authorize access="hasRole('ROLE_USER')">
-			환영합니다. <%=name %>님 
-		</sec:authorize>
-		<sec:authorize access="hasRole('ROLE_ADMIN')">
-			여기는 관리자 페이지입니다. 
-		</sec:authorize>
-		<form action="/logout" method="post">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<button>로그아웃</button>
-		</form>
-		<button onclick="location.href='/cloud/updateUserInfoPasswordVerify'">회원 정보 수정</button>
-		<button onclick="location.href='/cloud/deleteUserInfoPasswordVerify'">회원 삭제</button>
+		<jsp:include page="<%=pagefile%>" />
 	</div>
 </body>
 </html>

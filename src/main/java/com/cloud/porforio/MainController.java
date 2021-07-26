@@ -1,5 +1,7 @@
 package com.cloud.porforio;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -19,5 +21,11 @@ public class MainController {
 	@GetMapping("/cloud/admin/")
 	public String mainAdmin() {
 		return "main";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
 	}
 }

@@ -57,7 +57,7 @@
 			invalidate-session : 로그아웃 성공 시, 삭제할 쿠키 이름 지정
 			success-handler-ref : 로그아웃 성공 시, logout-success-url이 아닌 핸들러로 리다이렉트
 		 -->
-		<security:logout logout-url="/logout" delete-cookies="JSESSIONID"/> 
+		<!--  <security:logout logout-url="/logout" delete-cookies="JSESSIONID"/> --> 
 	</security:http>
 		
 	<security:authentication-manager>

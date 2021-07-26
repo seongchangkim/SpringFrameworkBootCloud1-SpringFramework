@@ -99,7 +99,7 @@ public class UserController {
 	}
 	
 	
-	@GetMapping(value="/updateUserInfoPasswordVerify")
+	@GetMapping(value="/user/updateUserInfoPasswordVerify")
 	public String updateUserInfoPrivacyForm() {
 		return "/user/updateUserInfoPasswordVerifyForm";
 	}
@@ -127,7 +127,7 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping(value="/deleteUserInfoPasswordVerify")
+	@GetMapping(value="/user/deleteUserInfoPasswordVerify")
 	public String deleteUserInfoPasswordVerifyForm() {
 		return "/user/deleteUserInfoPasswordVerifyForm";
 	}
@@ -149,4 +149,12 @@ public class UserController {
 			return "/user/deleteUserInfoPasswordVerifyForm";
 		}
 	}
+	
+	@GetMapping("/user/profile")
+	public String profile(String id, Model model) {
+		User user = service.selectUserInfo(id);
+		model.addAttribute("user",user);
+		return "/user/profile";
+	}
+	
 }
