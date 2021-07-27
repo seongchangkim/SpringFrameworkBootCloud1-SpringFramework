@@ -24,7 +24,7 @@
 	<div class="navigation">
 		<ul>
 			<li class="list">
-				<a href="/cloud/user/main">
+				<a href="/cloud/admin/main">
 					<span class="icon">
 						<ion-icon name="home-outline"></ion-icon>
 					</span>
@@ -32,11 +32,19 @@
 				</a>
 			</li>
 			<li class="list">
-				<a href="/cloud/user/profile?id=<%=name%>">
+				<a href="/cloud/admin/profile?id=<%=name%>">
 					<span class="icon">
 						<ion-icon name="person-outline"></ion-icon>
 					</span>
 					<span class="title">Profile</span>
+				</a>
+			</li>
+			<li class="list">
+				<a href="/cloud/admin/userList">
+					<span class="icon">
+						<ion-icon name="people-outline"></ion-icon>
+					</span>
+					<span class="title">UserList</span>
 				</a>
 			</li>
 			<li class="list">

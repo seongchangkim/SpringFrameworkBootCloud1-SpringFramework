@@ -46,7 +46,7 @@
 	</script>
 	<div class="updatePasswordForm">
 		<h2>Update Password</h2>
-		<form action="/cloud/updatePassword" method="post" name="updatePasswordForm">
+		<form action="/cloud/user/updatePassword" method="post" name="updatePasswordForm">
 			<input type="hidden" name = "id" value="<%=id%>">
 			<input type="hidden" name = "v_pw" value="<%=password%>">
 			

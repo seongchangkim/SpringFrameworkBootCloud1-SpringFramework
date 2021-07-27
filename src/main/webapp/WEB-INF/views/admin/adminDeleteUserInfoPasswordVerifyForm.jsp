@@ -34,7 +34,7 @@
 		}
 	</script>
 	<div class="deleteUserInfoPasswordVerifyForm">
-		<form action="/cloud/user/deleteUserInfoPasswordVerify" method="post" name="deleteUserInfoPasswordVerifyForm">
+		<form action="/cloud/admin/deleteUserInfoPasswordVerify" method="post" name="deleteUserInfoPasswordVerifyForm">
 			<input type="hidden" name="id" value="<%=id %>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			

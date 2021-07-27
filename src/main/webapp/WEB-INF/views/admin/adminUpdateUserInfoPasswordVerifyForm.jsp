@@ -23,18 +23,18 @@
 <body>
 	<script>
 		window.onload = function(){
-			var deleteUserInfoPasswordVerify = document.deleteUserInfoPasswordVerifyForm;
-			deleteUserInfoPasswordVerify.onsubmit = function(){
-				if(!deleteUserInfoPasswordVerify.pw.value){
+			var updateUserInfoPasswordVerify = document.updateUserInfoPasswordVerifyForm;
+			updateUserInfoPasswordVerify.onsubmit = function(){
+				if(!updateUserInfoPasswordVerify.pw.value){
 					alert('비밀번호를 입력하세요!');
-					deleteUserInfoPasswordVerifyForm.pw.focus();
+					updateUserInfoPasswordVerifyForm.pw.focus();
 					return false;
 				}
 			}
 		}
 	</script>
-	<div class="deleteUserInfoPasswordVerifyForm">
-		<form action="/cloud/user/deleteUserInfoPasswordVerify" method="post" name="deleteUserInfoPasswordVerifyForm">
+	<div class="updateUserInfoPasswordVerifyForm">
+		<form action="/cloud/admin/updateUserInfoPasswordVerify" method="post" name="updateUserInfoPasswordVerifyForm">
 			<input type="hidden" name="id" value="<%=id %>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			

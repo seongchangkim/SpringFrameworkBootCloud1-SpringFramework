@@ -40,7 +40,7 @@
 		<security:intercept-url pattern="/cloud/findingId" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/findingPassword" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/updatePassword" access="isAnonymous()"/>
-		<security:intercept-url pattern="/cloud/**" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/cloud/user/**" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/cloud/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
 		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" 

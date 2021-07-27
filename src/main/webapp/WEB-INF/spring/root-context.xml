@@ -26,7 +26,13 @@
 	
 	<!-- 2021.07.17 com.cloud.porforio.user.mapper 패키지 mybatis 인식 -->
 	<mybatis-spring:scan base-package="com.cloud.porforio.user.mapper"/>
-	
+
+	<!-- 2021.07.27 com.cloud.porforio.admin.mapper 패키지 mybatis 인식 -->
+	<mybatis-spring:scan base-package="com.cloud.porforio.admin.mapper"/>
+		
 	<!-- 2021.07.17 com.cloud.porforio.user.service 패키지 인식 -->
 	<context:component-scan base-package="com.cloud.porforio.user.service"/>
+	
+	<!-- 2021.07.27 com.cloud.porforio.admin.service 패키지 인식 -->
+	<context:component-scan base-package="com.cloud.porforio.admin.service"/>
 </beans>

@@ -67,7 +67,7 @@
 		</script>
 	<div class="updateUserInfoForm">
 		<h2>Update User Info</h2>
-		<form action="/cloud/user/updateUserInfo" method="post" name="updateUserInfoForm">
+		<form action="/cloud/admin/updateUserInfoYourself" method="post" name="updateUserInfoForm">
 			<input type="hidden" name = "id" value="${user.getId()}">
 			
 			<div class="nameForm">

@@ -10,17 +10,17 @@ public class MainController {
 
 	@GetMapping("/")
 	public String redirect() {
-		return "redirect:/cloud/";
+		return "redirect:/cloud/login";
 	}
 	
-	@GetMapping("/cloud/")
+	@GetMapping("/cloud/user/main")
 	public String main() {
 		return "main";
 	}
 	
-	@GetMapping("/cloud/admin/")
+	@GetMapping("/cloud/admin/main")
 	public String mainAdmin() {
-		return "main";
+		return "/admin/adminMain";
 	}
 	
 	@GetMapping("/logout")

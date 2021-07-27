@@ -104,7 +104,7 @@ public class UserController {
 		return "/user/updateUserInfoPasswordVerifyForm";
 	}
 	
-	@PostMapping(value="/updateUserInfoPasswordVerify")
+	@PostMapping(value="/user/updateUserInfoPasswordVerify")
 	public String updateUserInfoPrivacyForm(String id, String password, Model model) {
 		String v_password = service.selectPassword(id);
 		if(passwordEncoder.matches(password, v_password)) {
@@ -116,7 +116,7 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping(value="/updateUserInfo")
+	@PostMapping(value="/user/updateUserInfo")
 	public String updateUserInfo(User user) {
 		boolean isUpdateUserInfo = service.updateUserInfo(user);
 		
@@ -132,7 +132,7 @@ public class UserController {
 		return "/user/deleteUserInfoPasswordVerifyForm";
 	}
 	
-	@PostMapping(value="/deleteUserInfoPasswordVerify")
+	@PostMapping(value="/user/deleteUserInfoPasswordVerify")
 	public String deleteUserInfoPasswordVerify(String id, String password, HttpSession session) {
 		String v_password = service.selectPassword(id);
 		boolean deleteUserInfo = service.deleteUserInfo(id);
