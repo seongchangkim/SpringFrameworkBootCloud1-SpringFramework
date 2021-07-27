@@ -39,8 +39,8 @@ public class UserController {
 	@PostMapping(value="/register")
 	public String register(User user) {
 		log.info(user);
-		service.registerAuth(user.getId());
 		service.register(user);
+		service.registerAuth(user.getId());
 		
 		return "redirect:/cloud/login";
 	}

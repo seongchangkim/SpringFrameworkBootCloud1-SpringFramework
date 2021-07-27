@@ -72,11 +72,11 @@
 				</a>
 			</li>
 			<li class="list">
-				<a href="#">
+				<a href="/cloud/board/list">
 					<span class="icon">
-						<ion-icon name="lock-closed-outline"></ion-icon>
+						<ion-icon name="laptop-outline"></ion-icon>
 					</span>
-					<span class="title">Password</span>
+					<span class="title">Board</span>
 				</a>
 			</li>
 			<li class="list">

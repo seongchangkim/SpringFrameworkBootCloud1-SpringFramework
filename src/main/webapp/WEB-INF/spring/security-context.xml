@@ -42,6 +42,7 @@
 		<security:intercept-url pattern="/cloud/updatePassword" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/user/**" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/cloud/admin/**" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/cloud/board/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
 		<security:form-login login-page="/cloud/login" login-processing-url="/cloud/login" 
 							 authentication-success-handler-ref="loginSuccessHandler"
