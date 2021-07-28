@@ -89,11 +89,11 @@
 					</a>
 				</li>
 				<li class="profile">
-					<div>
+					<%-- <div>
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
 							여기는 관리자 페이지입니다. 
 						</sec:authorize>
-					</div>
+					</div> --%>
 				</li>
 			</ul>
 		</div>

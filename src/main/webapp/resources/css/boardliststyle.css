@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.boardContainer{
+	position : absolute;
+	top : 20px;
+	left : 30%;
+	z-index : 160;
+	width : 900px;
+	height : 693.5px;
+	border-radius : 10px;
+}
+
+.boardContainer table{
+	margin : 30px;
+	min-height : 100px;
+	
+}
+
+.boardContainer th{
+	padding : 30px 40px;
+	margin : 20px 40px;
+}
+
+.btn{
+	position : absolute;
+	top : 690px;
+	left : 330px;
+	z-index : 160;
+	background-color : red;
+}
