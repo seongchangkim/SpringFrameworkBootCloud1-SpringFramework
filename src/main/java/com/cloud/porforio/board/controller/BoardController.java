@@ -25,4 +25,8 @@ public class BoardController {
 		return "/board/list";
 	}
 	
+	@GetMapping("/add")
+	public String addForm() {
+		return "/board/add";
+	}
 }
