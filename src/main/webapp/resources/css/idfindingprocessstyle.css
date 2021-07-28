@@ -11,10 +11,10 @@ body {
   background-color: #34495e;
 }
 
-.loginForm, .updatePasswordForm, .updateUserInfoPasswordVerifyForm, .deleteUserInfoPasswordVerifyForm{
+.findingIdProcess, .complateUpdatePasswordForm{
   position:absolute;
   width:300px;
-  height:400px;
+  height:300px;
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
@@ -24,25 +24,9 @@ body {
   border-radius: 15px;
 }
 
-.loginForm h2, .updatePasswordForm h2, .updateUserInfoPasswordVerifyForm h2, .deleteUserInfoPasswordVerifyForm h2, .findingIdProcess h4{
+.findingIdProcess h4, .complateUpdatePasswordForm h4{
   text-align: center;
   margin: 30px;
-}
-
-.idForm, .passForm{
-  border-bottom: 2px solid #adadad;
-  margin: 30px;
-  padding: 10px;
-}
-
-#id, #pw, #r_pw {
-  width: 100%;
-  border:none;
-  outline:none;
-  color: #636e72;
-  font-size:16px;
-  height:25px;
-  background: none;
 }
 
 .btn {
