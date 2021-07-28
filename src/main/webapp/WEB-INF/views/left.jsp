@@ -21,72 +21,74 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/leftstyle.css"/>">
 </head>
 <body>
-	<div class="navigation">
-		<ul>
-			<li class="list">
-				<a href="/cloud/user/main">
-					<span class="icon">
-						<ion-icon name="home-outline"></ion-icon>
-					</span>
-					<span class="title">Home</span>
-				</a>
-			</li>
-			<li class="list">
-				<a href="/cloud/user/profile?id=<%=name%>">
-					<span class="icon">
-						<ion-icon name="person-outline"></ion-icon>
-					</span>
-					<span class="title">Profile</span>
-				</a>
-			</li>
-			<li class="list">
-				<a href="#">
-					<span class="icon">
-						<ion-icon name="chatbubbles-outline"></ion-icon>
-					</span>
-					<span class="title">Messages</span>
-				</a>
-			</li>
-			<li class="list">
-				<a href="#">
-					<span class="icon">
-						<ion-icon name="settings-outline"></ion-icon>
-					</span>
-					<span class="title">Setting</span>
-				</a>
-			</li>
-			<li class="list">
-				<a href="#">
-					<span class="icon">
-						<ion-icon name="help-outline"></ion-icon>
-					</span>
-					<span class="title">Help</span>
-				</a>
-			</li>
-			<li class="list">
-				<a href="/cloud/board/list">
-					<span class="icon">
-						<ion-icon name="laptop-outline"></ion-icon>
-					</span>
-					<span class="title">Board</span>
-				</a>
-			</li>
-			<li class="list">
-				<a href="/logout">
-					<span class="icon">
-						<ion-icon name="log-out-outline"></ion-icon>
-					</span>
-					<span class="title">Sign Out</span>
-				</a>
-			</li>
-			<li class="profile">
-				<div>
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						여기는 관리자 페이지입니다. 
-					</sec:authorize>
-				</div>
-			</li>
-		</ul>
+	<div class="container">
+		<div class="navigation">
+			<ul>
+				<li class="list">
+					<a href="/cloud/user/main">
+						<span class="icon">
+							<ion-icon name="home-outline"></ion-icon>
+						</span>
+						<span class="title">Home</span>
+					</a>
+				</li>
+				<li class="list">
+					<a href="/cloud/user/profile?id=<%=name%>">
+						<span class="icon">
+							<ion-icon name="person-outline"></ion-icon>
+						</span>
+						<span class="title">Profile</span>
+					</a>
+				</li>
+				<li class="list">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="chatbubbles-outline"></ion-icon>
+						</span>
+						<span class="title">Messages</span>
+					</a>
+				</li>
+				<li class="list">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="settings-outline"></ion-icon>
+						</span>
+						<span class="title">Setting</span>
+					</a>
+				</li>
+				<li class="list">
+					<a href="#">
+						<span class="icon">
+							<ion-icon name="help-outline"></ion-icon>
+						</span>
+						<span class="title">Help</span>
+					</a>
+				</li>
+				<li class="list">
+					<a href="/cloud/board/list">
+						<span class="icon">
+							<ion-icon name="laptop-outline"></ion-icon>
+						</span>
+						<span class="title">Board</span>
+					</a>
+				</li>
+				<li class="list">
+					<a href="/logout">
+						<span class="icon">
+							<ion-icon name="log-out-outline"></ion-icon>
+						</span>
+						<span class="title">Sign Out</span>
+					</a>
+				</li>
+				<li class="profile">
+					<div>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							여기는 관리자 페이지입니다. 
+						</sec:authorize>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 	
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

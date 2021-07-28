@@ -9,7 +9,17 @@
 
 body{
 	min-height:100vh;
-	background: #fff; 
+	background: #34495E; 
+}
+.container{
+	position: fixed;
+	top : 20px;
+	left : 20px;
+	background: #fff;
+	width : 1500px;
+	height : 713.5px;
+	z-index : 100;
+	border-radius : 10px; 
 }
 .navigation{
 	position: fixed;
