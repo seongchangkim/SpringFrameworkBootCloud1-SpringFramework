@@ -25,6 +25,13 @@ public class User{
 		this.name = name;
 		this.tel = tel;
 	}
+
+	public User(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+	
+	
 	
 	
 }

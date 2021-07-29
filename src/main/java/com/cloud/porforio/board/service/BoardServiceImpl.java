@@ -19,4 +19,9 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.list();
 	}
 
+	@Override
+	public String selectName(String id) {
+		return mapper.selectName(id);
+	}
+
 }

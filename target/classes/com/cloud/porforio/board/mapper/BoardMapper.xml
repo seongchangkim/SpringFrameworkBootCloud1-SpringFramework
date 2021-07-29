@@ -7,4 +7,8 @@
 	<select id="list" resultType="com.cloud.porforio.domain.Board">
 		select * from board where deleteyn = 'N'
 	</select>
+	
+	<select id="selectName" resultType="string">
+		select name from user where id = #{id}
+	</select>
 </mapper>

@@ -18,21 +18,26 @@
 	
 	<div class="position-absolute top-50 start-50 translate-middle w-75 h-75">
 		<h2>Board Register</h2>
-		<form action="/cloud/board/add" method="post">
-			<input type="hidden" name="id">
+		<form action="/cloud/board/add" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" value="${user.id}">
 			
 			<div class="mb-3">
 	  			<label for="title" class="form-label">writer</label>
-	  			<input type="text" class="form-control" name="name" id="name" placeholder="writer">
+	  			<input type="text" class="form-control" name="name" id="name" placeholder="writer" value="${user.name}">
 			</div>
 			<div class="mb-3">
 	  			<label for="title" class="form-label">Email address</label>
 	  			<input type="text" class="form-control" name="title" id="title" placeholder="title">
 			</div>
 			<div class="mb-3">
+	  			<label for="file" class="form-label">File Upload</label>
+	  			<input type="file" id="file" name="file" rows="3"></textarea>
+			</div>
+			<div class="mb-3">
 	  			<label for="content" class="form-label">content</label>
 	  			<textarea class="form-control" id="content" name="content" rows="3"></textarea>
 			</div>
+			
 			<input type="submit" value="BOARD REGISTER" class="btn btn-primary btn-xs">
 			<button type="button" class="btn btn-info btn-xs" onclick="javascript:history.back();">BACK TO THE PAGE</button> 
 		</form>

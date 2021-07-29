@@ -7,4 +7,6 @@ import com.cloud.porforio.domain.Board;
 public interface BoardService {
 
 	List<Board> list();
+	
+	String selectName(String id);
 }
