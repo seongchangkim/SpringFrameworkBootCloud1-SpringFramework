@@ -31,11 +31,6 @@
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 	
-	<!-- 파일 업로드 경로 설정 -->
-	<bean id="uploadPath" class="java.lang.String">
-		<constructor-arg value="D:\\spring5fs\\porforio\\src\\main\\webapp\\resources\\images" />
-	</bean>
-	
 	<!-- 2021.07.17 com.cloud.porforio.user.mapper 패키지 mybatis 인식 -->
 	<mybatis-spring:scan base-package="com.cloud.porforio.user.mapper"/>
 
@@ -52,5 +47,5 @@
 	<context:component-scan base-package="com.cloud.porforio.admin.service"/>
 	
 	<!-- 2021.07.27 com.cloud.porforio.board.service 패키지 인식 -->
-	<context:component-scan base-package="com.cloud.porforio.board.service"/>
+	<!--  <context:component-scan base-package="com.cloud.porforio.board.service"/> -->
 </beans>

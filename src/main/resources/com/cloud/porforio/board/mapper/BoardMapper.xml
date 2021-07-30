@@ -8,7 +8,21 @@
 		select * from board where deleteyn = 'N'
 	</select>
 	
+	<!-- 2021.07.29 사용자 이름을 가져오기 위한 기능 -->
 	<select id="selectName" resultType="string">
 		select name from user where id = #{id}
 	</select>
+	
+	<!-- 2021.07.30 게시판 등록 기능 -->
+	<insert id="add" parameterType="com.cloud.porforio.domain.Board" useGeneratedKeys="true" keyProperty="bno">
+		insert into board(id, name, title, content, regdate, readcount, replycount) 
+		      value(#{id},#{name},#{title},#{content}, now(), 0, 0)
+	</insert>
+	
+	<insert id="addFile" parameterType="com.cloud.porforio.domain.BoardFile">
+		insert into boardfile(bno, orginalfilename, storedfilepath, filesize) value
+		<foreach collection="list" item="item" separator=",">
+			(#{bno}, #{orginalfilename}, #{storedfilepath}, #{filesize})
+		</foreach>
+	</insert>
 </mapper>

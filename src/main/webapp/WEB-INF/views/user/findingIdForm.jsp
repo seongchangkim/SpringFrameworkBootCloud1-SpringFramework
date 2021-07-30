@@ -81,7 +81,7 @@
 			</div>
 			
 			<input type="submit" value="finding pw" class="btn">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> -->
 		</form>
 		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
 	</div>

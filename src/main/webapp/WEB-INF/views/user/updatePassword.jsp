@@ -58,7 +58,7 @@
 				<input type="password" id="r_pw" placeholder="r_pw">
 			</div>
 			
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> -->
 			<input type="submit" value="update password" class="btn">
 		</form>
 		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
