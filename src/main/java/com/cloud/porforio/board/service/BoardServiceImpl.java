@@ -1,6 +1,7 @@
 package com.cloud.porforio.board.service;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,10 @@ import com.cloud.porforio.commons.util.FileUtils;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired

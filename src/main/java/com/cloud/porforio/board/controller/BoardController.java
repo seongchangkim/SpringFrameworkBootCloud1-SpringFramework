@@ -11,11 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.cloud.porforio.board.service.BoardService;
 import com.cloud.porforio.domain.Board;
-import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.User;
 
 @Controller
@@ -45,7 +46,7 @@ public class BoardController {
 	
 	
 	@PostMapping("/add")
-	public String add(Board board, MultipartHttpServletRequest multipartHttpServlet) throws IllegalStateException, IOException {
+	public String add(Board board, MultipartHttpServletRequest multipartHttpServlet, @RequestParam(value="file", required=false) MultipartFile file) throws IllegalStateException, IOException {
 		System.out.println(1);
 		service.add(board, multipartHttpServlet);
 		

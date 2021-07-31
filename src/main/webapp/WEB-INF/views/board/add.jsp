@@ -20,7 +20,7 @@
 		<h2>Board Register</h2>
 		<form action="/cloud/board/add" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${user.id}">
-			<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> -->
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			
 			<div class="mb-3">
 	  			<label for="title" class="form-label">Writer</label>

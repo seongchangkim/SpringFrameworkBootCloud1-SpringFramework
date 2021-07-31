@@ -34,7 +34,7 @@
 		always-use-default-target="true" : default-target-url를 설정과 동시에 설정해야 함
 	--> 
 	<security:http auto-config="true" use-expressions="true">
-		<security:csrf disabled="true"/>
+		<!--  <security:csrf disabled="true"/> -->
 		<security:intercept-url pattern="/cloud/login" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/register" access="isAnonymous()"/>
 		<security:intercept-url pattern="/cloud/findingId" access="isAnonymous()"/>

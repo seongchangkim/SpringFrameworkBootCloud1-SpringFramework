@@ -36,7 +36,7 @@
 	<div class="updateUserInfoPasswordVerifyForm">
 		<form action="/cloud/admin/updateUserInfoPasswordVerify" method="post" name="updateUserInfoPasswordVerifyForm">
 			<input type="hidden" name="id" value="<%=id %>">
-			<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> -->
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			
 			<h2>Verify Password</h2>
 			<div class="passForm">
