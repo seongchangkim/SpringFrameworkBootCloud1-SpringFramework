@@ -2,11 +2,9 @@ package com.cloud.porforio.domain;
 
 import java.time.LocalDateTime;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Board {
 
 	private int bno;

@@ -1,8 +1,8 @@
 package com.cloud.porforio.board.service;
 
-import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +14,16 @@ import com.cloud.porforio.commons.util.FileUtils;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j;
 
 @Service
-@Slf4j
+@Log4j
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired
 	private BoardMapper mapper;
 	
-	@Autowired
+	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
 	
 	@Override
@@ -37,13 +37,17 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void add(Board board, MultipartHttpServletRequest multipartHttpServlet) throws IllegalStateException, IOException {
+	public void add(Board board, MultipartHttpServletRequest multipartHttpServlet) throws Exception {
 		
 		mapper.add(board);
+		log.warn(board.getBno());
 		
 		List<BoardFile> list = fileUtils.parseFileInfo(board.getBno(), multipartHttpServlet);
 		
-		if(CollectionUtils.isEmpty(list)) {
+		log.warn(list.get(0).getBno());
+		log.warn(new BoardFile().getBno());
+		
+		if(CollectionUtils.isEmpty(list) == false) {
 			mapper.addFile(list);
 		}
 		

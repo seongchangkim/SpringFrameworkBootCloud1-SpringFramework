@@ -115,7 +115,7 @@
 					<input type="text" id="tel" name="tel" class="tel" placeholder="tel">
 				</div>
 		
-				<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> -->
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="submit" value="SIGN UP" class="btn">
 			</form>
 			<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>

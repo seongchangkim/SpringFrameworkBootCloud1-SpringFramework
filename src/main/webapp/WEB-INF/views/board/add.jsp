@@ -31,8 +31,8 @@
 	  			<input type="text" class="form-control" name="title" id="title" placeholder="title">
 			</div>
 			<div class="mb-3">
-	  			<label for="file" class="form-label">File Upload</label>
-	  			<input type="file" id="file" name="file" multiple="multiple">
+	  			<label for="files" class="form-label">File Upload</label>
+	  			<input type="file" id="files" name="files" multiple="multiple">
 			</div>
 			<div class="mb-3">
 	  			<label for="content" class="form-label">content</label>

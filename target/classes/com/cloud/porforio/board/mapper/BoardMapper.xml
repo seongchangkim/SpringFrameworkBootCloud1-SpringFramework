@@ -14,15 +14,19 @@
 	</select>
 	
 	<!-- 2021.07.30 게시판 등록 기능 -->
-	<insert id="add" parameterType="com.cloud.porforio.domain.Board" useGeneratedKeys="true" keyProperty="bno">
+	<insert id="add" parameterType="com.cloud.porforio.domain.Board">
 		insert into board(id, name, title, content, regdate, readcount, replycount) 
-		      value(#{id},#{name},#{title},#{content}, now(), 0, 0)
+		      values(#{id},#{name},#{title},#{content}, now(), 0, 0)     
+		
+		<selectKey keyProperty="bno" resultType="int" order="AFTER">
+			select last_insert_id()
+		</selectKey> 
 	</insert>
 	
 	<insert id="addFile" parameterType="com.cloud.porforio.domain.BoardFile">
-		insert into boardfile(bno, orginalfilename, storedfilepath, filesize) value
+		insert into boardfile(bno, originalfilename, storedfilepath, filesize) values
 		<foreach collection="list" item="item" separator=",">
-			(#{bno}, #{orginalfilename}, #{storedfilepath}, #{filesize})
+			(#{item.bno}, #{item.originalFileName}, #{item.storedFileName}, #{item.filesize})
 		</foreach>
 	</insert>
 </mapper>

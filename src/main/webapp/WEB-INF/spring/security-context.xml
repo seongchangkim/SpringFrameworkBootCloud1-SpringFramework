@@ -5,11 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 	
-	<!-- 2021-07-15 Bcrypt 방식을 이용한 비밀번호 처리 추가  -->
-	<bean id="bcryptPasswordEncoder" 
-		  class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-	</bean> 
-	
+	<!--  2021-07-22 PasswordEncoder를 통하여 나만의 패스워드 인코딩하는 클래스를 빈 등록  -->
 	<bean id="passwordEncoder"
 			  class="com.cloud.porforio.security.CustomPasswordEncoder">
 	
