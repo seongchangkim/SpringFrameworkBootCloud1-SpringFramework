@@ -23,6 +23,8 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper mapper;
 	
+	
+	//@Autowired가 아니라 @Resource 해야 fileUtils 객체를 바인딩할 수 있어서 파일 업로드 가능
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
 	

@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.cloud.porforio.domain.BoardFile;
 
-
+//@Resource를 통해서 Component 값을 가져오기 위해 Component 이름 지정  
 @Component("fileUtils")
 public class FileUtils {
 	private static final String filePath = "D:\\porforio\\src\\main\\webapp\\resources\\images"; // 파일이 저장될 위치
