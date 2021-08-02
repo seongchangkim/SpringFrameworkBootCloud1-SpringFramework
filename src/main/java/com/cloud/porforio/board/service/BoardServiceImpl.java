@@ -3,6 +3,7 @@ package com.cloud.porforio.board.service;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,12 +40,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void add(Board board, MultipartHttpServletRequest multipartHttpServlet) throws Exception {
+	public void add(Board board, MultipartHttpServletRequest multipartHttpServlet, HttpServletRequest request) throws Exception {
 		
 		mapper.add(board);
 		log.warn(board.getBno());
 		
-		List<BoardFile> list = fileUtils.parseFileInfo(board.getBno(), multipartHttpServlet);
+		List<BoardFile> list = fileUtils.parseFileInfo(board.getBno(), multipartHttpServlet, request);
 		
 		log.warn(list.get(0).getBno());
 		log.warn(new BoardFile().getBno());
@@ -53,5 +54,30 @@ public class BoardServiceImpl implements BoardService{
 			mapper.addFile(list);
 		}
 		
+	}
+
+	@Override
+	public void updateReadCount(int bno) {
+		mapper.updateReadCount(bno);
+	}
+
+	@Override
+	public Board selectBoard(int bno) {
+		return mapper.selectBoard(bno);
+	}
+
+	@Override
+	public boolean updateBoard(Board board) {
+		return mapper.updateBoard(board) == 1;
+	}
+
+	@Override
+	public boolean deleteBoard(int bno) {
+		return (mapper.deleteBoardFile(bno) == 1) && (mapper.deleteBoard(bno) == 1);
+	}
+
+	@Override
+	public BoardFile selectBoardFile(int bno) {
+		return mapper.selectBoardFile(bno);
 	}
 }

@@ -29,7 +29,7 @@
 			<c:forEach var="list" items="${list}">
 				<tr>
 					<td>${list.bno}</td>
-					<td>${list.title}</td>
+					<td><a href="<c:url value="/cloud/board/openBoard?bno=${list.bno}"/>">${list.title}</a></td>
 					<td>${list.name}</td>
 					<td>${list.regDate}</td>
 					<td>${list.readCount}</td>

@@ -23,10 +23,47 @@
 		</selectKey> 
 	</insert>
 	
+	<!-- 2021.07.30 게시판 첨부파일 등록 기능 -->
 	<insert id="addFile" parameterType="com.cloud.porforio.domain.BoardFile">
 		insert into boardfile(bno, originalfilename, storedfilepath, filesize) values
 		<foreach collection="list" item="item" separator=",">
 			(#{item.bno}, #{item.originalFileName}, #{item.storedFileName}, #{item.filesize})
 		</foreach>
 	</insert>
+	
+	<!--  2021.08.02 게시판 조회수 올리기 -->
+	<update id="updateReadCount">
+		update board
+		   set readcount = readcount + 1
+		 where bno = #{bno}
+	</update>
+	
+	<!-- 2021.08.02 게시판 상세보기 -->
+	<select id="selectBoard" resultType="com.cloud.porforio.domain.Board">
+		select * from board where bno = #{bno}
+	</select>
+	
+	<!-- 2021.08.02 게시판 파일 상세보기 -->
+	<select id="selectBoardFile" resultType="com.cloud.porforio.domain.BoardFile">
+		select * from boardfile where bno = #{bno}
+	</select>
+	
+	<!-- 2021.08.02 게시판 수정 -->
+	<update id="updateBoard">
+		update board
+		   set name = #{name},
+		   	   content = #{content},
+		   	   updatedate = now()
+		 where bno = #{bno}
+	</update>
+	
+	<!-- 2021.08.02 게시판 첨부파일 삭제 -->
+	<delete id="deleteBoardFile">
+		delete from boardfile where bno = #{bno} 
+	</delete>
+	
+	<!-- 2021.08.02 게시판 삭제 -->
+	<delete id="deleteBoard">
+		delete from board where bno = #{bno}
+	</delete>
 </mapper>

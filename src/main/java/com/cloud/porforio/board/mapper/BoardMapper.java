@@ -18,4 +18,16 @@ public interface BoardMapper {
 	public void add(Board board);
 	
 	public void addFile(List<BoardFile> file);
+	
+	public void updateReadCount(@Param("bno") int bno);
+	
+	public Board selectBoard(@Param("bno") int bno);
+	
+	public BoardFile selectBoardFile(@Param("bno") int bno);
+	
+	public int updateBoard(Board board);
+	
+	public int deleteBoardFile(@Param("bno") int bno);
+	
+	public int deleteBoard(@Param("bno") int bno);
 }
