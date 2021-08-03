@@ -14,6 +14,7 @@ import com.cloud.porforio.board.mapper.BoardMapper;
 import com.cloud.porforio.commons.util.FileUtils;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
+import com.cloud.porforio.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -30,8 +31,8 @@ public class BoardServiceImpl implements BoardService{
 	private FileUtils fileUtils;
 	
 	@Override
-	public List<Board> list() {
-		return mapper.list();
+	public List<Board> list(Criteria cri) {
+		return mapper.list(cri);
 	}
 
 	@Override
@@ -79,5 +80,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardFile selectBoardFile(int bno) {
 		return mapper.selectBoardFile(bno);
+	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotal(cri);
 	}
 }

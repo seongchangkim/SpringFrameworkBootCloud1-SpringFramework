@@ -34,7 +34,7 @@ public class FileUtils {
 
 		ZonedDateTime current = ZonedDateTime.now();
 	
-		String path = request.getSession().getServletContext().getRealPath("/") + "resources/images/" + current.format(format);
+		String path = request.getSession().getServletContext().getRealPath("/") + "resources\\images\\" + current.format(format);
 		
 		File file = new File(path);
 
@@ -75,11 +75,11 @@ public class FileUtils {
 					boardFile.setBno(bno);
 					boardFile.setFilesize(multipartFile.getSize());
 					boardFile.setOriginalFileName(multipartFile.getOriginalFilename());
-					boardFile.setStoredFileName(path + "/" + newFileName);
+					boardFile.setStoredFilePath(path + "\\" + newFileName);
 
 					fileList.add(boardFile);
 
-					file = new File(path + "/" + newFileName);
+					file = new File(path + "\\" + newFileName);
 
 					multipartFile.transferTo(file);
 				}

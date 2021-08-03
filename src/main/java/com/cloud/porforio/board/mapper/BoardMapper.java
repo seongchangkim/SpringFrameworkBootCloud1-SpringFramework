@@ -7,11 +7,12 @@ import org.apache.ibatis.annotations.Param;
 
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
+import com.cloud.porforio.domain.Criteria;
 
 @Mapper
 public interface BoardMapper {
 	
-	public List<Board> list();
+	public List<Board> list(Criteria cri);
 	
 	public String selectName(@Param("id") String id);
 	
@@ -30,4 +31,6 @@ public interface BoardMapper {
 	public int deleteBoardFile(@Param("bno") int bno);
 	
 	public int deleteBoard(@Param("bno") int bno);
+	
+	public int getTotal(Criteria cri);
 }

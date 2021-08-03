@@ -1,7 +1,6 @@
 package com.cloud.porforio.board.controller;
 
 import java.io.File;
-import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +20,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cloud.porforio.board.service.BoardService;
-import com.cloud.porforio.commons.util.FileUtils;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
+import com.cloud.porforio.domain.Criteria;
+import com.cloud.porforio.domain.Page;
 import com.cloud.porforio.domain.User;
 
 @Controller
@@ -36,9 +35,12 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping(value="/list")
-	public String list(Model model) {
-		List<Board> list = service.list();
+	public String list(Criteria cri,Model model) {
+		List<Board> list = service.list(cri);
 		model.addAttribute("list",list);
+		
+		int total = service.getTotal(cri);
+		model.addAttribute("pageMaker",new Page(total,cri));
 		return "/board/list";
 	}
 	
@@ -86,17 +88,16 @@ public class BoardController {
 		return "redirect:/cloud/board/list";
 	}
 	
-	//파일 다운로드
+	//파일 다운로드(2021.08.02)
 	@GetMapping(value="/downloadFile")
 	public ModelAndView downloadFile(int bno, HttpServletRequest request){
 		BoardFile file = service.selectBoardFile(bno);
 		
-		String filePath = file.getStoredFileName();
-		
-		File downFile = new File(file.getOriginalFileName());
-		File downloadFile = new File(filePath + file.getOriginalFileName());
+		String filePath = file.getStoredFilePath();
+		File downloadFile = new File(filePath);
 			
-		return new ModelAndView("/cloud/board/openBoard?bno="+bno, "downloadFile", downloadFile);
+		log.info(filePath);
+		return new ModelAndView("fileDownloadView", "downloadFile", downloadFile);
 		
 	}
 }

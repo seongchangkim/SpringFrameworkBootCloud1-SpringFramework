@@ -5,7 +5,16 @@
 <mapper namespace="com.cloud.porforio.board.mapper.BoardMapper">
 	<!-- 2021.07.27 게시판 목록 기능 -->
 	<select id="list" resultType="com.cloud.porforio.domain.Board">
-		select * from board where deleteyn = 'N'
+		<![CDATA[
+			select a.bno, a.title, a.content, a.writer, a.regdate, a.updatedate, a.readcount, a.replycount 
+			  from (
+			  		select /*+INDEX_DESC(board bno) */ rownum rn, bno, title, content, writer, regdate, updatedate, readcount, replycount 
+			  		  from board
+			  		  where deleteyn = 'N' limit #{pageNum} * #{amount}
+			) a
+			limit (#{pageNum} - 1) * #{amount}
+		]]>
+		
 	</select>
 	
 	<!-- 2021.07.29 사용자 이름을 가져오기 위한 기능 -->
@@ -27,7 +36,7 @@
 	<insert id="addFile" parameterType="com.cloud.porforio.domain.BoardFile">
 		insert into boardfile(bno, originalfilename, storedfilepath, filesize) values
 		<foreach collection="list" item="item" separator=",">
-			(#{item.bno}, #{item.originalFileName}, #{item.storedFileName}, #{item.filesize})
+			(#{item.bno}, #{item.originalFileName}, #{item.storedFilePath}, #{item.filesize})
 		</foreach>
 	</insert>
 	
@@ -66,4 +75,9 @@
 	<delete id="deleteBoard">
 		delete from board where bno = #{bno}
 	</delete>
+	
+	<!-- 2021.08.03 페이지 처리를 위한 총 게시물 갯수 구하기 -->
+	<select id="getTotal" resultType="int">
+		select count(bno) from board
+	</select>
 </mapper>

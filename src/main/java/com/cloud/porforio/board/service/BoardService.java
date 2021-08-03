@@ -8,10 +8,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
+import com.cloud.porforio.domain.Criteria;
 
 public interface BoardService {
 
-	List<Board> list();
+	List<Board> list(Criteria cri);
 	
 	String selectName(String id);
 	
@@ -26,4 +27,6 @@ public interface BoardService {
 	boolean updateBoard(Board board);
 	
 	boolean deleteBoard(int bno);
+	
+	int getTotal(Criteria cri);
 }

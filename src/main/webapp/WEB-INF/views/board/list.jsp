@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<title>Board List</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/boardliststyle.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 </head>
 <body>
 	<sec:authorize access="hasRole('ROLE_USER')">
@@ -37,7 +38,32 @@
 				</tr>
 			</c:forEach>
 		</table>
+	
+		<div class="pull-right">
+			<ul class="pagination">
+		
+				<c:if test="${pageMaker.prev}">
+					<li class="paginate_button previous">
+						<a href="/cloud/board/list?pageNum=${pageMaker.startPage -1}">이전</a>
+					</li>
+				</c:if>
+			
+				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+					<li class="paginate_button ${pageMaker.cri.pageNum == num ? 'active' : '' }">
+						<a href="/cloud/board/list?pageNum=${num}">${num}</a>
+					</li>	
+				</c:forEach>
+				
+				<c:if test="${pageMaker.next}">
+					<li class="paginate_button next">
+						<a href="${pageMaker.endPage + 1}">다음</a>
+					</li>
+				</c:if>
+			</ul>
+		</div>
 	</div>
 	<button onclick="location.href='/cloud/board/add'" class="btn">게시판 만들기</button>	
+	
+	
 </body>
 </html>

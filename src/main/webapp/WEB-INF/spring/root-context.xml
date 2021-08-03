@@ -31,6 +31,13 @@
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 	
+	<!-- 2021.08.03 파일 다운로드 bean 등록 -->
+	<bean id="fileDownloadView" class="com.cloud.porforio.commons.util.FileDownloadView">
+	</bean>
+	
+	<bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"></property>
+	</bean>
 	<!-- 2021.07.17 com.cloud.porforio.user.mapper 패키지 mybatis 컴포넌트 추가 -->
 	<mybatis-spring:scan base-package="com.cloud.porforio.user.mapper"/>
 
