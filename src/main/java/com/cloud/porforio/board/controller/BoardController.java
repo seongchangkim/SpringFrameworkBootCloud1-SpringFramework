@@ -23,7 +23,7 @@ import com.cloud.porforio.board.service.BoardService;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Criteria;
-import com.cloud.porforio.domain.Page;
+import com.cloud.porforio.domain.PageMaker;
 import com.cloud.porforio.domain.User;
 
 @Controller
@@ -36,11 +36,15 @@ public class BoardController {
 	
 	@GetMapping(value="/list")
 	public String list(Criteria cri,Model model) {
-		List<Board> list = service.list(cri);
-		model.addAttribute("list",list);
 		
-		int total = service.getTotal(cri);
-		model.addAttribute("pageMaker",new Page(total,cri));
+		List<Board> list = service.list(cri);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.getTotal(cri));
+		
+		model.addAttribute("list",list);
+		model.addAttribute("pageMaker",pageMaker);
 		return "/board/list";
 	}
 	

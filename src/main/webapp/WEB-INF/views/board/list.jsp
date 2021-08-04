@@ -7,10 +7,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Board List</title>
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/boardliststyle.css"/>">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/boardliststyle.css"/>">
 </head>
 <body>
+	${pageMaker.prev}
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<jsp:include page="../left.jsp" />
 	</sec:authorize>
@@ -49,14 +50,14 @@
 				</c:if>
 			
 				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-					<li class="paginate_button ${pageMaker.cri.pageNum == num ? 'active' : '' }">
+					<li class="paginate_button ${pageMaker.cri.getPageNum() == num ? 'active' : '' }">
 						<a href="/cloud/board/list?pageNum=${num}">${num}</a>
 					</li>	
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next}">
 					<li class="paginate_button next">
-						<a href="${pageMaker.endPage + 1}">다음</a>
+						<a href="/cloud/board/list?pageNum=${pageMaker.endPage + 1}">다음</a>
 					</li>
 				</c:if>
 			</ul>

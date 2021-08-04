@@ -6,13 +6,10 @@
 	<!-- 2021.07.27 게시판 목록 기능 -->
 	<select id="list" resultType="com.cloud.porforio.domain.Board">
 		<![CDATA[
-			select a.bno, a.title, a.content, a.writer, a.regdate, a.updatedate, a.readcount, a.replycount 
-			  from (
-			  		select /*+INDEX_DESC(board bno) */ rownum rn, bno, title, content, writer, regdate, updatedate, readcount, replycount 
-			  		  from board
-			  		  where deleteyn = 'N' limit #{pageNum} * #{amount}
-			) a
-			limit (#{pageNum} - 1) * #{amount}
+			select *
+			  from board
+			 where deleteyn = 'N'
+			 limit #{amount} offset #{pageStart}
 		]]>
 		
 	</select>
