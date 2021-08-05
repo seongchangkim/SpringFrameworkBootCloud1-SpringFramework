@@ -9,7 +9,13 @@
 			select *
 			  from board
 			 where deleteyn = 'N'
-			 limit #{amount} offset #{pageStart}
+			 
+		]]>
+		
+		<include refid="criteria"/>
+		
+		<![CDATA[
+			limit #{amount} offset #{pageStart}
 		]]>
 		
 	</select>
@@ -77,4 +83,24 @@
 	<select id="getTotal" resultType="int">
 		select count(bno) from board
 	</select>
+	
+	<sql id="criteria">
+		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%' || #{keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 </mapper>

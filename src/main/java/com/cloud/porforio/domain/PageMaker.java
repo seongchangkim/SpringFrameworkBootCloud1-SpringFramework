@@ -22,7 +22,7 @@ public class PageMaker {
 		this.totalCount = totalCount;
 	}
 	
-	private void calcData() {
+	public void calcData() {
         
         endPage = (int) (Math.ceil(cri.getPageNum() / (double) displayPageNum) * displayPageNum);
  
@@ -35,7 +35,7 @@ public class PageMaker {
         }
  
         prev = startPage == 1 ? false : true;
-        next = endPage * cri.getAmount() < totalCount ? true : false;
+        next = endPage * cri.getAmount() < 10 * cri.getAmount() ? true : false;
         
     }
 	

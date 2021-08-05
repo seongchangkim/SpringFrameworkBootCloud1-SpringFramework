@@ -45,11 +45,8 @@ public class BoardServiceImpl implements BoardService{
 		
 		mapper.add(board);
 		log.warn(board.getBno());
-		
+		log.warn(multipartHttpServlet);
 		List<BoardFile> list = fileUtils.parseFileInfo(board.getBno(), multipartHttpServlet, request);
-		
-		log.warn(list.get(0).getBno());
-		log.warn(new BoardFile().getBno());
 		
 		if(CollectionUtils.isEmpty(list) == false) {
 			mapper.addFile(list);
@@ -74,7 +71,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public boolean deleteBoard(int bno) {
-		return (mapper.deleteBoardFile(bno) == 1) && (mapper.deleteBoard(bno) == 1);
+		return (mapper.deleteBoardFile(bno) == 1) || (mapper.deleteBoard(bno) == 1);
 	}
 
 	@Override

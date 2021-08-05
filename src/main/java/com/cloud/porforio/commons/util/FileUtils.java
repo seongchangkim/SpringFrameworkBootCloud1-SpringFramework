@@ -17,13 +17,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.cloud.porforio.domain.BoardFile;
 
+import lombok.extern.log4j.Log4j;
+
 //@Resource를 통해서 Component 값을 가져오기 위해 Component 이름 지정  
 @Component("fileUtils")
+@Log4j
 public class FileUtils {
 	
 	public List<BoardFile> parseFileInfo(int bno, MultipartHttpServletRequest multipartHttpServletRequest, HttpServletRequest request)
 			throws IllegalStateException, IOException {
-		
+		log.warn(ObjectUtils.isEmpty(multipartHttpServletRequest));
 		if (ObjectUtils.isEmpty(multipartHttpServletRequest)) {
 			return null;
 		}

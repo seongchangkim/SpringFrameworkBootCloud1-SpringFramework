@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -26,8 +27,9 @@ import com.cloud.porforio.domain.Criteria;
 import com.cloud.porforio.domain.PageMaker;
 import com.cloud.porforio.domain.User;
 
+
 @Controller
-@RequestMapping("/cloud/board")
+@RequestMapping("/cloud/board/*")
 public class BoardController {
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -35,13 +37,14 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping(value="/list")
-	public String list(Criteria cri,Model model) {
+	public String list(@ModelAttribute("cri") Criteria cri,Model model) {
 		
 		List<Board> list = service.list(cri);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.getTotal(cri));
+		pageMaker.calcData();
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
@@ -61,14 +64,15 @@ public class BoardController {
 	
 	
 	@PostMapping(value="/add")
-	public String add(@ModelAttribute Board board, MultipartHttpServletRequest multipartHttpServlet, HttpServletRequest request) throws Exception {
+	public String add(@ModelAttribute Board board, @Nullable MultipartHttpServletRequest multipartHttpServlet, HttpServletRequest request) throws Exception {
+		log.warn(request.getParameter("files"));
 		service.add(board, multipartHttpServlet, request);
 		
 		return "redirect:/cloud/board/list";
 	}
 	
 	@GetMapping(value="/openBoard")
-	public String openBoard(int bno, Model model) {
+	public String openBoard(int bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		service.updateReadCount(bno);
 		Board board = service.selectBoard(bno);
 		BoardFile file = service.selectBoardFile(bno);
@@ -79,17 +83,17 @@ public class BoardController {
 	}
 	
 	@PostMapping(value="/updateBoard")
-	public String updateBoard(Board board) {
+	public String updateBoard(Board board, @ModelAttribute("cri") Criteria cri) {
 		boolean isUpdateBoard = service.updateBoard(board);
 		
-		return "redirect:/cloud/board/list";
+		return "redirect:/cloud/board/list" + cri.getListLink();
 	}
 	
 	@PostMapping(value="/deleteBoard")
-	public String deleteBoard(Board board) {
+	public String deleteBoard(Board board, @ModelAttribute("cri") Criteria cri) {
 		boolean isDeleteBoard = service.deleteBoard(board.getBno());
 		
-		return "redirect:/cloud/board/list";
+		return "redirect:/cloud/board/list" + cri.getListLink();
 	}
 	
 	//파일 다운로드(2021.08.02)
