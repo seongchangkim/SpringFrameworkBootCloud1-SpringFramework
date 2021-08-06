@@ -43,7 +43,10 @@ public class BoardController {
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
+//		log.warn(""+(cri.getType() == "T".toString()));
 		pageMaker.setTotalCount(service.getTotal(cri));
+//		log.warn(""+service.getTotal(cri));
+//		log.warn(""+list.size());
 		pageMaker.calcData();
 		
 		model.addAttribute("list",list);
@@ -79,6 +82,7 @@ public class BoardController {
 		
 		model.addAttribute("board",board);
 		model.addAttribute("file",file);
+		model.addAttribute("cri",cri);
 		return "/board/boardDetail";
 	}
 	

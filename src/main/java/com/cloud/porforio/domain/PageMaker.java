@@ -12,12 +12,15 @@ public class PageMaker {
 	public Criteria getCri() {
 		return cri;
 	}
+	
 	public void setCri(Criteria cri) {
 		this.cri = cri;
 	}
+	
 	public int getTotalCount() {
 		return totalCount;
 	}
+	
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
@@ -64,5 +67,12 @@ public class PageMaker {
 	public void setNext(boolean next) {
 		this.next = next;
 	}
+
+	@Override
+	public String toString() {
+		return "PageMaker [cri=" + cri + ", totalCount=" + totalCount + ", startPage=" + startPage + ", endPage="
+				+ endPage + ", prev=" + prev + ", next=" + next + ", displayPageNum=" + displayPageNum + "]";
+	}
+	
 	
 }

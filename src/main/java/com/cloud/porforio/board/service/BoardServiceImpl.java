@@ -44,8 +44,6 @@ public class BoardServiceImpl implements BoardService{
 	public void add(Board board, MultipartHttpServletRequest multipartHttpServlet, HttpServletRequest request) throws Exception {
 		
 		mapper.add(board);
-		log.warn(board.getBno());
-		log.warn(multipartHttpServlet);
 		List<BoardFile> list = fileUtils.parseFileInfo(board.getBno(), multipartHttpServlet, request);
 		
 		if(CollectionUtils.isEmpty(list) == false) {
