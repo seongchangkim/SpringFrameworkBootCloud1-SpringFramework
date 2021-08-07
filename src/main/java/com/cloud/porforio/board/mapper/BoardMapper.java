@@ -1,5 +1,6 @@
 package com.cloud.porforio.board.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Criteria;
+import com.cloud.porforio.domain.Reply;
 
 @Mapper
 public interface BoardMapper {
@@ -33,4 +35,6 @@ public interface BoardMapper {
 	public int deleteBoard(@Param("bno") int bno);
 	
 	public int getTotal(Criteria cri);
+	
+	public ArrayList<Reply> selectReplyList(@Param("bno") int bno);
 }

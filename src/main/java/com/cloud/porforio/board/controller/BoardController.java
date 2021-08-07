@@ -1,6 +1,7 @@
 package com.cloud.porforio.board.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,7 @@ import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Criteria;
 import com.cloud.porforio.domain.PageMaker;
+import com.cloud.porforio.domain.Reply;
 import com.cloud.porforio.domain.User;
 
 
@@ -79,10 +81,11 @@ public class BoardController {
 		service.updateReadCount(bno);
 		Board board = service.selectBoard(bno);
 		BoardFile file = service.selectBoardFile(bno);
-		
+		ArrayList<Reply> replyList = service.selectReplyList(bno);
 		model.addAttribute("board",board);
 		model.addAttribute("file",file);
 		model.addAttribute("cri",cri);
+		model.addAttribute("replyList",replyList);
 		return "/board/boardDetail";
 	}
 	

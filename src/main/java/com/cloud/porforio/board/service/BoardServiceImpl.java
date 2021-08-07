@@ -1,5 +1,6 @@
 package com.cloud.porforio.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import com.cloud.porforio.commons.util.FileUtils;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Criteria;
+import com.cloud.porforio.domain.Reply;
 
 import lombok.extern.log4j.Log4j;
 
@@ -80,5 +82,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int getTotal(Criteria cri) {
 		return mapper.getTotal(cri);
+	}
+
+	@Override
+	public ArrayList<Reply> selectReplyList(int bno) {
+		return mapper.selectReplyList(bno);
 	}
 }

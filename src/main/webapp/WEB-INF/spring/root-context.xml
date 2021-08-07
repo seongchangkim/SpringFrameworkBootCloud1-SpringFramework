@@ -46,6 +46,7 @@
 	
 	<!-- 2021.07.27 com.cloud.porforio.board.mapper 패키지 mybatis 컴포넌트 추가 -->
 	<mybatis-spring:scan base-package="com.cloud.porforio.board.mapper"/>
+	
 		
 	<!-- 2021.07.17 com.cloud.porforio.user.service 패키지 컴포넌트 추가 -->
 	<context:component-scan base-package="com.cloud.porforio.user.service"/>

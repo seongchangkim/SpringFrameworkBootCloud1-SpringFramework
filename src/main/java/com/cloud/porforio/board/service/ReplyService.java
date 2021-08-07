@@ -1,0 +1,21 @@
+package com.cloud.porforio.board.service;
+
+import java.util.ArrayList;
+
+import com.cloud.porforio.domain.Board;
+import com.cloud.porforio.domain.BoardFile;
+import com.cloud.porforio.domain.Reply;
+
+public interface ReplyService {
+	void add(Reply reply);
+	
+	Board selectBoard(int bno);
+	
+	BoardFile selectBoardFile(int bno);
+	
+	boolean updateReply(Reply reply);
+	
+	boolean deleteReply(int rno);
+	
+	ArrayList<Reply> selectReplyList(int bno);
+}

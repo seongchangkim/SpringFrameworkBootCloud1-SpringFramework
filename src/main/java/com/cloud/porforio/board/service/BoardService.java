@@ -1,5 +1,6 @@
 package com.cloud.porforio.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.cloud.porforio.domain.Board;
 import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Criteria;
+import com.cloud.porforio.domain.Reply;
 
 public interface BoardService {
 
@@ -29,4 +31,6 @@ public interface BoardService {
 	boolean deleteBoard(int bno);
 	
 	int getTotal(Criteria cri);
+	
+	ArrayList<Reply> selectReplyList(int bno); 
 }

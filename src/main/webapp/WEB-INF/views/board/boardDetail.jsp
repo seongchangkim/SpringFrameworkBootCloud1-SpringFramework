@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="com.cloud.porforio.domain.Board" %>
+<%@ page import="com.cloud.porforio.domain.Reply" %>
+<%@ page import="java.util.*" %>
 <%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
 <%@ page import="org.springframework.security.core.Authentication" %>
 <%
@@ -15,6 +17,7 @@
 	}
 	
 	Board board = (Board)request.getAttribute("board");
+	ArrayList<Reply> replyList = (ArrayList<Reply>)request.getAttribute("replyList");
 %>
 <!DOCTYPE html>
 <html>
@@ -25,7 +28,7 @@
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 </head>
 <body>
-	<div class="position-absolute top-50 start-50 translate-middle w-75 h-75">
+	<div>
 		<h2>${board.title}</h2>
 		<br>
 		<div>
@@ -73,6 +76,69 @@
 		</form>
 	</div>
 	
+		<div>
+			<form method="post" action="/cloud/reply/add">
+				<input type="hidden" name="id" value="<%=id%>">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="hidden" name="name" value="${board.name}">
+				<input type="hidden" name="bno" value="${board.bno}">
+				<div class="mb-3">
+		  			<label for="reply" class="form-label">reply</label>
+		  			<textarea class="form-control" id="reply" name="reply" rows="2"></textarea>
+		  		</div> 
+				<input type="submit" value="ADD">
+			</form>
+		</div>
+		 
+		<div>
+			<%
+				for(int i = 0; i<replyList.size() ; i++){
+			%>
+				<div>
+					<form method="post" name="replyForm">
+						<input type="hidden" name="rno" value="<%=replyList.get(i).getRno()%>">
+						<input type="hidden" name="bno" value="<%=replyList.get(i).getBno()%>">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
+						<div class="mb-3">
+				  			<label for="reply" class="form-label">reply</label>	
+				  			<textarea class="form-control" id="reply" name="reply" rows="2" 
+				  			<% 
+				  				if(!replyList.get(i).getId().equals(id)){
+				  			%>
+				  					readonly="readonly"	
+				  			<%
+				  				}else{
+				  			%>
+				  				
+				  			<%
+				  				}
+				  			%>
+				  			><%=replyList.get(i).getReply()%></textarea>
+				  			
+				  			<% 
+				  				if(replyList.get(i).getId().equals(id)){
+				  			%>
+				  					<input type="submit" value="UPDATE REPLY" onclick="myProcess(1)">	
+				  			<%
+				  				}
+				  			%>
+				  			
+				  			<% 
+				  				if(replyList.get(i).getId().equals(id)){
+				  			%>
+				  					<input type="submit" value="DELETE REPLY" onclick="myProcess(2)">	
+				  			<%
+				  				}
+				  			%>
+				  		</div>
+					</form>
+				</div>
+			<%
+				}
+			%>
+			
+		</div>
+	
 	<script>
 		function mySubmit(index){
 			if(index == 1){
@@ -81,6 +147,15 @@
 				document.boardDetailForm.action='/cloud/board/deleteBoard';
 			}
 			document.boardDetailForm.submit();
+		}
+		
+		function myProcess(num){
+			if(num == 1){
+				document.replyForm.action='/cloud/reply/updateReply';
+			}else if(num == 2){
+				document.replyForm.action='/cloud/reply/deleteReply';
+			}
+			document.replyForm.submit();
 		}
 	</script>
 </body>

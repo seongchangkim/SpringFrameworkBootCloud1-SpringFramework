@@ -9,7 +9,8 @@ public class Reply {
 	private int rno;
 	private int bno;
 	private String reply;
-	private String replyer;
+	private String id;
+	private String name;
 	private LocalDateTime replydate;
 	private LocalDateTime updatedate;
 }
