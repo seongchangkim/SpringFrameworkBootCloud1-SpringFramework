@@ -33,6 +33,20 @@
 		 where rno = #{rno}
 	</update>
 	
+	<!-- 2021.08.08 게시판 댓글 수 증가 -->
+	<update id="upUpdateReplyCount">
+		update board
+		   set replycount = replycount+1
+		 where bno = #{bno}
+	</update>
+	
+	<!-- 2021.08.08 게시판 댓글 수 감소 -->
+	<update id="downUpdateReplyCount">
+		update board
+		   set replycount = replycount-1
+		 where bno = #{bno}
+	</update>
+	
 	<!-- 2021.08.07 게시판 댓글 삭제 -->
 	<delete id="deleteReply">
 		delete from reply where rno = #{rno}

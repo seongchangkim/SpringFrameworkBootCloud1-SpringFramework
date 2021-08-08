@@ -46,4 +46,14 @@ public class ReplyServiceImpl implements ReplyService{
 		return mapper.selectReplyList(bno);
 	}
 
+	@Override
+	public boolean upUpdateReplyCount(int bno) {
+		return mapper.upUpdateReplyCount(bno) == 1;
+	}
+
+	@Override
+	public boolean downUpdateReplyCount(int bno) {
+		return mapper.downUpdateReplyCount(bno) == 1;
+	}
+
 }

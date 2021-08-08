@@ -27,7 +27,7 @@
 	<!-- 2021.07.29 파일 업로드 bean 등록 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 파일 업로드 용량 10MB -->
-		<property name="maxUploadSize" value="10485760" />
+		<property name="maxUploadSize" value="2147483648" />
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 	
@@ -47,6 +47,8 @@
 	<!-- 2021.07.27 com.cloud.porforio.board.mapper 패키지 mybatis 컴포넌트 추가 -->
 	<mybatis-spring:scan base-package="com.cloud.porforio.board.mapper"/>
 	
+	<!-- 2021.08.08 com.cloud.porforio.mapper 패키지 mybatis 컴포넌트 추가 -->
+	<mybatis-spring:scan base-package="com.cloud.porforio.mapper"/>
 		
 	<!-- 2021.07.17 com.cloud.porforio.user.service 패키지 컴포넌트 추가 -->
 	<context:component-scan base-package="com.cloud.porforio.user.service"/>

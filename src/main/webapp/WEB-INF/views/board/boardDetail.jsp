@@ -112,8 +112,7 @@
 				  				
 				  			<%
 				  				}
-				  			%>
-				  			><%=replyList.get(i).getReply()%></textarea>
+				  			%>><%=replyList.get(i).getReply()%></textarea>
 				  			
 				  			<% 
 				  				if(replyList.get(i).getId().equals(id)){

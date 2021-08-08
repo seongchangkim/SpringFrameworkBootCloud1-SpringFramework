@@ -18,4 +18,8 @@ public interface ReplyService {
 	boolean deleteReply(int rno);
 	
 	ArrayList<Reply> selectReplyList(int bno);
+	
+	boolean upUpdateReplyCount(int bno);
+	
+	boolean downUpdateReplyCount(int bno);
 }

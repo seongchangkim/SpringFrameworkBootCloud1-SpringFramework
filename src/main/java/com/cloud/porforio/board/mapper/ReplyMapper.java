@@ -22,4 +22,8 @@ public interface ReplyMapper {
 	public int deleteReply(@Param("rno") int rno);
 	
 	public ArrayList<Reply> selectReplyList(@Param("bno") int bno);
+	
+	public int upUpdateReplyCount(@Param("bno") int bno);
+
+	public int downUpdateReplyCount(@Param("bno") int bno);
 }

@@ -28,6 +28,7 @@ public class ReplyController {
 	@PostMapping(value="/add")
 	public String add(Reply reply, Model model, Criteria cri) {
 		service.add(reply);
+		service.upUpdateReplyCount(reply.getBno());
 		Board board = service.selectBoard(reply.getBno());
 		BoardFile file = service.selectBoardFile(reply.getBno());
 		ArrayList<Reply> replyList = service.selectReplyList(reply.getBno());
@@ -39,7 +40,7 @@ public class ReplyController {
 	}
 	
 	@PostMapping(value="/updateReply")
-	public String updateReply(@ModelAttribute("reply") Reply reply, @ModelAttribute("cri") Criteria cri, Model model) {
+	public String updateReply(Reply reply, @ModelAttribute("cri") Criteria cri, Model model) {
 		boolean isUpdateReply = service.updateReply(reply);
 		Board board = service.selectBoard(reply.getBno());
 		BoardFile file = service.selectBoardFile(reply.getBno());
@@ -52,8 +53,9 @@ public class ReplyController {
 	}
 	
 	@PostMapping(value="/deleteReply")
-	public String deleteReply(@ModelAttribute("reply") Reply reply, @ModelAttribute("cri") Criteria cri, Model model) {
+	public String deleteReply(Reply reply, @ModelAttribute("cri") Criteria cri, Model model) {
 		boolean isdeleteReply = service.deleteReply(reply.getRno());
+		service.downUpdateReplyCount(reply.getRno());
 		Board board = service.selectBoard(reply.getBno());
 		BoardFile file = service.selectBoardFile(reply.getBno());
 		ArrayList<Reply> replyList = service.selectReplyList(reply.getBno());
