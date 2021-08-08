@@ -35,15 +35,16 @@
 	</div>
 	
 	<script>
-		if(document.upLoadFileForm.files.val() ===  null){
-			alert('파일 업로드 하세요!');
-		}
-	</script>
-	<script>
 		function myFunction(){
 			const files = document.getElementById('files').value;
 			
-			if()
+			if(files !== null){
+				document.upLoadFileForm.submit();
+			}
+			
+			if(files === null){
+				alert('업로드할 파일을 고르세요!')
+			}
 		}
 	</script>
 </body>
