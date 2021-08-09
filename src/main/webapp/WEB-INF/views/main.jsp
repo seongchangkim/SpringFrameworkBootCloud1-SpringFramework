@@ -21,11 +21,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>main page</title>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/mainstyle.css"/>">
 	<script src="<c:url value="/resources/js/jquery-3.6.0.min.js"/>"></script>
 </head>
 <body>
 	<jsp:include page="left.jsp"></jsp:include>
-	<div>
+	<div class="fileAddDeleteForm">
 		<jsp:include page="<%=pagefile%>" />
 		<form method="post" action="/cloud/upload" name="upLoadFileForm">
 			<input type="hidden" name="id" value="<%=name%>">

@@ -241,6 +241,13 @@
 		    <version>2.4</version>
 		</dependency>
 		
+		<!-- 2021.08.09 jsp에서 LocalDateTime 포맷 변경하는 jar 파일 추가 -->
+		<dependency>
+		    <groupId>net.sargue</groupId>
+		    <artifactId>java-time-jsptags</artifactId>
+		    <version>1.1.4</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>

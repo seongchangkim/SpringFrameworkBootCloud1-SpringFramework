@@ -1,0 +1,7 @@
+@charset "UTF-8";
+.fileAddDeleteForm{
+	position : fixed;
+	left : 300px;
+	margin : 20px;
+	padding : 10px;
+}
