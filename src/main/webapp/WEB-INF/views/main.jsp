@@ -21,6 +21,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>main page</title>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/mainstyle.css"/>">
 	<script src="<c:url value="/resources/js/jquery-3.6.0.min.js"/>"></script>
 </head>
@@ -28,25 +30,18 @@
 	<jsp:include page="left.jsp"></jsp:include>
 	<div class="fileAddDeleteForm">
 		<jsp:include page="<%=pagefile%>" />
-		<form method="post" action="/cloud/upload" name="upLoadFileForm">
+		<form method="post" action="/cloud/upload" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="<%=name%>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="file" id="files" name="files" multiple="multiple" onClick="myFunction()">
+			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
+			<label class="btn btn-primary btn-xs" for="files">
+				업로드
+			</label>
+			<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
+			<input type="file" id="files" name="files" multiple="multiple" style="display:none;" onchange="this.form.submit()">
 		</form>
 	</div>
 	
-	<script>
-		function myFunction(){
-			const files = document.getElementById('files').value;
-			
-			if(files !== null){
-				document.upLoadFileForm.submit();
-			}
-			
-			if(files === null){
-				alert('업로드할 파일을 고르세요!')
-			}
-		}
-	</script>
+	
 </body>
 </html>

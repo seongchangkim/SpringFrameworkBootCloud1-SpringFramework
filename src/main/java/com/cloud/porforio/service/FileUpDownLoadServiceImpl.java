@@ -1,5 +1,7 @@
 package com.cloud.porforio.service;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -14,7 +16,10 @@ import com.cloud.porforio.commons.util.FileUtils;
 import com.cloud.porforio.domain.FileDTO;
 import com.cloud.porforio.mapper.FileUpDownLoadMapper;
 
+import lombok.extern.log4j.Log4j;
+
 @Service
+@Log4j
 public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 
 	@Autowired
@@ -26,8 +31,8 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 	@Override
 	public void fileUpLoadProcess(FileDTO file, MultipartHttpServletRequest multipartHttpServletRequest,
 			HttpServletRequest request) throws IllegalStateException, IOException {
-		List<FileDTO> list = fileUtils.parseFileList(multipartHttpServletRequest, request);
-		
+		List<FileDTO> list = fileUtils.parseFileList(file.getId(),multipartHttpServletRequest, request);
+		log.warn(list);
 		mapper.fileUpLoadProcess(list);
 	}
 

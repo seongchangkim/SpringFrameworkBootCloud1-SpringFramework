@@ -92,7 +92,7 @@ public class FileUtils {
 		return fileList;
 	}
 	
-	public List<FileDTO> parseFileList(MultipartHttpServletRequest multipartHttpServletRequest, HttpServletRequest request)
+	public List<FileDTO> parseFileList(String id, MultipartHttpServletRequest multipartHttpServletRequest, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		List<FileDTO> fileList = new ArrayList<>();
 		
@@ -102,7 +102,7 @@ public class FileUtils {
 		
 		
 		
-		String path = request.getSession().getServletContext().getRealPath("/") + "resources\\file\\" + current.format(format);
+		String path = request.getSession().getServletContext().getRealPath("/") + "resources\\file\\" + id + "\\" + current.format(format);
 		
 		File file = new File(path);
 		
@@ -162,7 +162,7 @@ public class FileUtils {
 						fileDTO.setStoredFilePath(path + "\\" + newFileName);
 						fileDTO.setFileSize(multipartFile.getSize());
 						fileList.add(fileDTO);
-						
+						log.info(fileDTO);
 						file = new File(path + "\\" + newFileName);
 						
 						multipartFile.transferTo(file);
