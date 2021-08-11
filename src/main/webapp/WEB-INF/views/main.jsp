@@ -38,10 +38,28 @@
 				업로드
 			</label>
 			<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
-			<input type="file" id="files" name="files" multiple="multiple" style="display:none;" onchange="this.form.submit()">
+			<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
 		</form>
 	</div>
 	
-	
+	<script>
+		var storedFiles = [];
+		document.getElementById("files").addEventListener('change',function(){
+			var fileList = this.files;
+			for(var i = 0; i<fileList.length ; i++){
+				storedFiles.push(fileList[i]);
+			}
+			
+			console.log(storedFiles);
+			var formData = new FormData();
+			
+			for(var i = 0; i<fileList.length ; i++){
+				formData.append('files',storedFiles[i]);
+			}
+			console.log(formData);
+			this.form.submit();
+		});
+		
+	</script>
 </body>
 </html>

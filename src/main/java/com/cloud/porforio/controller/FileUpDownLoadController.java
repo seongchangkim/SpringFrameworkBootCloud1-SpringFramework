@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +25,8 @@ public class FileUpDownLoadController {
 	private FileUpDownLoadService service;
 	
 	@PostMapping("/upload")
-	public String upload(@ModelAttribute FileDTO file, @Nullable MultipartHttpServletRequest multipartHttpServletRequest, HttpServletRequest request) throws IllegalStateException, IOException {
-		log.warn("" + request.getParameterValues("files"));
+	public String upload(@ModelAttribute FileDTO file, MultipartHttpServletRequest multipartHttpServletRequest, HttpServletRequest request) throws IllegalStateException, IOException {
+		log.warn(file.getId());
 		service.fileUpLoadProcess(file,multipartHttpServletRequest, request);
 		
 		return "main";
