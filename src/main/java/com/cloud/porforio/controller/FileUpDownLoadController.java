@@ -9,7 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cloud.porforio.domain.FileDTO;
 import com.cloud.porforio.service.FileUpDownLoadService;
@@ -25,9 +26,10 @@ public class FileUpDownLoadController {
 	private FileUpDownLoadService service;
 	
 	@PostMapping("/upload")
-	public String upload(@ModelAttribute FileDTO file, MultipartHttpServletRequest multipartHttpServletRequest, HttpServletRequest request) throws IllegalStateException, IOException {
+	public String upload(@ModelAttribute FileDTO file, @RequestParam("files") MultipartFile[] files, HttpServletRequest request) throws IllegalStateException, IOException {
+		
 		log.warn(file.getId());
-		service.fileUpLoadProcess(file,multipartHttpServletRequest, request);
+		service.fileUpLoadProcess(file, files ,request);
 		
 		return "main";
 	}

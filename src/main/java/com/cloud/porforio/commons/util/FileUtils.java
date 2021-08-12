@@ -92,7 +92,7 @@ public class FileUtils {
 		return fileList;
 	}
 	
-	public List<FileDTO> parseFileList(String id, MultipartHttpServletRequest multipartHttpServletRequest, HttpServletRequest request)
+	public List<FileDTO> parseFileList(String id, MultipartFile[] files, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		List<FileDTO> fileList = new ArrayList<>();
 		
@@ -100,27 +100,23 @@ public class FileUtils {
 		
 		ZonedDateTime current = ZonedDateTime.now();
 		
-		
-		
-		String path = request.getSession().getServletContext().getRealPath("/") + "resources\\file\\" + id + "\\" + current.format(format);
+		String path = request.getSession().getServletContext().getRealPath("/") + "resources\\files\\" + id + "\\" + current.format(format);
 		
 		File file = new File(path);
 		
+		log.warn(file.exists());
 		if(file.exists() == false) {
-			file.mkdir();
+			log.warn(1);
+			file.mkdirs();
 		}
-		
-		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
 		
 		String newFileName, originalFileExtension = "", contentType = "";
 		
-		while(iterator.hasNext()) {
-			List<MultipartFile> list = multipartHttpServletRequest.getFiles(iterator.next());
-			for(MultipartFile multipartFile : list) {
+		for(MultipartFile multipartFile : files) {
 				if(multipartFile.isEmpty() == false) {
 					contentType = multipartFile.getContentType();
 					
-					if(ObjectUtils.isEmpty(contentType) == false) {
+					if(ObjectUtils.isEmpty(contentType)) {
 						break;
 					}else {
 						if(contentType.contains("image/jpeg")) {
@@ -158,6 +154,7 @@ public class FileUtils {
 						newFileName = Long.toString(System.nanoTime()) + originalFileExtension;
 						
 						FileDTO fileDTO = new FileDTO();
+						fileDTO.setId(id);
 						fileDTO.setOriginalFileName(multipartFile.getOriginalFilename());
 						fileDTO.setStoredFilePath(path + "\\" + newFileName);
 						fileDTO.setFileSize(multipartFile.getSize());
@@ -169,7 +166,7 @@ public class FileUtils {
 					}
 				}
 			}
-		}
+		
 		return fileList;
 	}
 }

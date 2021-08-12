@@ -1,8 +1,7 @@
 package com.cloud.porforio.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cloud.porforio.commons.util.FileUtils;
 import com.cloud.porforio.domain.FileDTO;
@@ -29,9 +28,10 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 	private FileUtils fileUtils;
 	
 	@Override
-	public void fileUpLoadProcess(FileDTO file, MultipartHttpServletRequest multipartHttpServletRequest,
+	public void fileUpLoadProcess(FileDTO file, MultipartFile[] files,
 			HttpServletRequest request) throws IllegalStateException, IOException {
-		List<FileDTO> list = fileUtils.parseFileList(file.getId(),multipartHttpServletRequest, request);
+		log.warn(files.length);
+		List<FileDTO> list = fileUtils.parseFileList(file.getId(), files ,request);
 		log.warn(list);
 		mapper.fileUpLoadProcess(list);
 	}

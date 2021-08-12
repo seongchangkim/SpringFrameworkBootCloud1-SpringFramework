@@ -30,7 +30,7 @@
 	<jsp:include page="left.jsp"></jsp:include>
 	<div class="fileAddDeleteForm">
 		<jsp:include page="<%=pagefile%>" />
-		<form method="post" action="/cloud/upload" enctype="multipart/form-data">
+		<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
 			<input type="hidden" name="id" value="<%=name%>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
@@ -51,12 +51,15 @@
 			}
 			
 			console.log(storedFiles);
-			var formData = new FormData();
+			var formData = new FormData(this.form);
 			
 			for(var i = 0; i<fileList.length ; i++){
 				formData.append('files',storedFiles[i]);
 			}
-			console.log(formData);
+			for(var pair of formData.entries()){
+				console.log(pair[0] + ',' + pair[1]);
+			}
+			
 			this.form.submit();
 		});
 		
