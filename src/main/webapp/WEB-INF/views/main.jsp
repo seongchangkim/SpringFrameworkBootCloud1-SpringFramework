@@ -91,7 +91,7 @@
 						<c:url value="/resources/images/zip.png"/>
 					</c:if>
 				">
-				<a href="#">${list.originalFileName}</a>
+				<a href="/cloud/download?fno=${list.fno}">${list.originalFileName}</a>
 				<p>${list.fileSize}</p>
 			</div>
 		</c:forEach>
