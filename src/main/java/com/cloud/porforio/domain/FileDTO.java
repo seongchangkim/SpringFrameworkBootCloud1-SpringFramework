@@ -13,4 +13,5 @@ public class FileDTO {
 	private String storedFilePath;
 	private long fileSize;
 	private LocalDateTime regDate;
+	private String deleteYN;
 }

@@ -25,12 +25,14 @@
 	</bean>
 	
 	<!-- 2021.07.29 파일 업로드 bean 등록 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- 파일 업로드 용량 2GB -->
-		<property name="maxUploadSize">
-			<value>10485760</value>
-		</property>
-		<property name="defaultEncoding" value="UTF-8"/>
+	<bean id="multipartResolver" 
+
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<property name="maxUploadSize" value="-1" /><!-- 톰캠 한번에 파일 업로드 설정 2GB까지임 -->
+
+        <property name="defaultEncoding" value="UTF-8" />	
+
 	</bean>
 	
 	<!-- 2021.08.03 파일 다운로드 bean 등록 -->

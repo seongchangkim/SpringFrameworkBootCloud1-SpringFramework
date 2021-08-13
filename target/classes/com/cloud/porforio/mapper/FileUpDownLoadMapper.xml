@@ -10,4 +10,9 @@
 			(#{item.id}, #{item.originalFileName}, #{item.storedFilePath}, #{item.fileSize}, now())
 		</foreach>
 	</insert>
+	
+	<!-- 2021.08.13 파일 목록 가져오기 -->
+	<select id="getFileList" resultType="com.cloud.porforio.domain.FileDTO">
+		select * from file where deleteyn='N' and id = #{id}
+	</select>
 </mapper>

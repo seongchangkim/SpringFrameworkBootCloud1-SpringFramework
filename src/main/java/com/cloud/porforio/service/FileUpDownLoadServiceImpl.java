@@ -36,4 +36,9 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 		mapper.fileUpLoadProcess(list);
 	}
 
+	@Override
+	public List<FileDTO> getFileList(String id) {
+		return mapper.getFileList(id);
+	}
+
 }

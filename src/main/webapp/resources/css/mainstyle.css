@@ -5,3 +5,14 @@
 	margin : 20px;
 	padding : 10px;
 }
+.fileList{
+	position : fixed;
+	left : 300px;
+	top : 50px;
+	margin : 20px;
+	padding : 10px;
+}
+.fileList img{
+	width : 100px;
+	height : 100px;
+}

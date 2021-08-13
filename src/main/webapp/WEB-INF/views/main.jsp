@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="org.springframework.security.core.context.SecurityContextHolder"  %>
 <%@ page import="org.springframework.security.core.Authentication" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	Object principal = auth.getPrincipal();
@@ -15,6 +16,8 @@
 	
 	String pagefile = request.getParameter("page");
 	if(pagefile==null) {pagefile="main";}
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -41,7 +44,59 @@
 			<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
 		</form>
 	</div>
-	
+	<div class="fileList">
+		<c:forEach var="list" items="${list}">
+			<div>
+				<img src="
+					<c:if test="${fn:contains(list.storedFilePath,'.7z')}">
+						<c:url value="/resources/images/7z.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.avi')}">
+						<c:url value="/resources/images/avi.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.doc')}">
+						<c:url value="/resources/images/doc.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.gif')}">
+						<c:url value="/resources/images/gif.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.jpg')}">
+						<c:url value="/resources/images/jpg.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.mp3')}">
+						<c:url value="/resources/images/mp3.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.mp4')}">
+						<c:url value="/resources/images/mp4.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.pdf')}">
+						<c:url value="/resources/images/pdf.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.png')}">
+						<c:url value="/resources/images/png.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.ppt')}">
+						<c:url value="/resources/images/ppt.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.rar')}">
+						<c:url value="/resources/images/rar.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.tar')}">
+						<c:url value="/resources/images/tar.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.txt')}">
+						<c:url value="/resources/images/txt.png"/>
+					</c:if>
+					<c:if test="${fn:contains(list.storedFilePath,'.zip')}">
+						<c:url value="/resources/images/zip.png"/>
+					</c:if>
+				">
+				<a href="#">${list.originalFileName}</a>
+				<p>${list.fileSize}</p>
+			</div>
+		</c:forEach>
+		
+	</div>
 	<script>
 		var storedFiles = [];
 		document.getElementById("files").addEventListener('change',function(){

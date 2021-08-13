@@ -1,11 +1,15 @@
 package com.cloud.porforio.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,12 +30,23 @@ public class FileUpDownLoadController {
 	private FileUpDownLoadService service;
 	
 	@PostMapping("/upload")
-	public String upload(@ModelAttribute FileDTO file, @RequestParam("files") MultipartFile[] files, HttpServletRequest request) throws IllegalStateException, IOException {
+	public String upload(@ModelAttribute FileDTO file, @RequestParam("files") MultipartFile[] files, HttpServletRequest request, Model model) throws IllegalStateException, IOException {
 		
 		log.warn(file.getId());
 		service.fileUpLoadProcess(file, files ,request);
 		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = auth.getPrincipal();
+		
+		String id = "";
+		if(principal != null) {
+			id = auth.getName();
+		}
+		
+		List<FileDTO> list = service.getFileList(id);
+		model.addAttribute("list",list);
 		return "main";
 	}
+
 	
 }
