@@ -41,11 +41,11 @@
 					</a>
 				</li>
 				<li class="list">
-					<a href="#">
+					<a href="/cloud/recycleBin">
 						<span class="icon">
-							<ion-icon name="chatbubbles-outline"></ion-icon>
+							<ion-icon name="trash-outline"></ion-icon>
 						</span>
-						<span class="title">Messages</span>
+						<span class="title">RecycleBin</span>
 					</a>
 				</li>
 				<li class="list">

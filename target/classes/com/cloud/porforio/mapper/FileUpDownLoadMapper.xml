@@ -3,6 +3,22 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cloud.porforio.mapper.FileUpDownLoadMapper">
+	
+	<!-- 2021.08.13 파일 목록 가져오기 -->
+	<select id="getFileList" resultType="com.cloud.porforio.domain.FileDTO">
+		select * from file where deleteyn='N' and id = #{id}
+	</select>
+	
+	<!-- 2021.08.14 파일 다운로드하기 위해 파일 정보 가져오기 -->
+	<select id="selectFile" resultType="com.cloud.porforio.domain.FileDTO">
+		select * from file where fno = #{fno}
+	</select>	
+	
+	<!-- 2021.08.14 휴지통 파일 목록 보여주기 -->
+	<select id="getDeleteYNYFileList" resultType="com.cloud.porforio.domain.FileDTO">
+		select * from file where id = #{id} and deleteyn = 'Y'
+	</select>
+	
 	<!-- 2021.08.08 파일 업로드 -->
 	<insert id="fileUpLoadProcess" parameterType="com.cloud.porforio.domain.FileDTO">
 		insert into file(id, originalfilename, storedfilepath, filesize, regdate) values
@@ -11,8 +27,23 @@
 		</foreach>
 	</insert>
 	
-	<!-- 2021.08.13 파일 목록 가져오기 -->
-	<select id="getFileList" resultType="com.cloud.porforio.domain.FileDTO">
-		select * from file where deleteyn='N' and id = #{id}
-	</select>
+	<!-- 2021.08.14 휴지통 페이지로 이동을 위한 deleteYN='Y'로 변경 -->
+	<update id="deleteYNUpdateFile">
+		update file
+		   set deleteYN = 'Y'
+		 where fno = #{fno}
+	</update>
+	
+	<!-- 2021.08.14 파일 복구 -->
+	<update id="restoreFile">
+		update file
+		   set deleteYN = 'N'
+		 where fno = #{fno}
+	</update>
+	
+	<!-- 2021.08.14 휴지통 비우기 -->
+	<delete id="deleteEmptyTrash">
+		delete from file
+		 where fno = #{fno}
+	</delete>
 </mapper>

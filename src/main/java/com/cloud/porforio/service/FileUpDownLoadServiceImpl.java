@@ -41,4 +41,29 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 		return mapper.getFileList(id);
 	}
 
+	@Override
+	public FileDTO selectFile(int fno) {
+		return mapper.selectFile(fno);
+	}
+
+	@Override
+	public boolean isDeleteYNUpdateFile(int fno) {
+		return mapper.deleteYNUpdateFile(fno) == 1;
+	}
+
+	@Override
+	public List<FileDTO> getDeleteYNYFileList(String id) {
+		return mapper.getDeleteYNYFileList(id);
+	}
+
+	@Override
+	public boolean isDeleteEmptyTrash(int fno) {
+		return mapper.deleteEmptyTrash(fno) == 1;
+	}
+
+	@Override
+	public boolean isRestoreFile(int fno) {
+		return mapper.restoreFile(fno) == 1;
+	}
+
 }

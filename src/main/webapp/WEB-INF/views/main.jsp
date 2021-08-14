@@ -32,10 +32,22 @@
 <body>
 	<jsp:include page="left.jsp"></jsp:include>
 	<div class="fileAddDeleteForm">
-		<jsp:include page="<%=pagefile%>" />
+		<%-- <jsp:include page="<%=pagefile%>" /> --%>
+		<c:set var="total" value="0"/>
+		<div>
+			<c:forEach var="list" items="${list}">
+				<font style="display:none;">${list.fileSize}</font>
+				<c:set var="total" value="${total+list.fileSize}"/>
+			</c:forEach>
+			<div>
+				<font id="currentFileTotal"><c:out value="${total}"/></font>/<font id="limitFile">16106127360</font>
+			</div>
+		</div>
 		<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
 			<input type="hidden" name="id" value="<%=name%>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" name="currentFileTotal" value="${total}">
+			<input type="hidden" name	="limitFile" value="16106127360">
 			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
 			<label class="btn btn-primary btn-xs" for="files">
 				업로드
@@ -93,6 +105,7 @@
 				">
 				<a href="/cloud/download?fno=${list.fno}">${list.originalFileName}</a>
 				<p>${list.fileSize}</p>
+				<button class="btn btn-warning btn-xs" onclick="location.href='/cloud/deleteYNUpdateFile?fno=${list.fno}'">DELETE FILE</button>
 			</div>
 		</c:forEach>
 		
@@ -100,11 +113,19 @@
 	<script>
 		var storedFiles = [];
 		document.getElementById("files").addEventListener('change',function(){
+			var currentFileTotal = parseInt($('input[name=currentFileTotal]').val());
+			var limitFile = parseInt($('input[name=limitFile]').val());
+			
+			var getRequestFile = 0;
+			
 			var fileList = this.files;
 			for(var i = 0; i<fileList.length ; i++){
 				storedFiles.push(fileList[i]);
+				getRequestFile += fileList[i].size; 
 			}
 			
+			console.log(currentFileTotal+getRequestFile);
+			console.log(limitFile);
 			console.log(storedFiles);
 			var formData = new FormData(this.form);
 			
@@ -115,7 +136,16 @@
 				console.log(pair[0] + ',' + pair[1]);
 			}
 			
-			this.form.submit();
+			if((currentFileTotal+getRequestFile) < limitFile){
+				this.form.submit();
+			}else if(getRequestFile > 2147483648){
+				alert('한 요청 당 업로드 파일 용량은 2GB입니다.');
+				return false;
+			}else{
+				alert('업로드 할 수 있는 파일 용량이 초과 되었습니다.');
+				return false;
+			}
+			
 		});
 		
 	</script>

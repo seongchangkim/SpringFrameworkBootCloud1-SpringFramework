@@ -13,4 +13,14 @@ public interface FileUpDownLoadMapper {
 	public void fileUpLoadProcess(List<FileDTO> list);
 
 	public List<FileDTO> getFileList(@Param("id") String id);
+
+	public FileDTO selectFile(@Param("fno") int fno);
+
+	public int deleteYNUpdateFile(@Param("fno") int fno);
+
+	public List<FileDTO> getDeleteYNYFileList(@Param("id") String id);
+
+	public int deleteEmptyTrash(@Param("fno") int fno);
+
+	public int restoreFile(@Param("fno") int fno);
 }

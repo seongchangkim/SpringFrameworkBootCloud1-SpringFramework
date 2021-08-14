@@ -58,7 +58,6 @@
 	</style>
 </head>
 <body>
-
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<jsp:include page="../left.jsp" />
 	</sec:authorize>
