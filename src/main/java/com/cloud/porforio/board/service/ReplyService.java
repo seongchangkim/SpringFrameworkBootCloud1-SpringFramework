@@ -22,4 +22,8 @@ public interface ReplyService {
 	boolean upUpdateReplyCount(int bno);
 	
 	boolean downUpdateReplyCount(int bno);
+	
+	String selectName(String id);
+	
+	int selectBno(int rno);
 }

@@ -11,6 +11,6 @@ public class Reply {
 	private String reply;
 	private String id;
 	private String name;
-	private LocalDateTime replydate;
+	private LocalDateTime regdate;
 	private LocalDateTime updatedate;
 }

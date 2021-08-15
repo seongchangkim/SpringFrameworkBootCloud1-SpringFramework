@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="javatime" uri="http://sargue.net/jsptags/time" %>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,9 @@
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="/resources/js/jquery-3.6.0.min.js"/>"></script>
 	<style>
+		body{
+			height : 100%;
+		}
 		.container{
 			position : fixed;
 			left:30%;
@@ -108,7 +112,7 @@
 							<td><a href="<c:url value="/cloud/board/openBoard?bno=${list.bno}"/>">${list.title}</a></td>
 							<td>${list.name}</td>
 							<td>
-								<javatime:format value="${list.regDate}"/>
+								<tf:formatDateTime value="${list.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 							</td>
 							<td>${list.readCount}</td>
 							<td>${list.replyCount}</td>

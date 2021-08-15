@@ -52,4 +52,13 @@
 		delete from reply where rno = #{rno}
 	</delete>
 	
+	<!-- 2021.08.15 댓글 등록된 아이디와 사용자 아이디 비교하기 위해 사용자 이름 조회 -->
+	<select id="selectName" resultType="string">
+		select name from user where id = #{id}
+	</select>
+	
+	<!-- 2021.08.15 해당 게시물 상세보기 리다이렉트하기 위해 게시판 번호 가져오기 -->
+	<select id="selectBno" resultType="int">
+		select bno from reply where rno = #{rno}
+	</select>
 </mapper>

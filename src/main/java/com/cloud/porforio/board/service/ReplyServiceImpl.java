@@ -56,4 +56,14 @@ public class ReplyServiceImpl implements ReplyService{
 		return mapper.downUpdateReplyCount(bno) == 1;
 	}
 
+	@Override
+	public String selectName(String id) {
+		return mapper.selectName(id);
+	}
+
+	@Override
+	public int selectBno(int rno) {
+		return mapper.selectBno(rno);
+	}
+
 }

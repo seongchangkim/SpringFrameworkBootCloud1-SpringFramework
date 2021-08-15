@@ -79,13 +79,20 @@ public class BoardController {
 	@GetMapping(value="/openBoard")
 	public String openBoard(int bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		service.updateReadCount(bno);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		String id = auth.getName();
+		String name = service.selectName(id);
 		Board board = service.selectBoard(bno);
 		BoardFile file = service.selectBoardFile(bno);
 		ArrayList<Reply> replyList = service.selectReplyList(bno);
+		model.addAttribute("userId",id);
 		model.addAttribute("board",board);
 		model.addAttribute("file",file);
 		model.addAttribute("cri",cri);
 		model.addAttribute("replyList",replyList);
+		model.addAttribute("username",name);
 		return "/board/boardDetail";
 	}
 	

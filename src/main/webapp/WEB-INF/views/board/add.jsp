@@ -9,14 +9,33 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<style>
+		*{
+			padding : 0;
+			margin : 0;
+		}
+		body{
+			
+			background-color: #4B6375;
+		}
 		h2{
 			margin : 30px 0px;
+		}
+		.container{
+			background-color : #fff;
+			postion : absolute;
+			top : 50%;
+			left : 50%;
+			width : 75%;
+			height : 75%;
+			padding : 20px;
+			margin : 150px;
+			border-radius : 20px;
 		}
 	</style>
 </head>
 <body>
 	
-	<div class="position-absolute top-50 start-50 translate-middle w-75 h-75">
+	<div class="container">
 		<h2>Board Register</h2>
 		<form action="/cloud/board/add" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${user.id}">
