@@ -26,7 +26,7 @@ public interface BoardMapper {
 	
 	public Board selectBoard(@Param("bno") int bno);
 	
-	public BoardFile selectBoardFile(@Param("bno") int bno);
+	public ArrayList<BoardFile> selectBoardFileList(@Param("bno") int bno);
 	
 	public int updateBoard(Board board);
 	
@@ -37,4 +37,6 @@ public interface BoardMapper {
 	public int getTotal(Criteria cri);
 	
 	public ArrayList<Reply> selectReplyList(@Param("bno") int bno);
+
+	public BoardFile selectBoardFile(@Param("idx") int idx);
 }

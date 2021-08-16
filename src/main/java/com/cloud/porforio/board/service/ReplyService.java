@@ -3,7 +3,6 @@ package com.cloud.porforio.board.service;
 import java.util.ArrayList;
 
 import com.cloud.porforio.domain.Board;
-import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Reply;
 
 public interface ReplyService {
@@ -11,7 +10,7 @@ public interface ReplyService {
 	
 	Board selectBoard(int bno);
 	
-	BoardFile selectBoardFile(int bno);
+	
 	
 	boolean updateReply(Reply reply);
 	

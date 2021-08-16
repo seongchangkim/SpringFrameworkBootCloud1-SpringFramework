@@ -37,7 +37,7 @@
 	
 	<div class="container">
 		<h2>Board Register</h2>
-		<form action="/cloud/board/add" method="post" enctype="multipart/form-data">
+		<form action="/cloud/board/add" method="post" enctype="multipart/form-data" name="replyAddForm">
 			<input type="hidden" name="id" value="${user.id}">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			
@@ -63,5 +63,23 @@
 		</form>
 	</div>
 	
+	<script>
+		window.onload = function(){
+			var add = document.replyAddForm;
+			add.onsubmit = function(){
+				if(!add.title.value){
+					alert('제목을 입력하세요!');
+					add.title.focus();
+					return false;
+				}
+				
+				if(!add.content.value){
+					alert('내용을 입력하세요!')
+					add.content.focus();
+					return false;
+				}
+			}
+		}
+	</script>
 </body>
 </html>

@@ -90,7 +90,7 @@
 					</option>
 				</select>
 				<input type="text" name="keyword"/>
-				<button class="btn btn-primary">검색</button>
+				<button class="btn btn-info btn-xs">검색</button>
 			</form>
 		</div>
 		

@@ -75,8 +75,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public BoardFile selectBoardFile(int bno) {
-		return mapper.selectBoardFile(bno);
+	public ArrayList<BoardFile> selectBoardFileList(int bno) {
+		return mapper.selectBoardFileList(bno);
 	}
 
 	@Override
@@ -87,5 +87,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public ArrayList<Reply> selectReplyList(int bno) {
 		return mapper.selectReplyList(bno);
+	}
+
+	@Override
+	public BoardFile selectBoardFile(int idx) {
+		return mapper.selectBoardFile(idx);
 	}
 }

@@ -24,7 +24,7 @@ public interface BoardService {
 	
 	Board selectBoard(int bno);
 	
-	BoardFile selectBoardFile(int bno);
+	ArrayList<BoardFile> selectBoardFileList(int bno);
 	
 	boolean updateBoard(Board board);
 	
@@ -33,4 +33,6 @@ public interface BoardService {
 	int getTotal(Criteria cri);
 	
 	ArrayList<Reply> selectReplyList(int bno); 
+
+	BoardFile selectBoardFile(int idx);
 }

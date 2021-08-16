@@ -14,8 +14,6 @@ public interface ReplyMapper {
 	public void add(Reply reply);
 	
 	public Board selectBoard(@Param("bno") int bno);
-	
-	public BoardFile selectBoardFile(@Param("bno") int bno);
 
 	public int updateReply(Reply reply);
 	

@@ -85,7 +85,7 @@ public class BoardController {
 		String id = auth.getName();
 		String name = service.selectName(id);
 		Board board = service.selectBoard(bno);
-		BoardFile file = service.selectBoardFile(bno);
+		ArrayList<BoardFile> file = service.selectBoardFileList(bno);
 		ArrayList<Reply> replyList = service.selectReplyList(bno);
 		model.addAttribute("userId",id);
 		model.addAttribute("board",board);
@@ -112,8 +112,8 @@ public class BoardController {
 	
 	//파일 다운로드(2021.08.02)
 	@GetMapping(value="/downloadFile")
-	public ModelAndView downloadFile(int bno, HttpServletRequest request){
-		BoardFile file = service.selectBoardFile(bno);
+	public ModelAndView downloadFile(int idx, HttpServletRequest request){
+		BoardFile file = service.selectBoardFile(idx);
 		
 		String filePath = file.getStoredFilePath();
 		File downloadFile = new File(filePath);

@@ -27,11 +27,6 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public BoardFile selectBoardFile(int bno) {
-		return mapper.selectBoardFile(bno);
-	}
-
-	@Override
 	public boolean updateReply(Reply reply) {
 		return mapper.updateReply(reply) == 1;
 	}

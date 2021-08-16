@@ -37,16 +37,15 @@ public class ReplyController {
 		return "redirect:/cloud/board/openBoard?bno=" + reply.getBno(); 
 	}
 	
-	@GetMapping(value="/deleteReply")
-	public String deleteReply(int rno, Model model) {
-		int bno = service.selectBno(rno);
+	@PostMapping(value="/deleteReply")
+	public String deleteReply(Reply reply, Model model) {
 		
-		boolean isdeleteReply = service.deleteReply(rno);
+		boolean isdeleteReply = service.deleteReply(reply.getRno());
 		
 		if(isdeleteReply) {
-			service.downUpdateReplyCount(rno);
+			service.downUpdateReplyCount(reply.getBno());
 		}
 	
-		return "redirect:/cloud/board/openBoard?bno=" + bno;
+		return "redirect:/cloud/board/openBoard?bno=" + reply.getBno();
 	}
 }	
