@@ -41,8 +41,18 @@ public class MainController {
 	}
 	
 	@GetMapping("/cloud/admin/main")
-	public String mainAdmin() {
-		return "/admin/adminMain";
+	public String mainAdmin(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = auth.getPrincipal();
+		
+		String id="";
+		if(principal != null){
+			id = auth.getName();
+		}
+		
+		List<FileDTO> list = service.getFileList(id);
+		model.addAttribute("list",list);
+		return "main";
 	}
 	
 	@GetMapping("/logout")

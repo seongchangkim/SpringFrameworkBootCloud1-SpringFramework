@@ -12,6 +12,10 @@
 		table, tr, td{
 			border: 1px solid #000;
 			border-collapse : collapse;
+			margin : 10px 5px;
+		}
+		.btn{
+			margin : 10px 5px;
 		}
 	</style>
 </head>

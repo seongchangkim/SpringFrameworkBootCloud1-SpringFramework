@@ -30,7 +30,12 @@
 	<script src="<c:url value="/resources/js/jquery-3.6.0.min.js"/>"></script>
 </head>
 <body>
-	<jsp:include page="left.jsp"></jsp:include>
+	<sec:authorize access="hasRole('ROLE_USER')">
+		<jsp:include page="left.jsp"/>
+	</sec:authorize>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<jsp:include page="admin/adminLeft.jsp"/>
+	</sec:authorize>
 	<div class="fileAddDeleteForm">
 		<%-- <jsp:include page="<%=pagefile%>" /> --%>
 		<c:set var="total" value="0"/>
