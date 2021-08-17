@@ -5,6 +5,7 @@
 <%@ page import="org.springframework.security.core.context.SecurityContextHolder"  %>
 <%@ page import="org.springframework.security.core.Authentication" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	Object principal = auth.getPrincipal();
@@ -35,102 +36,147 @@
 		<jsp:include page="admin/adminLeft.jsp"/>
 	</sec:authorize>
 	
-	<div class="row d-flex justify-content-center mt-100">
-	    <div class="col-md-6">
-	        <div class="progress blue"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-	            <div class="progress-value">90%</div>
+	<div class="wrap">
+		<div class="grid1">
+	        <div class="row">
+	            <c:forEach var="list" items="${list}">
+					<font style="display:none;">${list.fileSize}</font>
+					<c:set var="total" value="${total+list.fileSize}"/>
+				</c:forEach>
+	            <div class="col-xl-4 col-lg-4 mb-6">
+	                <div class="bg-white rounded-lg p-5 shadow">
+	                    <!-- <h2 class="h6 font-weight-bold text-center mb-4">UpLoad </h2> -->
+	                    <div class="progress mx-auto" data-value='${(total/16106127360)}'> <span class="progress-left"> <span class="progress-bar border-primary"></span> </span> <span class="progress-right"> <span class="progress-bar border-primary"></span> </span>
+	                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+	                            <div class="h2 font-weight-bold"><fmt:formatNumber value="${(total/16106127360)*100}" maxFractionDigits="1"/><sup class="small">%</sup></div>
+	                        </div>
+	                    </div>
+	                    <div class="row text-center mt-4">
+	                        <div class="col-6 border-right">
+	                            <div class="h4 font-weight-bold mb-0">
+	                            	<c:if test="${total >= 1099511627776 && total < 1125899906842624}">
+										<fmt:formatNumber value="${total/1099511627776}" maxFractionDigits="1"/>GB
+									</c:if>
+	                            	<c:if test="${total >= 1073741824 && total < 1099511627776}">
+										<fmt:formatNumber value="${total/1073741824}" maxFractionDigits="1"/>GB
+									</c:if>
+									<c:if test="${total >= 1048576 && total < 1073741824}">
+										<fmt:formatNumber value="${total/1048576}" maxFractionDigits="1"/>MB
+									</c:if>
+									<c:if test="${total >= 1024 && total < 1048576}">
+										<fmt:formatNumber value="${total/1024}" maxFractionDigits="1"/>KB
+									</c:if>
+									<c:if test="${total < 1024}">
+										<fmt:formatNumber value="${total}" maxFractionDigits="1"/>B
+									</c:if>
+	                            </div><span class="small text-gray">Current Total Upload Size</span>
+	                        </div>
+	                        <div class="col-6">
+	                            <div class="h4 font-weight-bold mb-0">
+	                            	<sec:authorize access="hasRole('ROLE_USER')">
+	                            		15GB
+	                           	 	</sec:authorize>
+	                            	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	                            		unlimited
+	                            	</sec:authorize>
+	                         	</div><span class="small text-gray">Max Total Upload Size</span>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
 	        </div>
-	        <div class="progress yellow"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-	            <div class="progress-value">37.5%</div>
-	        </div>
-	    </div>
-	</div>
-
-	<div class="fileAddDeleteForm">
-		<%-- <jsp:include page="<%=pagefile%>" /> --%>
-		<c:set var="total" value="0"/>
-		<div>
-			<c:forEach var="list" items="${list}">
-				<font style="display:none;">${list.fileSize}</font>
-				<c:set var="total" value="${total+list.fileSize}"/>
-			</c:forEach>
-			<div>
-				<font id="currentFileTotal"><c:out value="${total}"/></font>/<font id="limitFile">16106127360</font>
-			</div>
-		</div>
-		<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
-			<input type="hidden" name="id" value="<%=name%>">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="hidden" name="currentFileTotal" value="${total}">
-			<input type="hidden" name	="limitFile" value="16106127360">
-			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
-			<label class="btn btn-primary btn-xs" for="files">
-				업로드
-			</label>
-			<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
-			<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
-		</form>
-	</div>
-	<div class="fileList">
-		<c:forEach var="list" items="${list}">
-			<div>
-				<img src="
-					<c:if test="${fn:contains(list.storedFilePath,'.7z')}">
-						<c:url value="/resources/images/7z.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.avi')}">
-						<c:url value="/resources/images/avi.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.doc')}">
-						<c:url value="/resources/images/doc.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.gif')}">
-						<c:url value="/resources/images/gif.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.jpg')}">
-						<c:url value="/resources/images/jpg.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.mp3')}">
-						<c:url value="/resources/images/mp3.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.mp4')}">
-						<c:url value="/resources/images/mp4.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.pdf')}">
-						<c:url value="/resources/images/pdf.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.png')}">
-						<c:url value="/resources/images/png.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.ppt')}">
-						<c:url value="/resources/images/ppt.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.rar')}">
-						<c:url value="/resources/images/rar.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.tar')}">
-						<c:url value="/resources/images/tar.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.txt')}">
-						<c:url value="/resources/images/txt.png"/>
-					</c:if>
-					<c:if test="${fn:contains(list.storedFilePath,'.zip')}">
-						<c:url value="/resources/images/zip.png"/>
-					</c:if>
-				">
-				<a href="/cloud/download?fno=${list.fno}">${list.originalFileName}</a>
-				<p>${list.fileSize}</p>
-				<button class="btn btn-warning btn-xs" onclick="location.href='/cloud/deleteYNUpdateFile?fno=${list.fno}'">DELETE FILE</button>
-			</div>
-		</c:forEach>
+	     </div> 
+	
 		
+			<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
+				<input type="hidden" name="id" value="<%=name%>">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="hidden" name="currentFileTotal" value="${total}">
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<input type="hidden" name	="limitFile" value="16106127360">
+				</sec:authorize>
+				<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
+				<label class="btn btn-primary btn-xs" for="files">
+					업로드
+				</label>
+				<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
+				<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
+			</form>
+		
+		<div class="grid2">
+			<c:forEach var="list" items="${list}">
+				<div>
+					<img src="
+						<c:if test="${fn:contains(list.storedFilePath,'.7z')}">
+							<c:url value="/resources/images/7z.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.avi')}">
+							<c:url value="/resources/images/avi.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.doc')}">
+							<c:url value="/resources/images/doc.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.gif')}">
+							<c:url value="/resources/images/gif.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.jpg')}">
+							<c:url value="/resources/images/jpg.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.mp3')}">
+							<c:url value="/resources/images/mp3.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.mp4')}">
+							<c:url value="/resources/images/mp4.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.pdf')}">
+							<c:url value="/resources/images/pdf.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.png')}">
+							<c:url value="/resources/images/png.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.ppt')}">
+							<c:url value="/resources/images/ppt.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.rar')}">
+							<c:url value="/resources/images/rar.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.tar')}">
+							<c:url value="/resources/images/tar.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.txt')}">
+							<c:url value="/resources/images/txt.png"/>
+						</c:if>
+						<c:if test="${fn:contains(list.storedFilePath,'.zip')}">
+							<c:url value="/resources/images/zip.png"/>
+						</c:if>
+					">
+					<a href="/cloud/download?fno=${list.fno}">${list.originalFileName}</a>
+					<p>
+						<c:if test="${list.fileSize >= 1073741824}">
+							<fmt:formatNumber value="${list.fileSize/1073741824}" maxFractionDigits="1"/>GB
+						</c:if>
+						<c:if test="${list.fileSize >= 1048576 && list.fileSize < 1073741824}">
+							<fmt:formatNumber value="${list.fileSize/1048576}" maxFractionDigits="1"/>MB
+						</c:if>
+						<c:if test="${list.fileSize >= 1024 && list.fileSize < 1048576}">
+							<fmt:formatNumber value="${list.fileSize/1024}" maxFractionDigits="1"/>KB
+						</c:if>
+						<c:if test="${list.fileSize < 1024}">
+							<fmt:formatNumber value="${list.fileSize}" maxFractionDigits="1"/>B
+						</c:if>
+					</p>
+					<button class="btn btn-warning btn-xs" onclick="location.href='/cloud/deleteYNUpdateFile?fno=${list.fno}'">DELETE FILE</button>
+				</div>
+			</c:forEach>
+			
+		</div>
 	</div>
+	
 	<script>
 		var storedFiles = [];
 		document.getElementById("files").addEventListener('change',function(){
 			var currentFileTotal = parseInt($('input[name=currentFileTotal]').val());
 			var limitFile = parseInt($('input[name=limitFile]').val());
-			
 			var getRequestFile = 0;
 			
 			var fileList = this.files;
@@ -163,6 +209,28 @@
 			
 		});
 		
+		$(function() {
+
+            $(".progress").each(function() {
+
+                var value = $(this).attr('data-value');
+                var left = $(this).find('.progress-left .progress-bar');
+                var right = $(this).find('.progress-right .progress-bar');
+
+                if (value > 0) {
+                    if (value <= 50) {
+                        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+                    } else {
+                        right.css('transform', 'rotate(180deg)') 
+                        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+                    }
+                }
+            })
+
+            function percentageToDegrees(percentage) {
+                return percentage / 100 * 360
+            }
+        });
 	</script>
 </body>
 </html>
