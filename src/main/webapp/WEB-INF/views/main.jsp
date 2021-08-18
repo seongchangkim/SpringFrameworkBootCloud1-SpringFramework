@@ -94,6 +94,10 @@
 				<input type="hidden" name="id" value="<%=name%>">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="currentFileTotal" value="${total}">
+				<c:forEach var="list" items="${list}">
+					<input type="hidden" name="currentFile" value="${list.originalFileName}">
+				</c:forEach>
+				
 				<sec:authorize access="hasRole('ROLE_USER')">
 					<input type="hidden" name	="limitFile" value="16106127360">
 				</sec:authorize>
@@ -176,33 +180,53 @@
 	
 	<script>
 		var storedFiles = [];
+		/* var currentFileNames = []; */
+		var storedFileNames = [];
 		document.getElementById("files").addEventListener('change',function(){
 			var currentFileTotal = parseInt($('input[name=currentFileTotal]').val());
 			var limitFile = parseInt($('input[name=limitFile]').val());
+			var currentFile = new Array();
+			var currentFileCount = $("input[name='currentFile']").length;
+				
 			var getRequestFile = 0;
+			for(var i=0; i<currentFileCount ; i++){
+				currentFile[i] = $("input[name='currentFile']")[i].value; 
+			}
 			
 			var fileList = this.files;
 			for(var i = 0; i<fileList.length ; i++){
 				storedFiles.push(fileList[i]);
+				storedFileNames.push(fileList[i].name);
 				getRequestFile += fileList[i].size; 
 			}
 			
-			console.log(currentFileTotal+getRequestFile);
-			console.log(limitFile);
+			for(var i = 0; i<storedFileNames.length; i++){
+				for(var j = 0; i<currentFile.length ; i++){
+					if(currentFile[i] === storedFileNames[j]){
+						storedFiles.splice(j,1);
+						console.log(storedFileNames[i]);
+					}
+				}
+			}
 			console.log(storedFiles);
 			var formData = new FormData(this.form);
 			
 			for(var i = 0; i<fileList.length ; i++){
 				formData.append('files',storedFiles[i]);
 			}
+			
 			for(var pair of formData.entries()){
 				console.log(pair[0] + ',' + pair[1]);
 			}
+			
 			
 			if((currentFileTotal+getRequestFile) < limitFile){
 				this.form.submit();
 			}else if(getRequestFile > 2147483648){
 				alert('한 요청 당 업로드 파일 용량은 2GB입니다.');
+				return false;
+			}else if(formData.get('files') == null){
+				alert('기존에 업로드했던 파일들을 업로드할 수 있는 파일이 없습니다.')
 				return false;
 			}else{
 				alert('업로드 할 수 있는 파일 용량이 초과 되었습니다.');
