@@ -36,6 +36,8 @@
 		<jsp:include page="admin/adminLeft.jsp"/>
 	</sec:authorize>
 	
+	
+			
 	<div class="wrap">
 		<div class="grid1">
 	        <div class="row">
@@ -87,7 +89,7 @@
 	        </div>
 	     </div> 
 	
-		
+		<div class="grid2">
 			<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
 				<input type="hidden" name="id" value="<%=name%>">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -102,8 +104,8 @@
 				<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
 				<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
 			</form>
-		
-		<div class="grid2">
+		</div>
+		<div class="grid3">
 			<c:forEach var="list" items="${list}">
 				<div>
 					<img src="

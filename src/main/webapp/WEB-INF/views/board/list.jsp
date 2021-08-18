@@ -19,8 +19,9 @@
 		}
 		.container{
 			position : fixed;
-			left:30%;
-			width : 1000px;
+			left : 19.9%;
+			padding : 0px 100px;
+			min-width : 1400px;
 		}
 		
 		.searchForm{
@@ -68,7 +69,7 @@
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<jsp:include page="../admin/adminLeft.jsp" />
 	</sec:authorize>
-	<div class="container text-center">
+	<div class="container text-center w-100%">
 		<div class ="searchForm" align = "right">
 			<form id="searchForm" action="/cloud/board/list" method="get">
 				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
