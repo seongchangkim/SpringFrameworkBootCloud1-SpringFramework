@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cloud.porforio.domain.FileDTO;
-import com.cloud.porforio.domain.UserAuth;
 import com.cloud.porforio.service.FileUpDownLoadService;
 
 import lombok.extern.log4j.Log4j;
@@ -47,9 +46,15 @@ public class FileUpDownLoadController {
 			id = auth.getName();
 		}
 		
-		List<FileDTO> list = service.getFileList(id);
-		model.addAttribute("list",list);
-		return "main";
+		String userAuth = service.selectUserAuth(id);
+		String path = "";
+		
+		if(userAuth.equals("ROLE_USER")) {
+			path = "/user/";
+		}else {
+			path = "/admin/";
+		}
+		return "redirect:/cloud" + path + "main";
 	}
 
 	//파일 다운로드(2021.08.14)
@@ -75,10 +80,15 @@ public class FileUpDownLoadController {
 			id = auth.getName();
 		}
 		
-		List<FileDTO> list = service.getFileList(id);
-		model.addAttribute("list",list);
+		String userAuth = service.selectUserAuth(id);
+		String path = "";
 		
-		return "main";
+		if(userAuth.equals("ROLE_USER")) {
+			path = "/user/";
+		}else {
+			path = "/admin/";
+		}
+		return "redirect:/cloud" + path + "main";
 	}
 	
 	@GetMapping(value="/recycleBin")

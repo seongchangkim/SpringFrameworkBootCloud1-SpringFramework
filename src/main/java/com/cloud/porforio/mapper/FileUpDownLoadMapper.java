@@ -23,4 +23,8 @@ public interface FileUpDownLoadMapper {
 	public int deleteEmptyTrash(@Param("fno") int fno);
 
 	public int restoreFile(@Param("fno") int fno);
+	
+	public List<String> getFileNameList();
+	
+	public String selectUserAuth(@Param("id") String id);
 }

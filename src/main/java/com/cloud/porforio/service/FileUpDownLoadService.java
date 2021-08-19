@@ -23,4 +23,6 @@ public interface FileUpDownLoadService {
 	boolean isDeleteEmptyTrash(int fno);
 	
 	boolean isRestoreFile(int fno);
+	
+	String selectUserAuth(String id);
 }

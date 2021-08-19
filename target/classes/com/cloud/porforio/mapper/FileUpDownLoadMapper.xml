@@ -19,6 +19,15 @@
 		select * from file where id = #{id} and deleteyn = 'Y'
 	</select>
 	
+	<!-- 2021.08.19 업로드한 파일과 db 파일 중복 여부를 비교하기 위해 파일명 목록 가져오기 -->
+	<select id="getFileNameList" resultType="string">
+		select originalfilename from file where deleteyn = 'N'
+	</select>
+	
+	<!-- 2021.08.19 권한에 따라 각각 페이지를 리다이렉트하기 위해 사용자 권한 가져오기 -->
+	<select id="selectUserAuth" resultType="string">
+		select auth from user_auth where id = #{id} 
+	</select>
 	<!-- 2021.08.08 파일 업로드 -->
 	<insert id="fileUpLoadProcess" parameterType="com.cloud.porforio.domain.FileDTO">
 		insert into file(id, originalfilename, storedfilepath, filesize, regdate) values

@@ -1,7 +1,6 @@
 package com.cloud.porforio.service;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -31,9 +30,22 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 	public void fileUpLoadProcess(FileDTO file, MultipartFile[] files,
 			HttpServletRequest request) throws IllegalStateException, IOException {
 		log.warn(files.length);
+		List<String> fileNameList = mapper.getFileNameList();
+		
 		List<FileDTO> list = fileUtils.parseFileList(file.getId(), files ,request);
 		log.warn(list);
-		mapper.fileUpLoadProcess(list);
+		
+		for(int i = 0; i<fileNameList.size() ; i++) {
+			for(int j = 0; j<list.size() ; j++) {
+				if(fileNameList.get(i).equals(list.get(j).getOriginalFileName())) {
+					list.remove(j);
+				}
+			}
+		}
+		if(list.size() > 0) {
+			mapper.fileUpLoadProcess(list);
+		}
+		
 	}
 
 	@Override
@@ -64,6 +76,11 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 	@Override
 	public boolean isRestoreFile(int fno) {
 		return mapper.restoreFile(fno) == 1;
+	}
+
+	@Override
+	public String selectUserAuth(String id) {
+		return mapper.selectUserAuth(id);
 	}
 
 }
