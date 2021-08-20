@@ -3,6 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,10 +71,23 @@
 					</c:if>
 					">
 				</div>
-				<p>${list.originalFileName}</p>
-				<p>${list.fileSize}</p>
+				<p class="fileName">${list.originalFileName}</p>
+				<p>
+					<c:if test="${list.fileSize >= 1073741824}">
+						<fmt:formatNumber value="${list.fileSize/1073741824}" maxFractionDigits="1"/>GB
+					</c:if>
+					<c:if test="${list.fileSize >= 1048576 && list.fileSize < 1073741824}">
+						<fmt:formatNumber value="${list.fileSize/1048576}" maxFractionDigits="1"/>MB
+					</c:if>
+					<c:if test="${list.fileSize >= 1024 && list.fileSize < 1048576}">
+						<fmt:formatNumber value="${list.fileSize/1024}" maxFractionDigits="1"/>KB
+					</c:if>
+					<c:if test="${list.fileSize < 1024}">
+						<fmt:formatNumber value="${list.fileSize}" maxFractionDigits="1"/>B
+					</c:if>
+				</p>
 				<button class="btn btn-danger btn-xs" onclick="location.href='/cloud/emptytrash?fno=${list.fno}'">EMPTY TRASH</button>
-				<button class="btn btn-danger btn-xs" onclick="location.href='/cloud/restore?fno=${list.fno}'">RESTORE</button>
+				<button class="btn btn-info btn-xs" onclick="location.href='/cloud/restore?fno=${list.fno}'">RESTORE</button>
 			</div>
 		</c:forEach>
 	</div>

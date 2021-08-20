@@ -110,16 +110,7 @@ public class FileUpDownLoadController {
 	public String emptyTrash(int fno, Model model) {
 		boolean isDeleteEmptyTrash = service.isDeleteEmptyTrash(fno);
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Object principal = auth.getPrincipal();
-		
-		String id = "";
-		if(principal != null) {
-			id = auth.getName();
-		}
-		List<FileDTO> list = service.getDeleteYNYFileList(id);
-		model.addAttribute("list",list);
-		return "/recycleBin/recycleForm";
+		return "redirect:/cloud/recycleBin";
 	}
 	
 	@GetMapping(value="/restore")
@@ -133,8 +124,15 @@ public class FileUpDownLoadController {
 		if(principal != null) {
 			id = auth.getName();
 		}
-		List<FileDTO> list = service.getDeleteYNYFileList(id);
-		model.addAttribute("list",list);
-		return "/recycleBin/recycleForm";
+		
+		String userAuth = service.selectUserAuth(id);
+		String path = "";
+		
+		if(userAuth.equals("ROLE_USER")) {
+			path = "/user/";
+		}else {
+			path = "/admin/";
+		}
+		return "redirect:/cloud" + path + "main";
 	}
 }
