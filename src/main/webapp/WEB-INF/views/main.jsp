@@ -36,8 +36,6 @@
 		<jsp:include page="admin/adminLeft.jsp"/>
 	</sec:authorize>
 	
-	
-			
 	<div class="wrap">
 		<div class="grid1">
 	        <div class="row">
@@ -90,23 +88,6 @@
 	     </div> 
 	
 		<div class="grid2">
-			<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
-				<input type="hidden" name="id" value="<%=name%>">
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-				<input type="hidden" name="currentFileTotal" value="${total}">
-				
-				<sec:authorize access="hasRole('ROLE_USER')">
-					<input type="hidden" name	="limitFile" value="16106127360">
-				</sec:authorize>
-				<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
-				<label class="btn btn-primary btn-xs" for="files">
-					업로드
-				</label>
-				<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
-				<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
-			</form>
-		</div>
-		<div class="grid3">
 			<c:forEach var="list" items="${list}">
 				<div>
 					<img src="
@@ -176,45 +157,6 @@
 	</div>
 	
 	<script>
-		var storedFiles = [];
-		document.getElementById("files").addEventListener('change',function(){
-			var currentFileTotal = parseInt($('input[name=currentFileTotal]').val());
-			var limitFile = parseInt($('input[name=limitFile]').val());
-				
-			var getRequestFile = 0;
-			
-			
-			var fileList = this.files;
-			for(var i = 0; i<fileList.length ; i++){
-				storedFiles.push(fileList[i]);
-				getRequestFile += fileList[i].size; 
-			}
-			
-			
-			console.log(storedFiles);
-			var formData = new FormData(this.form);
-			
-			for(var i = 0; i<fileList.length ; i++){
-				formData.append('files',storedFiles[i]);
-			}
-			
-			for(var pair of formData.entries()){
-				console.log(pair[0] + ',' + pair[1]);
-			}
-			
-			
-			if((currentFileTotal+getRequestFile) < limitFile){
-				this.form.submit();
-			}else if(getRequestFile > 2147483648){
-				alert('한 요청 당 업로드 파일 용량은 2GB입니다.');
-				return false;
-			}else{
-				alert('업로드 할 수 있는 파일 용량이 초과 되었습니다.');
-				return false;
-			}
-			
-		});
-		
 		$(function() {
 
             $(".progress").each(function() {

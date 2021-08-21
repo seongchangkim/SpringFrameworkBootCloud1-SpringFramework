@@ -3,11 +3,11 @@
 	position : fixed;
 	left : 300px;
 	margin : 20px;
-	width : 100%;
+	width : 1300px;
 	height : 100%;
 	overflow : auto;
 	display : grid;
-	grid-template-columns : auto auto auto;
+	grid-template-rows : 300px 400px; 
 	grid-gap : 50px;
 }
 .progress {
@@ -99,34 +99,27 @@ h1 {
 .btn-primary{
 	margin : 10px 20px;	
 }
-.grid1{
-	grid-row-start: 1; grid-row-end:3; 
-}
 .grid2{
-	grid-row-start: 3; grid-row-end:4;
-}
-.grid3{
-	grid-row-start: 4; grid-row-end:8;
 	display : flex;
 	flex-wrap : wrap;
 	background-color : #fff;
-	border-radius : 20px;
+	overflow : auto;
 }
-.grid3 > div{
+.grid2 > div{
 	justify-content : center;
-	flex : 0 1 200px;
+	flex : 0 0 100px;
 	padding : 10px 20px;
-	margin : 10px 20px;
+	margin : 10px 16px;
 	width : 200px;
 	height : 220px;
 	border : 1px solid #000;
 	border-radius : 10px;
 }
-.grid3 img{
+.grid2 img{
 	width : 160px;
 	height : 100px;
 }
-.grid3 a{
+.grid2 a{
 	display : block;
 	text-overflow : ellipsis;
 	white-space: nowrap;
