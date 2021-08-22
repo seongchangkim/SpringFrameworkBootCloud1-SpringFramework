@@ -81,21 +81,7 @@
 					</a>
 				</li>
 				<li>
-					<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
-					<input type="hidden" name="id" value="<%=name%>">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					<input type="hidden" name="currentFileTotal" value="${total}">
 					
-						<sec:authorize access="hasRole('ROLE_USER')">
-							<input type="hidden" name	="limitFile" value="16106127360">
-						</sec:authorize>
-						<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
-						<label class="btn btn-info btn-xs" for="files">
-							File Upload
-						</label>
-						<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
-						<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
-					</form>
 				</li>
 				<li class="profile">
 					<%-- <div>

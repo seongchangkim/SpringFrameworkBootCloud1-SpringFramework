@@ -36,6 +36,44 @@
 		<jsp:include page="admin/adminLeft.jsp"/>
 	</sec:authorize>
 	
+	<div class="userForm">
+		<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
+			<input type="hidden" name="id" value="<%=name%>">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" name="currentFileTotal" value="${total}">
+					
+			<sec:authorize access="hasRole('ROLE_USER')">
+				<input type="hidden" name	="limitFile" value="16106127360">
+			</sec:authorize>
+			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
+			<label class="btn btn-info btn-xs" for="files">
+					File Upload
+			</label>
+			<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
+			<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
+		</form>
+		
+		<div class="searchForm">
+			<div>
+				<select class="form-select form-select-sm mb-4" aria-label=".form-select-lg example">
+				  <option selected>===</option>
+				  <option value="1">One</option>
+				  <option value="2">Two</option>
+				  <option value="3">Three</option>
+				</select>
+				<div class="form-group">
+    				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  				</div>
+				  <button type="button" class="btn btn-primary">
+				    <i class="fas fa-search"></i>
+				  </button>
+				</div>
+			</div>
+		
+		<div style="position : absolute;top:5%; right:0%;margin:10px;">
+			<%=name%>님, 환영합니다.
+		</div>
+	</div>
 	<div class="wrap">
 		<div class="grid1">
 	        <div class="row">

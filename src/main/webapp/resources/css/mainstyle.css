@@ -2,13 +2,39 @@
 .wrap{
 	position : fixed;
 	left : 300px;
-	margin : 20px;
+	margin : 90px 20px;
 	width : 1300px;
 	height : 100%;
 	overflow : auto;
 	display : grid;
-	grid-template-rows : 300px 400px; 
+	grid-template-rows : 300px 250px; 
 	grid-gap : 50px;
+}
+.userForm{
+	position : fixed;
+	left : 300px;
+	margin : 20px;
+	background-color : #fff;
+	z-index : 10;
+	width : 1200px;
+	height : 50px;
+	border-radius : 10px;
+	display : flex;
+}
+.userForm .btn{
+	justify-content : center;
+	margin : 6px;
+}
+.userForm .form-select{
+	justify-content : center;
+	margin : 10px 30px;
+}
+.searchForm{
+	display : flex;
+	width : 500px;
+}
+.searchForm{
+	
 }
 .progress {
     width: 150px;
@@ -104,6 +130,7 @@ h1 {
 	flex-wrap : wrap;
 	background-color : #fff;
 	overflow : auto;
+	width : 1200px;
 }
 .grid2 > div{
 	justify-content : center;
