@@ -31,14 +31,22 @@
 }
 .searchForm{
 	display : flex;
-	width : 500px;
+	width : 700px;
 }
-.searchForm{
-	
+.searchForm .form-group{
+	justify-content : center;
+	width : 600px;
+	margin : 5px;
+}
+.searchForm .btn{
+	position : absolute;
+	right : 35%;
+	top : 0;
+	padding : 5px 10px;
 }
 .progress {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     background: none;
     position: relative;
 }
@@ -124,6 +132,9 @@ h1 {
 }
 .btn-primary{
 	margin : 10px 20px;	
+}
+.grid1{
+	width : 1650px;
 }
 .grid2{
 	display : flex;

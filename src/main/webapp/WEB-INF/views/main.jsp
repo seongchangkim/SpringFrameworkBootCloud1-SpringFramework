@@ -37,6 +37,10 @@
 	</sec:authorize>
 	
 	<div class="userForm">
+		<c:forEach var="list" items="${list}">
+			<font style="display:none;">${list.fileSize}</font>
+			<c:set var="total" value="${total+list.fileSize}"/>
+		</c:forEach>
 		<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
 			<input type="hidden" name="id" value="<%=name%>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -54,21 +58,13 @@
 		</form>
 		
 		<div class="searchForm">
-			<div>
-				<select class="form-select form-select-sm mb-4" aria-label=".form-select-lg example">
-				  <option selected>===</option>
-				  <option value="1">One</option>
-				  <option value="2">Two</option>
-				  <option value="3">Three</option>
-				</select>
-				<div class="form-group">
-    				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  				</div>
-				  <button type="button" class="btn btn-primary">
-				    <i class="fas fa-search"></i>
-				  </button>
-				</div>
-			</div>
+			<div class="form-group">
+    			<input type="text" class="form-control" placeholder="Search">
+  				<button type="button" class="btn btn-primary">
+					<ion-icon name="search-outline"></ion-icon>
+				</button>
+  			</div>
+		</div>
 		
 		<div style="position : absolute;top:5%; right:0%;margin:10px;">
 			<%=name%>님, 환영합니다.
@@ -77,10 +73,6 @@
 	<div class="wrap">
 		<div class="grid1">
 	        <div class="row">
-	            <c:forEach var="list" items="${list}">
-					<font style="display:none;">${list.fileSize}</font>
-					<c:set var="total" value="${total+list.fileSize}"/>
-				</c:forEach>
 	            <div class="col-xl-4 col-lg-4 mb-6">
 	                <div class="bg-white rounded-lg p-5 shadow">
 	                    <!-- <h2 class="h6 font-weight-bold text-center mb-4">UpLoad </h2> -->
@@ -195,6 +187,45 @@
 	</div>
 	
 	<script>
+		var storedFiles = [];
+		document.getElementById("files").addEventListener('change',function(){
+			var currentFileTotal = parseInt($('input[name=currentFileTotal]').val());
+			var limitFile = parseInt($('input[name=limitFile]').val());
+				
+			var getRequestFile = 0;
+			
+			
+			var fileList = this.files;
+			for(var i = 0; i<fileList.length ; i++){
+				storedFiles.push(fileList[i]);
+				getRequestFile += fileList[i].size; 
+			}
+			
+			
+			console.log(storedFiles);
+			var formData = new FormData(this.form);
+			
+			for(var i = 0; i<fileList.length ; i++){
+				formData.append('files',storedFiles[i]);
+			}
+			
+			for(var pair of formData.entries()){
+				console.log(pair[0] + ',' + pair[1]);
+			}
+			
+			
+			if((currentFileTotal+getRequestFile) < limitFile){
+				this.form.submit();
+			}else if(getRequestFile > 2147483648){
+				alert('한 요청 당 업로드 파일 용량은 2GB입니다.');
+				return false;
+			}else{
+				alert('업로드 할 수 있는 파일 용량이 초과 되었습니다.');
+				return false;
+			}
+			
+		});
+		
 		$(function() {
 
             $(".progress").each(function() {

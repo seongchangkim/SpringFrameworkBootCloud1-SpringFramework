@@ -113,44 +113,6 @@
 			}
 		}
 		
-		var storedFiles = [];
-		document.getElementById("files").addEventListener('change',function(){
-			var currentFileTotal = parseInt($('input[name=currentFileTotal]').val());
-			var limitFile = parseInt($('input[name=limitFile]').val());
-				
-			var getRequestFile = 0;
-			
-			
-			var fileList = this.files;
-			for(var i = 0; i<fileList.length ; i++){
-				storedFiles.push(fileList[i]);
-				getRequestFile += fileList[i].size; 
-			}
-			
-			
-			console.log(storedFiles);
-			var formData = new FormData(this.form);
-			
-			for(var i = 0; i<fileList.length ; i++){
-				formData.append('files',storedFiles[i]);
-			}
-			
-			for(var pair of formData.entries()){
-				console.log(pair[0] + ',' + pair[1]);
-			}
-			
-			
-			if((currentFileTotal+getRequestFile) < limitFile){
-				this.form.submit();
-			}else if(getRequestFile > 2147483648){
-				alert('한 요청 당 업로드 파일 용량은 2GB입니다.');
-				return false;
-			}else{
-				alert('업로드 할 수 있는 파일 용량이 초과 되었습니다.');
-				return false;
-			}
-			
-		});
 	</script>
 </body>
 </html>
