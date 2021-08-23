@@ -7,7 +7,7 @@
 	height : 100%;
 	overflow : auto;
 	display : grid;
-	grid-template-rows : 300px 250px; 
+	grid-template-rows : 300px 270px; 
 	grid-gap : 50px;
 }
 .userForm{
@@ -142,6 +142,7 @@ h1 {
 	background-color : #fff;
 	overflow : auto;
 	width : 1200px;
+	margin : 10px 0px;
 }
 .grid2 > div{
 	justify-content : center;
