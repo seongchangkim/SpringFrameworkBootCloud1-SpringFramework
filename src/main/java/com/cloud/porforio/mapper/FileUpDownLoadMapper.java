@@ -27,4 +27,6 @@ public interface FileUpDownLoadMapper {
 	public List<String> getFileNameList();
 	
 	public String selectUserAuth(@Param("id") String id);
+	
+	public List<FileDTO> getKeyWordFileList(@Param("keyword") String keyWord);
 }

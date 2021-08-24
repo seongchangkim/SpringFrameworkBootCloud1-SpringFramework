@@ -44,11 +44,14 @@
 		<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
 			<input type="hidden" name="id" value="<%=name%>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="hidden" name="currentFileTotal" value="${total}">
-					
+			<input type="hidden" name="limitFile" value="16106127360">
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<input type="hidden" name="currentFileTotal" value="0">
+			</sec:authorize>		
 			<sec:authorize access="hasRole('ROLE_USER')">
-				<input type="hidden" name	="limitFile" value="16106127360">
+				<input type="hidden" name="currentFileTotal" value="${total}">
 			</sec:authorize>
+			
 			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
 			<label class="btn btn-info btn-xs" for="files">
 					File Upload
@@ -59,8 +62,8 @@
 		
 		<div class="searchForm">
 			<div class="form-group">
-    			<input type="text" class="form-control" placeholder="Search">
-  				<button type="button" class="btn btn-primary">
+    			<input type="text" class="form-control" id="keyword" placeholder="Search">
+  				<button type="button" class="btn btn-primary" onclick="keyword()">
 					<ion-icon name="search-outline"></ion-icon>
 				</button>
   			</div>
@@ -122,16 +125,16 @@
 				<div>
 					<img src="
 						<c:if test="${fn:contains(list.storedFilePath,'.7z')}">
-							<c:url value="/resources/images/7z.png"/>
+							<c:url value="/resources/images/7z.jpg"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.avi')}">
-							<c:url value="/resources/images/avi.png"/>
+							<c:url value="/resources/images/avi.jpg"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.doc')}">
 							<c:url value="/resources/images/doc.png"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.gif')}">
-							<c:url value="/resources/images/gif.png"/>
+							<c:url value="/resources/images/gif.jpg"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.jpg')}">
 							<c:url value="/resources/images/jpg.png"/>
@@ -152,16 +155,16 @@
 							<c:url value="/resources/images/ppt.png"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.rar')}">
-							<c:url value="/resources/images/rar.png"/>
+							<c:url value="/resources/images/rar.jpg"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.tar')}">
-							<c:url value="/resources/images/tar.png"/>
+							<c:url value="/resources/images/tar.jpg"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.txt')}">
-							<c:url value="/resources/images/txt.png"/>
+							<c:url value="/resources/images/txt.jpg"/>
 						</c:if>
 						<c:if test="${fn:contains(list.storedFilePath,'.zip')}">
-							<c:url value="/resources/images/zip.png"/>
+							<c:url value="/resources/images/zip.jpg"/>
 						</c:if>
 					">
 					<a href="/cloud/download?fno=${list.fno}">${list.originalFileName}</a>
@@ -187,20 +190,31 @@
 	</div>
 	
 	<script>
+		var keyWord;
 		var storedFiles = [];
+		
+		// 파일 검색 기능
+		function keyword(){
+			keyWord = document.getElementById("keyword").value;
+			location.href='/cloud/fileKeyWord?keyword='+keyWord;
+		}
+		
+		// 파일 업로드
 		document.getElementById("files").addEventListener('change',function(){
+			//현재 업로드된 파일 용량을 가져와서 언박싱(String -> int)
 			var currentFileTotal = parseInt($('input[name=currentFileTotal]').val());
+			//제한 용량을 가져오기
 			var limitFile = parseInt($('input[name=limitFile]').val());
-				
+			
 			var getRequestFile = 0;
 			
-			
+			//요청 파일을 file객체로 가져오기 
 			var fileList = this.files;
 			for(var i = 0; i<fileList.length ; i++){
+				//storedFiles의 배열을 file객체 형태로 담기
 				storedFiles.push(fileList[i]);
 				getRequestFile += fileList[i].size; 
 			}
-			
 			
 			console.log(storedFiles);
 			var formData = new FormData(this.form);

@@ -83,4 +83,9 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 		return mapper.selectUserAuth(id);
 	}
 
+	@Override
+	public List<FileDTO> getKeyWordFileList(String keyWord) {
+		return mapper.getKeyWordFileList(keyWord);
+	}
+
 }

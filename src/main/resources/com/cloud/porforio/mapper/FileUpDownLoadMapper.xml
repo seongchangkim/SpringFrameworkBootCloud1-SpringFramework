@@ -28,6 +28,12 @@
 	<select id="selectUserAuth" resultType="string">
 		select auth from user_auth where id = #{id} 
 	</select>
+	
+	<!-- 2021.08.24 파일 검색 기능 구현 -->
+	<select id="getKeyWordFileList" resultType="com.cloud.porforio.domain.FileDTO">
+		select * from file where originalfilename like concat('%',#{keyword},'%')
+	</select>
+	
 	<!-- 2021.08.08 파일 업로드 -->
 	<insert id="fileUpLoadProcess" parameterType="com.cloud.porforio.domain.FileDTO">
 		insert into file(id, originalfilename, storedfilepath, filesize, regdate) values

@@ -91,6 +91,15 @@ public class FileUpDownLoadController {
 		return "redirect:/cloud" + path + "main";
 	}
 	
+	@GetMapping(value="/fileKeyWord")
+	public String fileKeyWord(@RequestParam("keyword") String keyWord, Model model) {
+		List<FileDTO> list = service.getKeyWordFileList(keyWord);
+		log.warn(list.size());
+		log.warn(keyWord);
+		model.addAttribute("list",list);
+		return "main";
+	}
+	
 	@GetMapping(value="/recycleBin")
 	public String recycleBinForm(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

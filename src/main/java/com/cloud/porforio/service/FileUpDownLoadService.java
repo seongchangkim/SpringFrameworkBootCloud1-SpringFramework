@@ -25,4 +25,6 @@ public interface FileUpDownLoadService {
 	boolean isRestoreFile(int fno);
 	
 	String selectUserAuth(String id);
+	
+	List<FileDTO> getKeyWordFileList(String keyWord);
 }
