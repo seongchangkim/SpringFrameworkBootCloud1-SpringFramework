@@ -31,4 +31,6 @@ public interface FileUpDownLoadMapper {
 	public List<FileDTO> getKeyWordFileList(@Param("keyword") String keyWord);
 
 	public int[] getFileSize(@Param("id") String id);
+	
+	public String[] getUploadUserList(@Param("originalfilename") String originalFileName);
 }
