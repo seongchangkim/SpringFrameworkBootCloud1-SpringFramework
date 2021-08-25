@@ -37,10 +37,6 @@
 	</sec:authorize>
 	
 	<div class="userForm">
-		<c:forEach var="list" items="${list}">
-			<font style="display:none;">${list.fileSize}</font>
-			<c:set var="total" value="${total+list.fileSize}"/>
-		</c:forEach>
 		<form method="post" action="/cloud/upload" enctype="multipart/form-data" id="frm">
 			<input type="hidden" name="id" value="<%=name%>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -49,7 +45,7 @@
 				<input type="hidden" name="currentFileTotal" value="0">
 			</sec:authorize>		
 			<sec:authorize access="hasRole('ROLE_USER')">
-				<input type="hidden" name="currentFileTotal" value="${total}">
+				<input type="hidden" name="currentFileTotal" value="${totalFileSize}">
 			</sec:authorize>
 			
 			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
@@ -87,20 +83,20 @@
 	                    <div class="row text-center mt-4">
 	                        <div class="col-6 border-right">
 	                            <div class="h4 font-weight-bold mb-0">
-	                            	<c:if test="${total >= 1099511627776 && total < 1125899906842624}">
-										<fmt:formatNumber value="${total/1099511627776}" maxFractionDigits="1"/>GB
+	                            	<c:if test="${totalFileSize >= 1099511627776 && totalFileSize < 1125899906842624}">
+										<fmt:formatNumber value="${totalFileSize/1099511627776}" maxFractionDigits="1"/>GB
 									</c:if>
-	                            	<c:if test="${total >= 1073741824 && total < 1099511627776}">
-										<fmt:formatNumber value="${total/1073741824}" maxFractionDigits="1"/>GB
+	                            	<c:if test="${totalFileSize >= 1073741824 && totalFileSize < 1099511627776}">
+										<fmt:formatNumber value="${totalFileSize/1073741824}" maxFractionDigits="1"/>GB
 									</c:if>
-									<c:if test="${total >= 1048576 && total < 1073741824}">
-										<fmt:formatNumber value="${total/1048576}" maxFractionDigits="1"/>MB
+									<c:if test="${totalFileSize >= 1048576 && totalFileSize < 1073741824}">
+										<fmt:formatNumber value="${totalFileSize/1048576}" maxFractionDigits="1"/>MB
 									</c:if>
-									<c:if test="${total >= 1024 && total < 1048576}">
-										<fmt:formatNumber value="${total/1024}" maxFractionDigits="1"/>KB
+									<c:if test="${totalFileSize >= 1024 && totalFileSize < 1048576}">
+										<fmt:formatNumber value="${totalFileSize/1024}" maxFractionDigits="1"/>KB
 									</c:if>
-									<c:if test="${total < 1024}">
-										<fmt:formatNumber value="${total}" maxFractionDigits="1"/>B
+									<c:if test="${totalFileSize < 1024}">
+										<fmt:formatNumber value="${totalFileSize}" maxFractionDigits="1"/>B
 									</c:if>
 	                            </div><span class="small text-gray">Current Total Upload Size</span>
 	                        </div>

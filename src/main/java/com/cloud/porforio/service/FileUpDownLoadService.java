@@ -27,4 +27,6 @@ public interface FileUpDownLoadService {
 	String selectUserAuth(String id);
 	
 	List<FileDTO> getKeyWordFileList(String keyWord);
+
+	int getFileSize(String id);
 }

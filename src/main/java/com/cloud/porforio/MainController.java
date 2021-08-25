@@ -36,6 +36,8 @@ public class MainController {
 		}
 		
 		List<FileDTO> list = service.getFileList(id);
+		int totalFileSize = service.getFileSize(id);
+		model.addAttribute("totalFileSize",totalFileSize);
 		model.addAttribute("list",list);
 		return "main";
 	}

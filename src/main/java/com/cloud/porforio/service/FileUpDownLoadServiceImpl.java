@@ -88,4 +88,14 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 		return mapper.getKeyWordFileList(keyWord);
 	}
 
+	@Override
+	public int getFileSize(String id) {
+		int[] fileSizeArray = mapper.getFileSize(id);
+		int sum = 0;
+		for(int i : fileSizeArray) {
+			sum += i;
+		}
+		return sum;
+	}
+
 }

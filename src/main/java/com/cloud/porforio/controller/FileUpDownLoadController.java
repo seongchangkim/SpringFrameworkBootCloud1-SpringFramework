@@ -93,9 +93,18 @@ public class FileUpDownLoadController {
 	
 	@GetMapping(value="/fileKeyWord")
 	public String fileKeyWord(@RequestParam("keyword") String keyWord, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = auth.getPrincipal();
+		
+		String id="";
+		if(principal != null){
+			id = auth.getName();
+		}
+		
 		List<FileDTO> list = service.getKeyWordFileList(keyWord);
-		log.warn(list.size());
-		log.warn(keyWord);
+		int totalFileSize = service.getFileSize(id);
+		
+		model.addAttribute("totalFileSize",totalFileSize);
 		model.addAttribute("list",list);
 		return "main";
 	}
