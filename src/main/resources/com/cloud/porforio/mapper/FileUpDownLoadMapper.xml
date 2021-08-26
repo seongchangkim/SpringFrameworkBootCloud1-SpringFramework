@@ -41,8 +41,9 @@
 	
 	<!-- 2021.08.25 아이디가 해당 파일에 존재하는지 유효성 검사하기 위해 아이디 검색 -->
 	<select id="getUploadUserList" resultType="string">
-		select id from file where orginalfilename = #{orginalfilename} and deleteyn = 'N'
+		select distinct id from file where originalfilename = #{originalfilename} and deleteyn = 'N'
 	</select>
+	
 	<!-- 2021.08.08 파일 업로드 -->
 	<insert id="fileUpLoadProcess" parameterType="com.cloud.porforio.domain.FileDTO">
 		insert into file(id, originalfilename, storedfilepath, filesize, regdate) values

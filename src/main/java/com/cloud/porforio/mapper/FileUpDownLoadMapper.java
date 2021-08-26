@@ -32,5 +32,5 @@ public interface FileUpDownLoadMapper {
 
 	public int[] getFileSize(@Param("id") String id);
 	
-	public String[] getUploadUserList(@Param("originalfilename") String originalFileName);
+	public List<String> getUploadUserList(@Param("originalfilename") String originalFileName);
 }

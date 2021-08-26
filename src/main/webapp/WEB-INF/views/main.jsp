@@ -70,52 +70,63 @@
 		</div>
 	</div>
 	<div class="wrap">
+		
 		<div class="grid1">
-	        <div class="row">
-	            <div class="col-xl-4 col-lg-4 mb-6">
-	                <div class="bg-white rounded-lg p-5 shadow">
-	                    <!-- <h2 class="h6 font-weight-bold text-center mb-4">UpLoad </h2> -->
-	                    <div class="progress mx-auto" data-value='${(total/16106127360)}'> <span class="progress-left"> <span class="progress-bar border-primary"></span> </span> <span class="progress-right"> <span class="progress-bar border-primary"></span> </span>
-	                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-	                            <div class="h2 font-weight-bold"><fmt:formatNumber value="${(total/16106127360)*100}" maxFractionDigits="1"/><sup class="small">%</sup></div>
-	                        </div>
-	                    </div>
-	                    <div class="row text-center mt-4">
-	                        <div class="col-6 border-right">
-	                            <div class="h4 font-weight-bold mb-0">
-	                            	<c:if test="${totalFileSize >= 1099511627776 && totalFileSize < 1125899906842624}">
-										<fmt:formatNumber value="${totalFileSize/1099511627776}" maxFractionDigits="1"/>GB
+		    <div class="row">
+		        <div class="col-xl-4 col-lg-4 mb-6">
+		            <div class="bg-white rounded-lg p-5 shadow">
+		                <!-- <h2 class="h6 font-weight-bold text-center mb-4">UpLoad </h2> -->
+		                <sec:authorize access="hasRole('ROLE_USER')">
+			                 <div class="progress mx-auto" data-value='${(totalFileSize/16106127360)}'> <span class="progress-left"> <span class="progress-bar border-primary"></span> </span> <span class="progress-right"> <span class="progress-bar border-primary"></span> </span>
+			                     <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+			                         <div class="h2 font-weight-bold"><fmt:formatNumber value="${(totalFileSize/16106127360)*100}" maxFractionDigits="1"/><sup class="small">%</sup></div>
+			                     </div>
+			                 </div>
+		                </sec:authorize>
+		                <sec:authorize access="hasRole('ROLE_ADMIN')">
+			                 <div class="progress mx-auto" data-value='0'> <span class="progress-left"> <span class="progress-bar border-primary"></span> </span> <span class="progress-right"> <span class="progress-bar border-primary"></span> </span>
+			                     <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+			                         <div class="h2 font-weight-bold"><fmt:formatNumber value="0" maxFractionDigits="1"/><sup class="small">%</sup></div>
+			                     </div>
+			                 </div>
+		                </sec:authorize>
+		                <div class="row text-center mt-4">
+		                    <div class="col-6 border-right">
+		                        <div class="h4 font-weight-bold mb-0">
+		                           	<c:if test="${totalFileSize >= 1099511627776 && totalFileSize < 1125899906842624}">
+										 <fmt:formatNumber value="${totalFileSize/1099511627776}" maxFractionDigits="1"/>GB
 									</c:if>
-	                            	<c:if test="${totalFileSize >= 1073741824 && totalFileSize < 1099511627776}">
-										<fmt:formatNumber value="${totalFileSize/1073741824}" maxFractionDigits="1"/>GB
+		                            <c:if test="${totalFileSize >= 1073741824 && totalFileSize < 1099511627776}">
+										 <fmt:formatNumber value="${totalFileSize/1073741824}" maxFractionDigits="1"/>GB
 									</c:if>
 									<c:if test="${totalFileSize >= 1048576 && totalFileSize < 1073741824}">
-										<fmt:formatNumber value="${totalFileSize/1048576}" maxFractionDigits="1"/>MB
+										 <fmt:formatNumber value="${totalFileSize/1048576}" maxFractionDigits="1"/>MB
 									</c:if>
 									<c:if test="${totalFileSize >= 1024 && totalFileSize < 1048576}">
-										<fmt:formatNumber value="${totalFileSize/1024}" maxFractionDigits="1"/>KB
+										 <fmt:formatNumber value="${totalFileSize/1024}" maxFractionDigits="1"/>KB
 									</c:if>
 									<c:if test="${totalFileSize < 1024}">
-										<fmt:formatNumber value="${totalFileSize}" maxFractionDigits="1"/>B
+										 <fmt:formatNumber value="${totalFileSize}" maxFractionDigits="1"/>B
 									</c:if>
-	                            </div><span class="small text-gray">Current Total Upload Size</span>
-	                        </div>
-	                        <div class="col-6">
-	                            <div class="h4 font-weight-bold mb-0">
-	                            	<sec:authorize access="hasRole('ROLE_USER')">
-	                            		15GB
-	                           	 	</sec:authorize>
-	                            	<sec:authorize access="hasRole('ROLE_ADMIN')">
-	                            		unlimited
-	                            	</sec:authorize>
-	                         	</div><span class="small text-gray">Max Total Upload Size</span>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	     </div> 
-	
+		                            </div><span class="small text-gray">Current Total Upload Size</span>
+		                        </div>
+		                        <div class="col-6">
+		                            <div class="h4 font-weight-bold mb-0">
+		                            	<sec:authorize access="hasRole('ROLE_USER')">
+		                            		15GB
+		                           	 	</sec:authorize>
+		                            	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		                            		unlimited
+		                            	</sec:authorize>
+		                         	</div><span class="small text-gray">Max Total Upload Size</span>
+		                       </div>
+		                  </div>
+		              </div>
+		         </div>
+		    </div>
+		</div>
+		 
+			
 		<div class="grid2">
 			<c:forEach var="list" items="${list}">
 				<div>

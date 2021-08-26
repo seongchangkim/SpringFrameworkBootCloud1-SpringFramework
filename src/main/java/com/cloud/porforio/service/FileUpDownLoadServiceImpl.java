@@ -1,11 +1,7 @@
 package com.cloud.porforio.service;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,28 +29,16 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 	@Override
 	public void fileUpLoadProcess(FileDTO file, MultipartFile[] files,
 			HttpServletRequest request) throws IllegalStateException, IOException {
-		Map<String, String> map = new HashMap<>(); 
 		List<String> fileNameList = mapper.getFileNameList();
 		List<FileDTO> list = fileUtils.parseFileList(file.getId(), files ,request);
-		String[] uploadUserList = mapper.getUploadUserList(file.getOriginalFileName());
+		List<String> uploadUserList = mapper.getUploadUserList(file.getOriginalFileName());
 		
-		for(String a: uploadUserList) {
-			map.put(a, file.getOriginalFileName());
-		}
-		
-		Iterator<Entry<String, String>> it = map.entrySet().iterator();
-		
-		while(it.hasNext()) {
-			Map.Entry<String, String> e = (Map.Entry<String, String>)it.next();
-			if(e.getKey().equals(file.getId())) {
-				
-			}
-		}
-		
-		 for(int i = 0; i<fileNameList.size() ; i++) {
+		for(int i = 0; i<fileNameList.size() ; i++) {
 			for(int j = 0; j<list.size() ; j++) {
-				if(file.getId().equals(file.getId()) && fileNameList.get(i).equals(list.get(j).getOriginalFileName())) {
-					list.remove(j);
+				for(int k = 0; k<uploadUserList.size() ; k++) {
+					if(uploadUserList.get(i).equals(file.getId()) && fileNameList.get(i).equals(list.get(j).getOriginalFileName())) {
+						list.remove(j);
+					}
 				}
 			}
 		}
@@ -62,7 +46,6 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 		if(list.size() > 0) {
 			mapper.fileUpLoadProcess(list);
 		}
-		
 	}
 
 	@Override
