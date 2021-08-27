@@ -203,7 +203,13 @@
 		// 파일 검색 기능
 		function keyword(){
 			keyWord = document.getElementById("keyword").value;
-			location.href='/cloud/fileKeyWord?keyword='+keyWord;
+			if(keyWord != ''){
+				location.href='/cloud/fileKeyWord?keyword='+keyWord;
+			}else if(keyWord == ''){
+				alert('키워드를 입력하세요.');
+				return false;
+			}
+			
 		}
 		
 		// 파일 업로드

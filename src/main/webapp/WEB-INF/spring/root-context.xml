@@ -42,27 +42,12 @@
 	<bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="0"></property>
 	</bean>
-	<!-- 2021.07.17 com.cloud.porforio.user.mapper 패키지 mybatis 컴포넌트 추가 -->
-	<mybatis-spring:scan base-package="com.cloud.porforio.user.mapper"/>
-
-	<!-- 2021.07.27 com.cloud.porforio.admin.mapper 패키지 mybatis 컴포넌트 추가 -->
-	<mybatis-spring:scan base-package="com.cloud.porforio.admin.mapper"/>
-	
-	<!-- 2021.07.27 com.cloud.porforio.board.mapper 패키지 mybatis 컴포넌트 추가 -->
-	<mybatis-spring:scan base-package="com.cloud.porforio.board.mapper"/>
 	
 	<!-- 2021.08.08 com.cloud.porforio.mapper 패키지 mybatis 컴포넌트 추가 -->
 	<mybatis-spring:scan base-package="com.cloud.porforio.mapper"/>
 		
-	<!-- 2021.07.17 com.cloud.porforio.user.service 패키지 컴포넌트 추가 -->
-	<context:component-scan base-package="com.cloud.porforio.user.service"/>
-	
-	<!-- 2021.07.27 com.cloud.porforio.admin.service 패키지 컴포넌트 추가 -->
-	<context:component-scan base-package="com.cloud.porforio.admin.service"/>
 	
 	<!-- 2021.08.01 com.cloud.proforio.commons.util 패키지 컴포넌트 추가 -->
 	<context:component-scan base-package="com.cloud.porforio.commons.utils"/>
 	
-	<!-- 2021.07.27 com.cloud.porforio.board.service 패키지 컴포넌트 추가 -->
-	<!--  <context:component-scan base-package="com.cloud.porforio.board.service"/> -->
 </beans>
