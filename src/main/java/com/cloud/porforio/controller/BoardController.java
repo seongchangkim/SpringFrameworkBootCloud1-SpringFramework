@@ -29,7 +29,6 @@ import com.cloud.porforio.domain.Reply;
 import com.cloud.porforio.domain.User;
 import com.cloud.porforio.service.BoardService;
 
-
 @Controller
 @RequestMapping("/cloud/board/*")
 public class BoardController {

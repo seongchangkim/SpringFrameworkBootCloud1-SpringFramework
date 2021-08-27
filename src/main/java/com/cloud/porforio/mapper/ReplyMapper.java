@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.cloud.porforio.domain.Board;
-import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Reply;
 
 @Mapper

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cloud.porforio.domain.Board;
-import com.cloud.porforio.domain.BoardFile;
 import com.cloud.porforio.domain.Reply;
 import com.cloud.porforio.mapper.ReplyMapper;
 
