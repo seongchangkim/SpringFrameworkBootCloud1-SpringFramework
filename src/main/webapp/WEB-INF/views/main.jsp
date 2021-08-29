@@ -21,12 +21,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 	<title>main page</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/mainstyle.css"/>">
 	<script src="<c:url value="/resources/js/jquery-3.6.0.min.js"/>"></script>
+	<link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="<c:url value='/resources/css/sb-admin-2.min.css'/>" rel="stylesheet">
 </head>
 <body>
 	<sec:authorize access="hasRole('ROLE_USER')">
@@ -73,7 +81,7 @@
 		
 		<div class="grid1">
 		    <div class="row">
-		        <div class="col-xl-4 col-lg-4 mb-6">
+		        <div class="col-xl-4 col-lg-4">
 		            <div class="bg-white rounded-lg p-5 shadow">
 		                <!-- <h2 class="h6 font-weight-bold text-center mb-4">UpLoad </h2> -->
 		                <sec:authorize access="hasRole('ROLE_USER')">
@@ -196,6 +204,15 @@
 		</div>
 	</div>
 	
+	<!-- Footer -->
+    <div class="grid3 bg-white">
+          <div class="container my-auto">
+               <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
+               </div>
+           </div>
+    </div>
+            <!-- End of Footer -->
 	<script>
 		var keyWord;
 		var storedFiles = [];
@@ -276,5 +293,12 @@
             }
         });
 	</script>
+	
+	<!-- Bootstrap core JavaScript-->
+    <script src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>
+    <script src="<c:url value='/resources/js/bootstrap.bundle.min.js'/>"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<c:url value='/resources/js/jquery.easing.min.js'/>"></script>
 </body>
 </html>
