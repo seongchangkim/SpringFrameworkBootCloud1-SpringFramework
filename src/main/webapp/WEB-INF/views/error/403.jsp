@@ -15,14 +15,14 @@
     <title>403</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<c:url value='/resources/css/sb-admin-2.min.css'/>" rel="stylesheet">
-
+	<link href="<c:url value='/resources/css/errorstyle.css'/>" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -39,7 +39,7 @@
                         <div class="error mx-auto" data-text="403">403</div>
                         <p class="lead text-gray-800 mb-5">Forbin</p>
                         <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="javascript:history.back();">&larr; Back to the Page</a>
+                        <a href="/cloud/error/redirect">&larr; Back to the Page</a>
                     </div>
 
                 </div>
@@ -77,7 +77,7 @@
     <script src="<c:url value='/resources/js/jquery.easing.min.js'/>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <!-- <script src="js/sb-admin-2.min.js"></script> -->
 </body>
 
 </html>

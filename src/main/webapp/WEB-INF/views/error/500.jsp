@@ -22,7 +22,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<c:url value='/resources/css/sb-admin-2.min.css'/>" rel="stylesheet">
-
+	<link href="<c:url value='/resources/css/errorstyle.css'/>" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -39,7 +39,7 @@
                         <div class="error mx-auto" data-text="500">500</div>
                         <p class="lead text-gray-800 mb-5">Internal Server error</p>
                         <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="javascript:window.history.back();">&larr; Back to the Page</a>
+                        <a href="/cloud/error/redirect">&larr; Back to the Page</a>
                     </div>
 
                 </div>
