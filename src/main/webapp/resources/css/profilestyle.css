@@ -110,3 +110,9 @@ body{
 .btn3:hover {
   background-position: right;
 }
+.bg-white{
+	width : 100%;
+	height : 35px;
+	position : absolute;
+	bottom :0;
+}

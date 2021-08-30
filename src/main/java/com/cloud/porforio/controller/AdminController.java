@@ -66,7 +66,7 @@ public class AdminController {
 	public String profile(String id, Model model) {
 		User user = service.selectUserInfoDetail(id);
 		model.addAttribute("user",user);
-		return "/admin/adminProfile";
+		return "/user/profile";
 	}
 	
 	@GetMapping(value = "updateUserInfoPasswordVerify")
