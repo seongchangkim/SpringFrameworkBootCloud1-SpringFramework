@@ -3,21 +3,21 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cloud.porforio.mapper.BoardMapper">
-	<!-- 2021.07.27 게시판 목록 기능 -->
+	<!-- 2021.07.27 게시판 목록 기능 & 페이징 처리 & 쿼리 최적화(커버링 인덱스) -->
 	<select id="list" resultType="com.cloud.porforio.domain.Board">
 		<![CDATA[
 			select *
-			  from board
-			 where deleteyn = 'N'
-			 
+			  from board b 
+			  join (select * 
+			  		  from board 
+			  		  where deleteyn='N'
 		]]>
-		
-		<include refid="criteria"/>
-		
+					  <include refid="criteria"/>
 		<![CDATA[
-			limit #{amount} offset #{pageStart}
+					  order by bno
+					  limit #{amount} offset #{pageStart}) bp
+			on b.bno = bp.bno
 		]]>
-		
 	</select>
 	
 	<!-- 2021.07.29 사용자 이름을 가져오기 위한 기능 -->
