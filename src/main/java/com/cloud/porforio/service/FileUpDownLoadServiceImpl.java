@@ -70,7 +70,16 @@ public class FileUpDownLoadServiceImpl implements FileUpDownLoadService{
 
 	@Override
 	public boolean isDeleteEmptyTrash(int fno) {
-		return mapper.deleteEmptyTrash(fno) == 1;
+		FileDTO file = mapper.selectFile(fno);
+		
+		boolean isRemoveFile = fileUtils.isRemoveFile(file);
+		
+		if(isRemoveFile) {
+			return mapper.deleteEmptyTrash(fno) == 1;
+		}else {
+			return false;
+		}
+		
 	}
 
 	@Override

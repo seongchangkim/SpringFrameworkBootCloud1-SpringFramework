@@ -71,7 +71,16 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public boolean deleteBoard(int bno) {
-		return (mapper.deleteBoardFile(bno) == 1) || (mapper.deleteBoard(bno) == 1);
+		List<BoardFile> fileList = mapper.selectBoardFileList(bno);
+		
+		boolean isRemoveBoardFile = fileUtils.isRemoveBoardFile(fileList);
+		
+		if(isRemoveBoardFile) {
+			return (mapper.deleteBoardFile(bno) == 1) || (mapper.deleteBoard(bno) == 1);
+		}else {
+			return false;
+		}
+	
 	}
 
 	@Override

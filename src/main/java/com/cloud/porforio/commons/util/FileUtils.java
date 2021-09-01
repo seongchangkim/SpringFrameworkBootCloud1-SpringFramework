@@ -169,5 +169,40 @@ public class FileUtils {
 		
 		return fileList;
 	}
+	
+	//2021.09.01 파일 삭제
+	public boolean isRemoveFile(FileDTO file) {
+		String storedFilePath = file.getStoredFilePath();
+		
+		File deleteFile = new File(storedFilePath);
+		
+		if(deleteFile.exists()) {
+			deleteFile.delete();
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	//2021.09.01 게시판 파일 삭제
+	public boolean isRemoveBoardFile(List<BoardFile> fileList) {
+		
+		for(int i = 0; i<fileList.size() ; i++) {
+			String storedFilePath = fileList.get(i).getStoredFilePath();
+			
+			File deleteFile = new File(storedFilePath);
+				
+			if(deleteFile.exists()) {
+				deleteFile.delete();
+			}
+		}
+		
+		if(fileList.isEmpty()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
 
