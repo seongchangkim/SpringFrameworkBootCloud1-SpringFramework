@@ -44,10 +44,10 @@ public class BoardController {
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-//		log.warn(""+(cri.getType() == "T".toString()));
+		log.warn(""+(cri.getType() == "T".toString()));
 		pageMaker.setTotalCount(service.getTotal(cri));
-//		log.warn(""+service.getTotal(cri));
-//		log.warn(""+list.size());
+		log.warn(""+service.getTotal(cri));
+		log.warn(""+list.size());
 		pageMaker.calcData();
 		
 		model.addAttribute("list",list);
