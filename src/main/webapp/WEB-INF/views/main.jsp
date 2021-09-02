@@ -130,10 +130,13 @@
 		                  </div>
 		              </div>
 		         </div>
-		    </div>
+		    </div>	
 		</div>
 		 
-			
+		<div class="grid3">
+			<h1>To Be Determined</h1>
+		</div>
+		
 		<div class="grid2">
 			<c:forEach var="list" items="${list}">
 				<div>
