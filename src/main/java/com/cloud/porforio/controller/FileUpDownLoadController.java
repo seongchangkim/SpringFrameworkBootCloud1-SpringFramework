@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,23 +38,25 @@ public class FileUpDownLoadController {
 		
 		log.warn(file.getId());
 		service.fileUpLoadProcess(file, files ,request);
-		
+		/*
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Object principal = auth.getPrincipal();
 		
-		String id = "";
 		if(principal != null) {
 			id = auth.getName();
 		}
+		*/
 		
+		String id = "";
 		String userAuth = service.selectUserAuth(id);
-		String path = "";
 		
+		String path = "";
 		if(userAuth.equals("ROLE_USER")) {
 			path = "/user/";
 		}else {
 			path = "/admin/";
 		}
+		
 		return "redirect:/cloud" + path + "main";
 	}
 
@@ -68,6 +71,7 @@ public class FileUpDownLoadController {
 		return new ModelAndView("fileDownloadView","downloadFile", downloadFile);
 	}
 	
+	@Before("execution(* com..cloud..porforio..aop.UserAspect.checkAuth(..))")
 	@GetMapping(value="/deleteYNUpdateFile")
 	public String deleteYNUpdateFile(int fno, Model model) {
 		boolean isDeleteYNUpdateFile = service.isDeleteYNUpdateFile(fno);
@@ -131,6 +135,7 @@ public class FileUpDownLoadController {
 		return "redirect:/cloud/recycleBin";
 	}
 	
+	@Before("execution(* com..cloud..porforio..aop.UserAspect.checkAuth(..))")
 	@GetMapping(value="/restore")
 	public String restore(int fno, Model model) {
 		boolean isRestoreFile = service.isRestoreFile(fno);
