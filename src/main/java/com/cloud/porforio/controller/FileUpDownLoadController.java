@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cloud.porforio.annotation.UserAnno;
 import com.cloud.porforio.domain.FileDTO;
 import com.cloud.porforio.service.FileUpDownLoadService;
 
@@ -33,6 +33,7 @@ public class FileUpDownLoadController {
 	@Autowired
 	private FileUpDownLoadService service;
 	
+	@UserAnno
 	@PostMapping("/upload")
 	public String upload(@ModelAttribute FileDTO file, @RequestParam("files") MultipartFile[] files, HttpServletRequest request, Model model) throws IllegalStateException, IOException {
 		
@@ -71,7 +72,6 @@ public class FileUpDownLoadController {
 		return new ModelAndView("fileDownloadView","downloadFile", downloadFile);
 	}
 	
-	@Before("execution(* com..cloud..porforio..aop.UserAspect.checkAuth(..))")
 	@GetMapping(value="/deleteYNUpdateFile")
 	public String deleteYNUpdateFile(int fno, Model model) {
 		boolean isDeleteYNUpdateFile = service.isDeleteYNUpdateFile(fno);
@@ -135,7 +135,6 @@ public class FileUpDownLoadController {
 		return "redirect:/cloud/recycleBin";
 	}
 	
-	@Before("execution(* com..cloud..porforio..aop.UserAspect.checkAuth(..))")
 	@GetMapping(value="/restore")
 	public String restore(int fno, Model model) {
 		boolean isRestoreFile = service.isRestoreFile(fno);
