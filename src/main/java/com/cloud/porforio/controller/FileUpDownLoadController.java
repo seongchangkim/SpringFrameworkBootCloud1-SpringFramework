@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cloud.porforio.annotation.UserAnno;
 import com.cloud.porforio.domain.FileDTO;
 import com.cloud.porforio.service.FileUpDownLoadService;
 
@@ -33,22 +32,20 @@ public class FileUpDownLoadController {
 	@Autowired
 	private FileUpDownLoadService service;
 	
-	@UserAnno
 	@PostMapping("/upload")
 	public String upload(@ModelAttribute FileDTO file, @RequestParam("files") MultipartFile[] files, HttpServletRequest request, Model model) throws IllegalStateException, IOException {
 		
 		log.warn(file.getId());
 		service.fileUpLoadProcess(file, files ,request);
-		/*
+		
+		String id = "";
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Object principal = auth.getPrincipal();
 		
 		if(principal != null) {
 			id = auth.getName();
 		}
-		*/
 		
-		String id = "";
 		String userAuth = service.selectUserAuth(id);
 		
 		String path = "";
