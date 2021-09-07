@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Update User Info</title>
+	<title>회원 수정</title>
 	<script src="/resources/js/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/findingidstyle.css"/>">
 </head>
@@ -66,26 +66,26 @@
 			});
 		</script>
 	<div class="updateUserInfoForm">
-		<h2>Update User Info</h2>
+		<h2>회원 수정</h2>
 		<form action="/cloud/admin/updateUserInfo" method="post" name="updateUserInfoForm">
 			<input type="hidden" name = "id" value="${user.getId()}">
 			
 			<div class="nameForm">
-				<input type="text" id="name" name = "name" placeholder="name" value="${user.getName()}">
+				<input type="text" id="name" name = "name" placeholder="이름" value="${user.getName()}">
 			</div>
 			
 			<div class="emailForm">
-				<input type="text" id="email" name="email" placeholder="email" value="${user.getEmail()}">
+				<input type="text" id="email" name="email" placeholder="이메일" value="${user.getEmail()}">
 			</div>
 					
 			<div class="telForm">
-				<input type="text" id="tel" name="tel" placeholder="tel" value="${user.getTel()}">
+				<input type="text" id="tel" name="tel" placeholder="전화번호" value="${user.getTel()}">
 			</div>
 			
-			<input type="submit" value="UPDATE USER INFO" class="btn">
+			<input type="submit" value="회원 수정" class="btn">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		</form>
-		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
+		<button onclick="javascript:history.back();" class="btn2">이전 페이지</button>
 	</div>
 </body>
 </html>

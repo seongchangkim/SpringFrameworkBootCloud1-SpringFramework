@@ -17,7 +17,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>main page</title>
+	<title></title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/leftstyle.css"/>">
 </head>
 <body>
@@ -29,7 +29,7 @@
 						<span class="icon">
 							<ion-icon name="home-outline"></ion-icon>
 						</span>
-						<span class="title">Home</span>
+						<span class="title">홈</span>
 					</a>
 				</li>
 				<li class="list">
@@ -37,7 +37,7 @@
 						<span class="icon">
 							<ion-icon name="person-outline"></ion-icon>
 						</span>
-						<span class="title">Profile</span>
+						<span class="title">프로필</span>
 					</a>
 				</li>
 				<li class="list">
@@ -45,7 +45,7 @@
 						<span class="icon">
 							<ion-icon name="people-outline"></ion-icon>
 						</span>
-						<span class="title">UserList</span>
+						<span class="title">사용자 관리</span>
 					</a>
 				</li>
 				<li class="list">
@@ -53,9 +53,10 @@
 						<span class="icon">
 							<ion-icon name="trash-outline"></ion-icon>
 						</span>
-						<span class="title">RecycleBin</span>
+						<span class="title">휴지통</span>
 					</a>
 				</li>
+				<!--
 				<li class="list">
 					<a href="#">
 						<span class="icon">
@@ -72,12 +73,13 @@
 						<span class="title">Help</span>
 					</a>
 				</li>
+				-->
 				<li class="list">
 					<a href="/cloud/board/list">
 						<span class="icon">
 							<ion-icon name="laptop-outline"></ion-icon>
 						</span>
-						<span class="title">Board</span>
+						<span class="title">게시판</span>
 					</a>
 				</li>
 				<li class="list">
@@ -85,15 +87,8 @@
 						<span class="icon">
 							<ion-icon name="log-out-outline"></ion-icon>
 						</span>
-						<span class="title">Sign Out</span>
+						<span class="title">로그아웃</span>
 					</a>
-				</li>
-				<li class="profile">
-					<%-- <div>
-						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							여기는 관리자 페이지입니다. 
-						</sec:authorize>
-					</div> --%>
 				</li>
 			</ul>
 		</div>

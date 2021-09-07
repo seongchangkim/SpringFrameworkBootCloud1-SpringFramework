@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Your Profile</title>
+	<title>프로필</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/profilestyle.css"/>">
 </head>
 <body>
@@ -18,22 +18,29 @@
 	</sec:authorize>	
 		
 	<div class ="profileForm">
-		<h2>Your Profile</h2>
+		<h2>프로필</h2>
 		<div class="nameForm">
-			<input type="text" id="name" name="name" placeholder="name" value="${user.getName()}">
+			<input type="text" id="name" name="name" placeholder="이름" value="${user.getName()}">
 		</div>
 				
 		<div class="emailForm">
-			<input type="text" id="email" name="email" placeholder="email" value="${user.getEmail()}">
+			<input type="text" id="email" name="email" placeholder="이메일" value="${user.getEmail()}">
 		</div>
 						
 		<div class="telForm">
-			<input type="text" id="tel" name="tel" class="tel" placeholder="tel" value="${user.getTel()}">
+			<input type="text" id="tel" name="tel" class="tel" placeholder="전화번호" value="${user.getTel()}">
 		</div>
-			
-	  	<button onclick="location.href='/cloud/user/updateUserInfoPasswordVerify'" class="btn">회원 수정</button>
-	  	<button onclick="javascript:history.back();" class="btn3">뒤로 가기</button>
-	    <button onclick="location.href='/cloud/user/deleteUserInfoPasswordVerify'" class="btn2">회원 삭제</button>
+		
+		<sec:authorize access="hasRole('ROLE_USER')">
+			<button onclick="location.href='/cloud/user/updateUserInfoPasswordVerify'" class="btn">회원 수정</button>
+	  		<button onclick="javascript:history.back();" class="btn3">뒤로 가기</button>
+	    	<button onclick="location.href='/cloud/user/deleteUserInfoPasswordVerify'" class="btn2">회원 삭제</button>
+		</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<button onclick="location.href='/cloud/admin/updateUserInfoPasswordVerify'" class="btn">회원 수정</button>
+	  		<button onclick="javascript:history.back();" class="btn3">뒤로 가기</button>
+	    	<button onclick="location.href='/cloud/admin/deleteUserInfoPasswordVerify'" class="btn2">회원 삭제</button>
+		</sec:authorize>	
 	</div>
 </body>
 </html>

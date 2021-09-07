@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Verify Password</title>
+	<title>회원 수정 비밀번호 확인</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/loginstyle.css"/>">
 </head>
 <body>
@@ -38,14 +38,14 @@
 			<input type="hidden" name="id" value="<%=id %>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			
-			<h2>Verify Password</h2>
+			<h2>비밀번호 확인</h2>
 			<div class="passForm">
-				<input type="password" name="password" id="pw" placeholder="pw">
+				<input type="password" name="password" id="pw" placeholder="비밀번호">
 			</div>
 			
-			<input type="submit" class="btn" value="VERIFY PASSWORD">
+			<input type="submit" class="btn" value="비밀번호 확인">
 		</form>
-		<button onclick="javascript=history.back();" class="btn2">BACK TO THE PAGE</button>
+		<button onclick="javascript=history.back();" class="btn2">이전 페이지</button>
 	</div>
 </body>
 </html>
