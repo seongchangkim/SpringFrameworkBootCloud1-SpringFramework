@@ -8,7 +8,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>RecycleForm</title>
+	<title>휴지통</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/mainstyle.css"/>">
@@ -86,8 +86,8 @@
 						<fmt:formatNumber value="${list.fileSize}" maxFractionDigits="1"/>B
 					</c:if>
 				</p>
-				<button class="btn btn-danger btn-xs" onclick="location.href='/cloud/emptytrash?fno=${list.fno}'">EMPTY TRASH</button>
-				<button class="btn btn-info btn-xs" onclick="location.href='/cloud/restore?fno=${list.fno}'">RESTORE</button>
+				<button class="btn btn-danger btn-xs" onclick="location.href='/cloud/emptytrash?fno=${list.fno}'">비우기</button>
+				<button class="btn btn-info btn-xs" onclick="location.href='/cloud/restore?fno=${list.fno}'">복구</button>
 			</div>
 		</c:forEach>
 	</div>

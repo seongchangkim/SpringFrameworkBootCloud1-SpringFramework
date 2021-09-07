@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Finding Id Process</title>
+	<title>아이디 찾기 완료</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/idfindingprocessstyle.css"/>">
 </head>
 <body>

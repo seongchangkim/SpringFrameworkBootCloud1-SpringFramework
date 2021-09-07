@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>finding Password Form</title>
+	<title>비밀번호 찾기</title>
 	<script src="/resources/js/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/findingpasswordstyle.css"/>">
 </head>
@@ -72,28 +72,28 @@
 			});
 		</script>
 	<div class="findingPasswordForm">
-		<h2>Finding Password</h2>
+		<h2>비밀번호 찾기</h2>
 		<form action="/cloud/findingPassword" method="post" name="findingPasswordForm">
 			<div class="idForm">
-				<input type="text" id="id" name="id" placeholder="id">
+				<input type="text" id="id" name="id" placeholder="아이디">
 			</div>
 			
 			<div class="nameForm">
-				<input type="text" id="name" name="name" placeholder="name">
+				<input type="text" id="name" name="name" placeholder="이름">
 			</div>
 			
 			<div class="emailForm">
-				<input type="text" id="email" name="email" placeholder="email">
+				<input type="text" id="email" name="email" placeholder="이메일">
 			</div>
 					
 			<div class="telForm">
-				<input type="text" id="tel" name="tel" class="tel" placeholder="tel">
+				<input type="text" id="tel" name="tel" class="tel" placeholder="전화번호">
 			</div>
 			
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="submit" value="finding Password" class="btn">
+			<input type="submit" value="비밀번호 찾기" class="btn">
 		</form>
-		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
+		<button onclick="javascript:history.back();" class="btn2">이전 페이지</button>
 	</div>
 	
 </body>

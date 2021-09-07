@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Update Password Form</title>
+	<title>비밀번호 변경</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/loginstyle.css"/>">
 </head>
 <body>
@@ -45,23 +45,23 @@
 		};
 	</script>
 	<div class="updatePasswordForm">
-		<h2>Update Password</h2>
+		<h2>비밀번호 변경</h2>
 		<form action="/cloud/updatePassword" method="post" name="updatePasswordForm">
 			<input type="hidden" name = "id" value="<%=id%>">
 			<input type="hidden" name = "v_pw" value="<%=password%>">
 			
 			<div class="passForm">
-				<input type="password" id="pw" name="password" placeholder="pw">
+				<input type="password" id="pw" name="password" placeholder="비밀번호">
 			</div>
 		
 			<div class="passForm">
-				<input type="password" id="r_pw" placeholder="r_pw">
+				<input type="password" id="r_pw" placeholder="비밀번호 확인">
 			</div>
 			
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="submit" value="update password" class="btn">
+			<input type="submit" value="비밀번호 변경" class="btn">
 		</form>
-		<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
+		<button onclick="javascript:history.back();" class="btn2">이전 페이지</button>
 	</div>
 
 	

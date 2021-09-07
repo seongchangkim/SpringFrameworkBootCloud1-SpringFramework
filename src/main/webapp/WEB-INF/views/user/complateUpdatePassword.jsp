@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Completed Updated Password</title>
+	<title>비밀번호 변경 완료</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/complateupdatepasswordprocessstyle.css"/>">
 </head>
 <body>

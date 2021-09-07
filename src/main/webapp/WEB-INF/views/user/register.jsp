@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>User Register</title>
+	<title>회원 가입</title>
 	<script src="/resources/js/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/signupstyle.css"/>">
 </head>
@@ -88,37 +88,37 @@
 			});
 		</script>
 		<div class="registerForm">
-			<h2>sign up</h2>
+			<h2>회원가입</h2>
 			<form action="/cloud/register" method="post" name="registerForm">
 				<div class="idForm">
-					<input type="text" id="id" name="id" placeholder="id">
+					<input type="text" id="id" name="id" placeholder="아이디">
 				</div>
 				
 				<div class="passForm">
-					<input type="password" id="pw" name="password" placeholder="pw">
+					<input type="password" id="pw" name="password" placeholder="비밀번호">
 				</div>
 		
 				<div class="passForm">
-					<input type="password" id="r_pw" placeholder="r_pw">
+					<input type="password" id="r_pw" placeholder="비밀번호 확인">
 				</div>
 				
 				<div class="nameForm">
-					<input type="text" id="name" name ="name" placeholder="name">
+					<input type="text" id="name" name ="name" placeholder="이름">
 				</div>
 		
 				<div class="emailForm">
-					<input type="text" id="email" name="email" placeholder="email">
+					<input type="text" id="email" name="email" placeholder="이메일">
 				</div>
 				
 		
 				<div class="telForm">
-					<input type="text" id="tel" name="tel" class="tel" placeholder="tel">
+					<input type="text" id="tel" name="tel" class="tel" placeholder="전화번호">
 				</div>
 		
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-				<input type="submit" value="SIGN UP" class="btn">
+				<input type="submit" value="회원 가입" class="btn">
 			</form>
-			<button onclick="javascript:history.back();" class="btn2">BACK TO THE PAGE</button>
+			<button onclick="javascript:history.back();" class="btn2">이전 페이지</button>
 		</div>
 </body>
 </html>
