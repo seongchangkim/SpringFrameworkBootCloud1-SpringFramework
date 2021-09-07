@@ -33,12 +33,12 @@
 		
 		<sec:authorize access="hasRole('ROLE_USER')">
 			<button onclick="location.href='/cloud/user/updateUserInfoPasswordVerify'" class="btn">회원 수정</button>
-	  		<button onclick="javascript:history.back();" class="btn3">뒤로 가기</button>
+	  		<button onclick="javascript:history.back();" class="btn3">이전 페이지</button>
 	    	<button onclick="location.href='/cloud/user/deleteUserInfoPasswordVerify'" class="btn2">회원 삭제</button>
 		</sec:authorize>
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
 			<button onclick="location.href='/cloud/admin/updateUserInfoPasswordVerify'" class="btn">회원 수정</button>
-	  		<button onclick="javascript:history.back();" class="btn3">뒤로 가기</button>
+	  		<button onclick="javascript:history.back();" class="btn3">이전 페이지</button>
 	    	<button onclick="location.href='/cloud/admin/deleteUserInfoPasswordVerify'" class="btn2">회원 삭제</button>
 		</sec:authorize>	
 	</div>

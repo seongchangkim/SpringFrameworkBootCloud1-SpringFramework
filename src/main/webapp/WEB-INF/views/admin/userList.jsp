@@ -20,7 +20,7 @@
 	</style>
 </head>
 <body>
-	<button onclick="javascript:history.back()" class="btn btn-primary btn-xs">BACK TO THE PAGE</button>
+	<button onclick="javascript:history.back()" class="btn btn-warning btn-xs">이전 페이지</button>
 	<table>
 		<tr>
 			<td>이름</td>

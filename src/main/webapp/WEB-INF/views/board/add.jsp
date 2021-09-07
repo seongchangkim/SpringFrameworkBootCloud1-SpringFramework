@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Board Register</title>
+	<title>게시판 등록</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<style>
@@ -36,30 +36,30 @@
 <body>
 	
 	<div class="container">
-		<h2>Board Register</h2>
+		<h2>게시판 등록</h2>
 		<form action="/cloud/board/add" method="post" enctype="multipart/form-data" name="replyAddForm">
 			<input type="hidden" name="id" value="${user.id}">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			
 			<div class="mb-3">
-	  			<label for="title" class="form-label">Writer</label>
-	  			<input type="text" class="form-control" name="name" id="name" placeholder="writer" value="${user.name}" readonly="readonly">
+	  			<label for="title" class="form-label">작성자</label>
+	  			<input type="text" class="form-control" name="name" id="name" placeholder="작성자" value="${user.name}" readonly="readonly">
 			</div>
 			<div class="mb-3">
-	  			<label for="title" class="form-label">Title</label>
-	  			<input type="text" class="form-control" name="title" id="title" placeholder="title">
+	  			<label for="title" class="form-label">제목</label>
+	  			<input type="text" class="form-control" name="title" id="title" placeholder="제목">
 			</div>
 			<div class="mb-3">
-	  			<label for="files" class="form-label">File Upload</label>
+	  			<label for="files" class="form-label">파일 업로드</label>
 	  			<input type="file" id="files" name="files" multiple="multiple">
 			</div>
 			<div class="mb-3">
-	  			<label for="content" class="form-label">content</label>
-	  			<textarea class="form-control" id="content" name="content" rows="3"></textarea>
+	  			<label for="content" class="form-label">내용</label>
+	  			<textarea class="form-control" id="content" name="내용" rows="3"></textarea>
 			</div>
 			
-			<input type="submit" value="BOARD REGISTER" class="btn btn-primary btn-xs">
-			<button type="button" class="btn btn-info btn-xs" onclick="javascript:history.back();">BACK TO THE PAGE</button> 
+			<input type="submit" value="게시판 등록" class="btn btn-primary btn-xs">
+			<button type="button" class="btn btn-info btn-xs" onclick="javascript:history.back();">이전 페이지</button> 
 		</form>
 	</div>
 	

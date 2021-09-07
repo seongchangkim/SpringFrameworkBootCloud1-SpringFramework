@@ -67,12 +67,12 @@
 			<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
 			<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			<div class="mb-3">
-		  		<label for="title" class="form-label">Writer</label>
-		  		<input type="text" class="form-control" name="name" id="name" placeholder="writer" value="${board.name}" readonly="readonly">
+		  		<label for="title" class="form-label">작성자</label>
+		  		<input type="text" class="form-control" name="name" id="name" placeholder="작성자" value="${board.name}" readonly="readonly">
 			</div>
 			<div class="mb-3">
-		  		<label for="content" class="form-label">content</label>
-		  		<textarea class="form-control" id="content" name="content" rows="3" 
+		  		<label for="content" class="form-label">내용</label>
+		  		<textarea class="form-control" id="content" name="내용" rows="3" 
 		  		<c:if test="${board.id != userId}">
 						readonly="readonly"
 				</c:if>
@@ -80,12 +80,12 @@
 			</div>
 			
 			<c:if test="${board.id == userId}">
-				<input type="submit" value="UPDATE" formaction="/cloud/board/updateBoard" class="btn btn-xs btn-warning"> 
+				<input type="submit" value="수정" formaction="/cloud/board/updateBoard" class="btn btn-xs btn-warning"> 
 			</c:if>
 			<c:if test="${board.id == userId}">
-				<input type="submit" value="DELETE" formaction="/cloud/board/deleteBoard" class="btn btn-xs btn-danger">
+				<input type="submit" value="삭제" formaction="/cloud/board/deleteBoard" class="btn btn-xs btn-danger">
 			</c:if>
-			<input type="button" value="BACK TO THE PAGE" onclick="javascript:history.back();" class="btn btn-xs btn-info">
+			<input type="button" value="이전 페이지" onclick="javascript:history.back();" class="btn btn-xs btn-info">
 		</form>
 	</div>
 	
@@ -96,10 +96,10 @@
 				<input type="hidden" name="name" value="${username}">
 				<input type="hidden" name="bno" value="${board.bno}">
 				<div class="mb-3">
-		  			<label for="reply" class="form-label">reply</label>
+		  			<label for="reply" class="form-label">댓글</label>
 		  			<textarea class="form-control" id="reply" name="reply" rows="2"></textarea>
 		  		</div> 
-				<input type="submit" value="ADD" class="btn btn-xs btn-primary">
+				<input type="submit" value="등록" class="btn btn-xs btn-primary">
 			</form>
 		</div>
 		 
@@ -128,10 +128,10 @@
 				  				</c:if>
 				  			>${list.reply}</textarea>
 				  			<c:if test="${list.id == userId}">
-				  				<input type="submit" value="UPDATE REPLY" formaction="/cloud/reply/updateReply" class="btn btn-xs btn-warning" id="updateReplyButton">	
+				  				<input type="submit" value="수정" formaction="/cloud/reply/updateReply" class="btn btn-xs btn-warning" id="updateReplyButton">	
 				  			</c:if>
 				  			<c:if test="${list.id == userId}">
-				  				<input type="submit" value="DELETE REPLY" formaction="/cloud/reply/deleteReply" class="btn btn-xs btn-danger" id="deleteReplyButton">	
+				  				<input type="submit" value="삭제" formaction="/cloud/reply/deleteReply" class="btn btn-xs btn-danger" id="deleteReplyButton">	
 				  			</c:if>
 				  		</div>
 					</form>
