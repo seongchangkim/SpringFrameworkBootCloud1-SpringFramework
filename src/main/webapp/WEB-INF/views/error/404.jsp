@@ -37,9 +37,9 @@
                     <!-- 404 Error Text -->
                     <div class="text-center">
                         <div class="error mx-auto" data-text="404">404</div>
-                        <p class="lead text-gray-800 mb-5">Not Found Page</p>
-                        <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="/cloud/error/redirect">&larr; Back to the Page</a>
+                        <p class="lead text-gray-800 mb-5">해당 페이지 찾을 수 없음</p>
+                        <p class="text-gray-500 mb-0">해당 페이지를 찾을 수 없습니다.</p>
+                        <a href="/cloud/error/redirect">&larr; 로그인 페이지로 이동</a>
                     </div>
 
                 </div>

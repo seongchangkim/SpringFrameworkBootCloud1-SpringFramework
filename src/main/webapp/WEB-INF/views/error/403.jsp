@@ -37,9 +37,9 @@
                     <!-- 404 Error Text -->
                     <div class="text-center">
                         <div class="error mx-auto" data-text="403">403</div>
-                        <p class="lead text-gray-800 mb-5">Forbin</p>
-                        <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="/cloud/error/redirect">&larr; Back to the Page</a>
+                        <p class="lead text-gray-800 mb-5">권한 금지</p>
+                        <p class="text-gray-500 mb-0">권한이 일치하지 않아 페이지를 사용할 수 없습니다.</p>
+                        <a href="/cloud/error/redirect">&larr; 로그인 페이지로 이동</a>
                     </div>
 
                 </div>

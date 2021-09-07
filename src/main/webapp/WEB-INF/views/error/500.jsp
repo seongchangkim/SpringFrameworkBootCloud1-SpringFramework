@@ -37,9 +37,9 @@
                     <!-- 404 Error Text -->
                     <div class="text-center">
                         <div class="error mx-auto" data-text="500">500</div>
-                        <p class="lead text-gray-800 mb-5">Internal Server error</p>
-                        <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="/cloud/error/redirect">&larr; Back to the Page</a>
+                        <p class="lead text-gray-800 mb-5">내부 서버 에러</p>
+                        <p class="text-gray-500 mb-0">.....</p>
+                        <a href="/cloud/error/redirect">&larr; 로그인 페이지로 이동</a>
                     </div>
 
                 </div>
