@@ -37,7 +37,7 @@
 						<span class="icon">
 							<ion-icon name="person-outline"></ion-icon>
 						</span>
-						<span class="title">프로필</span>
+						<span class="title">회원 정보</span>
 					</a>
 				</li>
 				<li class="list">

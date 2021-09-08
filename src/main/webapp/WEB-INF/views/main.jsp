@@ -57,7 +57,7 @@
 			
 			<!-- label을 id 지정하여 input file를 안보이게 하고 여기에 클릭하면 input file를 클릭 -->
 			<label class="btn btn-info btn-xs" for="files">
-					File Upload
+				파일 업로드
 			</label>
 			<!-- onchange="this.form.submit()" : 파일 업로드 클릭 후 해당 파일을 선택하고 나서 자동 submit-->
 			<input type="file" class="file" id="files" name="files" multiple="multiple" style="display:none;">
@@ -65,7 +65,7 @@
 		
 		<div class="searchForm">
 			<div class="form-group">
-    			<input type="text" class="form-control" id="keyword" placeholder="Search">
+    			<input type="text" class="form-control" id="keyword" placeholder="검색">
   				<button type="button" class="btn btn-primary" onclick="keyword()">
 					<ion-icon name="search-outline"></ion-icon>
 				</button>
@@ -115,7 +115,7 @@
 									<c:if test="${totalFileSize < 1024}">
 										 <fmt:formatNumber value="${totalFileSize}" maxFractionDigits="1"/>B
 									</c:if>
-		                            </div><span class="small text-gray">Current Total Upload Size</span>
+		                            </div><span class="small text-gray">현재 총 업로드 한 용량</span>
 		                        </div>
 		                        <div class="col-6">
 		                            <div class="h4 font-weight-bold mb-0">
@@ -125,7 +125,7 @@
 		                            	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		                            		unlimited
 		                            	</sec:authorize>
-		                         	</div><span class="small text-gray">Max Total Upload Size</span>
+		                         	</div><span class="small text-gray">최대 업로드 할 수 있는 용량</span>
 		                       </div>
 		                  </div>
 		              </div>
@@ -134,7 +134,7 @@
 		</div>
 		 
 		<div class="grid3">
-			<h1>To Be Determined</h1>
+			<h1>추후 업데이트</h1>
 		</div>
 		
 		<div class="grid2">
@@ -199,7 +199,7 @@
 							<fmt:formatNumber value="${list.fileSize}" maxFractionDigits="1"/>B
 						</c:if>
 					</p>
-					<button class="btn btn-warning btn-xs" onclick="location.href='/cloud/deleteYNUpdateFile?fno=${list.fno}'">DELETE FILE</button>
+					<button class="btn btn-warning btn-xs" onclick="location.href='/cloud/deleteYNUpdateFile?fno=${list.fno}'">파일 삭제</button>
 				</div>
 			</c:forEach>
 			

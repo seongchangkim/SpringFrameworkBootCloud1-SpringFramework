@@ -35,23 +35,23 @@
 		};
 	</script>
 	<div class="loginForm">
-		<h2>Login</h2>
+		<h2>로그인</h2>
 		<form action="/cloud/login" method="post" name="loginForm">
 			<div class="idForm">
-				<input type="text" id="id" name="id" placeholder="id">
+				<input type="text" id="id" name="id" placeholder="아이디">
 			</div>
 			
 			<div class="passForm">
-				<input type="password" id="pw" name="password" placeholder="pw"/>
+				<input type="password" id="pw" name="password" placeholder="비밀번호"/>
 			</div>
 			
-			<input type="submit" value="LOG IN" class="btn"/>
+			<input type="submit" value="로그인" class="btn"/>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		</form>
 		<div class="bottomText">
-			Don't you have ID? <a href="/cloud/register">sign up</a>
+			아이디 없으면? <a href="/cloud/register">회원 가입</a>
 			<br>
-			<a href="/cloud/findingId">finding ID</a> | <a href="/cloud/findingPassword">finding Password</a>
+			<a href="/cloud/findingId">아이디 찾기</a> | <a href="/cloud/findingPassword">비밀번호 찾기</a>
 		</div>
 	</div>
 	

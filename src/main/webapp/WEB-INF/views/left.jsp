@@ -29,7 +29,7 @@
 						<span class="icon">
 							<ion-icon name="home-outline"></ion-icon>
 						</span>
-						<span class="title">Home</span>
+						<span class="title">홈</span>
 					</a>
 				</li>
 				<li class="list">
@@ -37,7 +37,7 @@
 						<span class="icon">
 							<ion-icon name="person-outline"></ion-icon>
 						</span>
-						<span class="title">Profile</span>
+						<span class="title">회원 정보</span>
 					</a>
 				</li>
 				<li class="list">
@@ -45,9 +45,10 @@
 						<span class="icon">
 							<ion-icon name="trash-outline"></ion-icon>
 						</span>
-						<span class="title">RecycleBin</span>
+						<span class="title">휴지통</span>
 					</a>
 				</li>
+				<!--
 				<li class="list">
 					<a href="#">
 						<span class="icon">
@@ -64,12 +65,13 @@
 						<span class="title">Help</span>
 					</a>
 				</li>
+				-->
 				<li class="list">
 					<a href="/cloud/board/list">
 						<span class="icon">
 							<ion-icon name="laptop-outline"></ion-icon>
 						</span>
-						<span class="title">Board</span>
+						<span class="title">게시판</span>
 					</a>
 				</li>
 				<li class="list">
@@ -77,7 +79,7 @@
 						<span class="icon">
 							<ion-icon name="log-out-outline"></ion-icon>
 						</span>
-						<span class="title">Sign Out</span>
+						<span class="title">로그아웃</span>
 					</a>
 				</li>
 				<li>
