@@ -45,7 +45,7 @@
 						<span class="icon">
 							<ion-icon name="people-outline"></ion-icon>
 						</span>
-						<span class="title">사용자 관리</span>
+						<span class="title">회원 관리</span>
 					</a>
 				</li>
 				<li class="list">

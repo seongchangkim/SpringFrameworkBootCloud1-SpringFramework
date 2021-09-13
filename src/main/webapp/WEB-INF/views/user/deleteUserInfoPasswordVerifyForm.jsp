@@ -38,7 +38,7 @@
 			<input type="hidden" name="id" value="<%=id %>">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			
-			<h2>Verify Password</h2>
+			<h2>비밀번호 확인</h2>
 			<div class="passForm">
 				<input type="password" name="password" id="pw" placeholder="비밀번호">
 			</div>

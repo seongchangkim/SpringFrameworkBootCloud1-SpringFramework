@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>프로필</title>
+	<title>회원 정보</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/profilestyle.css"/>">
 </head>
 <body>
@@ -18,7 +18,7 @@
 	</sec:authorize>	
 		
 	<div class ="profileForm">
-		<h2>프로필</h2>
+		<h2>회원 정보</h2>
 		<div class="nameForm">
 			<input type="text" id="name" name="name" placeholder="이름" value="${user.getName()}">
 		</div>

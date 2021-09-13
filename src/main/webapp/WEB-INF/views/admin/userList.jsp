@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>사용자 목록</title>
+	<title>회원 관리 목록</title>
 	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>" >
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 	<style>
