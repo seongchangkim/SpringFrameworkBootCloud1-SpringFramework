@@ -10,14 +10,14 @@
 <hr>
 
 <h2>개발환경</h2>
-Front-End<br>
+# Front-End<br>
 ● HTML5<br>
 ● CSS3<br>
 ● JavaScript(ES6)<br>
 ● Bootstrap 4.0<br>
 ● jQuery 3.6.0<br>
 <br>
-Back-End<br>
+# Back-End<br>
 ● Java 11<br>
 ● Servlet 3.1.0<br>
 ● JSP 2.3<br>
@@ -28,7 +28,7 @@ Back-End<br>
 ● Spring Security 5.0.2<br>
 ● Maven 2.9<br>
 <br>
-3). 컴퓨터/노트북 사양<br>
+# 컴퓨터/노트북 사양<br>
 ● CPU : i5-7300HQ<br>
 ● RAM : 8GB(4GB+4GB)(듀얼 채널)<br>
 ● 그래픽 카드 : GTX 1050(Moblie)<br>
