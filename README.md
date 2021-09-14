@@ -9,3 +9,28 @@
 </pre>
 <hr>
 
+<h2>개발환경</h2>
+Front-End
+● HTML5
+● CSS3
+● JavaScript(ES6)
+● Bootstrap 4.0
+● jQuery 3.6.0
+
+Back-End
+● Java 11
+● Servlet 3.1.0
+● JSP 2.3
+● Tomcat 9.0.41
+● Mysql 8.0.22
+● Spring Framework 5.0.2
+● MyBatis 1.3.2
+● Spring Security 5.0.2
+● Maven 2.9
+
+3). 컴퓨터/노트북 사양
+● CPU : i5-7300HQ
+● RAM : 8GB(4GB+4GB)(듀얼 채널)
+● 그래픽 카드 : GTX 1050(Moblie)
+● OS : Windows 10 Home
+
