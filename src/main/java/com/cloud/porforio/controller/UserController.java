@@ -117,11 +117,11 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/user/updateUserInfo")
-	public String updateUserInfo(User user) {
+	public String updateUserInfo(User user, Model model) {
 		boolean isUpdateUserInfo = service.updateUserInfo(user);
 		
 		if(isUpdateUserInfo) {
-			return "main";
+			return "redirect:/cloud/user/profile?id="+user.getId();
 		}else {
 			return "/user/updateUserInfoForm";
 		}
@@ -139,12 +139,13 @@ public class UserController {
 		boolean deleteUserAuth = service.deleteUserAuth(id);
 		
 		if(passwordEncoder.matches(password,v_password)) {
-			if(deleteUserInfo && deleteUserAuth) {
+			if(deleteUserInfo) {
 				session.invalidate();
-				return "/redirect:/user/login";
+				return "redirect:/cloud/login";
 			}else {
 				return "/user/deleteUserInfoPasswordVerifyForm";
 			}
+			
 		}else {
 			return "/user/deleteUserInfoPasswordVerifyForm";
 		}
