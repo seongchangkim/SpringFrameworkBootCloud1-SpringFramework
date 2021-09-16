@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>회원 수정</title>
+	<title>회원 정보</title>
 	<script src="/resources/js/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/findingidstyle.css"/>">
 </head>
@@ -66,7 +66,7 @@
 			});
 		</script>
 	<div class="updateUserInfoForm">
-		<h2>회원 수정</h2>
+		<h2>회원 정보</h2>
 		<form action="/cloud/admin/updateUserInfo" method="post" name="updateUserInfoForm">
 			<input type="hidden" name = "id" value="${user.getId()}">
 			

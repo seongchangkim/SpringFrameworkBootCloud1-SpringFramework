@@ -55,7 +55,7 @@
 			</div>
 			<div class="mb-3">
 	  			<label for="content" class="form-label">내용</label>
-	  			<textarea class="form-control" id="content" name="내용" rows="3"></textarea>
+	  			<textarea class="form-control" id="content" name="content" rows="3"></textarea>
 			</div>
 			
 			<input type="submit" value="게시판 등록" class="btn btn-primary btn-xs">

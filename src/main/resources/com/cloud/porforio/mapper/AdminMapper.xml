@@ -6,7 +6,7 @@
 
 	<!-- 2021.07.27 회원 목록 구현 -->
 	<select id="getUserList" resultType="com.cloud.porforio.domain.User">
-		select * from user where id != 'admin';
+		select * from user where id not like concat('%','admin','%');
 	</select>
 	
 	<!-- 2021.07.27 다른 회원 정보 및 관리자 정보 상세보기 -->
