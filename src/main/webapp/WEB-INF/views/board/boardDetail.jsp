@@ -72,7 +72,7 @@
 			</div>
 			<div class="mb-3">
 		  		<label for="content" class="form-label">내용</label>
-		  		<textarea class="form-control" id="content" name="내용" rows="3" 
+		  		<textarea class="form-control" id="content" name="content" rows="3" 
 		  		<c:if test="${board.id != userId}">
 						readonly="readonly"
 				</c:if>

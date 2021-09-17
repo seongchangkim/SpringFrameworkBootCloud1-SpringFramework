@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.monitor.FileAlterationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -194,9 +195,14 @@ public class FileUtils {
 			File deleteFile = new File(storedFilePath);
 				
 			if(deleteFile.exists()) {
+				fileList.remove(i);
 				deleteFile.delete();
+				i--;
 			}
+//			log.warn(fileList);
 		}
+//		log.warn(fileList);
+//		log.warn(fileList.size());
 		
 		if(fileList.isEmpty()) {
 			return true;

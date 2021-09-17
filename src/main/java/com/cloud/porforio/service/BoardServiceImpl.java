@@ -75,8 +75,9 @@ public class BoardServiceImpl implements BoardService{
 		
 		boolean isRemoveBoardFile = fileUtils.isRemoveBoardFile(fileList);
 		
+		log.warn(isRemoveBoardFile);
 		if(isRemoveBoardFile) {
-			return (mapper.deleteBoardFile(bno) == 1) || (mapper.deleteBoard(bno) == 1);
+			return mapper.deleteBoard(bno) == 1;
 		}else {
 			return false;
 		}
