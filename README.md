@@ -27,7 +27,7 @@
 
 <h3># Back-End</h3>
 1). 회원 가입<br>
-● 아래 사진은 회원가입 화면을 스타일 적용한 화면입니다.<br>
+● 아래 사진은 회원가입을 스타일 적용한 화면입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/133960793-f6bd69e1-7018-4f1c-a002-53e06be04eb8.png" width="400" height="200"><br>
 <br>
 ● 아래 사진은 컨트룰러에서 회원가입 기능을 구현한 코드입니다.<br>
@@ -72,7 +72,7 @@
 ● 사용자 권한에 따라 메인 페이지를 다르고 각 권한의 페이지를 이용할 수 있도록 웹 서버와 네트워크 연결을 유지하게 됩니다.<br>
 <br>
 3). 아이디 찾기<br>
-● 아래 사진은 아이디 찾기 화면을 스타일 적용한 화면입니다.(참고로 주어진 값을 입력되어 있습니다.)<br>
+● 아래 사진은 아이디 찾기 스타일 적용한 화면입니다.(참고로 주어진 값을 입력되어 있습니다.)<br>
 <img src="https://user-images.githubusercontent.com/74657556/134134755-ed2fab1e-7d79-45f3-a4a0-c8c13cd69db2.png" width="400" height="200"><br>
 <br>
 ● 아래 사진은 컨트룰러에서 아이디 찾기 기능을 구현한 코드입니다.<br>
@@ -99,7 +99,7 @@
 <br>
 <br>
 4). 비밀번호 찾기 & 변경<br>
-● 아래 사진은 비밀번호 찾기 화면을 스타일 적용한 화면입니다.(참고로 주어진 값을 입력되어 있습니다.)<br>
+● 아래 사진은 비밀번호 찾기를 스타일 적용한 화면입니다.(참고로 주어진 값을 입력되어 있습니다.)<br>
 <img src="https://user-images.githubusercontent.com/74657556/134135274-a28fde45-38bb-4ca6-806b-e74c96017a9e.png" width="400" height="200"><br>
 <br>
 ● 아래 사진은 컨트룰러에서 비밀번호 찾기 & 변경 기능을 구현한 코드입니다.<br>
@@ -134,7 +134,7 @@
 ● 비밀번호 변경에서 변경하고자 비밀번호를 입력하고 비밀번호 변경을 클릭하면 입력한 데이터를 가지고 URL 요청을 보냅니다. 만약 입력한 비밀번호과 DB에서 저장된 비밀번호(비밀번호 찾기 처리 과정에서 비밀번호 변경 페이지에 찾기 원하는 비밀번호를 가져왔고 그것을 요청한 값을 보냈습니다.) 이 일치하지 않으면 URL이 일치하는 컨트롤러에서 비밀번호 변경 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문울 통해서 해당 테이블에 있는 데이터를 수정하여 비밀번호 변경 처리 결과 페이지로 이동하고 그렇지 못하면 비밀번호 변경 페이지로 돌아갑니다.
 <br><br>
 5). 회원 수정(feat. 비밀번호 확인)<br>
-● 아래 사진은 회원정보 화면을 스타일 적용한 화면입니다.<br>
+● 아래 사진은 회원정보를 스타일 적용한 화면입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134138472-7ae6de1a-033f-45c7-a515-dbc39c7400f6.png" width="400" height="200"><br>
 <br>
 ● 아래 사진은 컨트룰러에서 회원 수정 기능을 구현한 코드입니다.(비밀번호 확인 기능도 들어 있습니다.)<br>
@@ -171,6 +171,176 @@
 ● 다시 회원 수정 페이지에서 회원 정보 수정할 값을 입력하고 회원 수정을 클릭하면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 회원 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문울 통해서 해당 테이블에 있는 데이터를 수정하여 회원정보 페이지로 리다이렉트를 됩니다.
 <br>
 <br>
-
-
+6). 회원 삭제(feat. 비밀번호 확인)<br>
+● 아래 사진은 회원정보 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134271465-a89609ff-1a67-4f1a-bd90-9c6e0c8bb4ee.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 회원 삭제 기능을 구현한 코드입니다.(비밀번호 확인 기능도 들어 있습니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134271509-5fc8ac18-03c8-43ea-8445-6194a428ef97.png" width="800" height="400"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 회원 삭제 기능을 구현한 코드입니다.(비밀번호 확인 기능도 들어 있습니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134271560-11e88871-d324-4bde-a22e-4b5922597cf8.png" width="300" height="50"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 회원 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134271636-de742003-2045-4806-857a-ce157c32e3aa.png" width="400" height="150"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 회원 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134271838-d99e5623-2fe8-401d-ba06-192f836dc11e.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 xml에서 회원 삭제 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134271894-3456a8aa-3f2a-4500-b2bf-f2affdfbb8a3.png" width="300" height="125"><br>
+<br>
+● 아래 사진은 CustomPasswordEncoder 클래스를 만들어서 입력한 비밀번호와 인코딩된 비밀번호를 비교하는 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134136748-ef4ed171-d208-4a91-b0ad-543fedf3139e.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 비밀번호 확인 화면을 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134141237-83e0dbc0-28c6-4a45-b705-9eb380c0ebe5.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 회원 수정 화면에서 수정할 값을 입력하여 회원 정보 수정 처리 결과 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134275656-8a950bff-f283-4cb4-a417-c00e279cd93a.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : deleteUserInfo(), deleteUserAuth()
+<br>
+● 사용자가 회원 정보에서 회원 삭제 버튼을 누르면 비밀번호 확인 페이지로 이동해서 비밀번호를 입력해서 비밀번호 확인을 누르면 CustomPasswordEncoder 클래스의 matches() 메서드를 통해 인코딩된 비밀번호와 일치하는지 확인하고 일치하면 DB에서 있는 해당 테이블의 데이터를 삭제하고 세션값을 삭제하여 자동 로그아웃가 되어 로그인 페이지로 리다이렉트가 되고 일치하지 않으면 비밀번호 확인 페이지로 돌아가게 됩니다. 
+<br>
+<br>
+7). 회원 목록(관리자 페이지)<br>
+● 아래 사진은 메인 페이지(관리자 전용)을 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134276534-fc6e0e57-4318-4713-83b8-bbb00b16659f.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 회원 목록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134276585-710b1e6d-f255-4879-848d-57cf16aca5c6.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 회원 목록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134276716-48649ea1-c9db-41e4-ba9c-dfa56f91d309.png" width="200" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 회원 목록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134276794-5b6669c8-f48d-4e9d-8bb6-e4f7fe70f08d.png" width="200" height="50"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 회원 목록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134276889-b00e0898-b6b7-4be3-a818-07637431192d.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 xml에서 회원 목록 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134276957-96efda9b-fbb7-4607-818c-eb4564496580.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 회원 목록 페이지입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277742-15016afc-ca3b-4203-9454-bc724b0e1e18.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : userList()<br>
+● 관리자가 회원 관리 메뉴를 누르면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 관리자 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문울 통해서 해당 테이블에서 해당 조건을 조회하여 데이터를 보냅니다. 그래서 조회된 데이터들을 가져와서 웹 페이지를 처리합니다. 
+<br>
+<br>
+8). 다른 회원 상세보기(관리자 페이지)<br>
+● 아래 사진은 회원 목록을 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277333-13b5cc3e-4b0d-413e-a562-32e157b1deaa.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 다른 회원 상세보기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277523-65b6578a-bd92-4003-b25a-a4458d78fe42.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 다른 회원 상세보기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277563-b5207321-b770-4837-8976-c8490904b536.png" width="200" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 다른 회원 상세보기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277585-a076a818-01ef-4735-af1c-9382591eb3cf.png" width="200" height="50"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 다른 회원 상세보기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277620-c1d98d17-5eba-4270-91ae-075dca801664.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 xml에서 다른 회원 상세보기 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277883-cbc5b203-d887-4411-a2da-98d476697ff3.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 해당 특정 회원 상세보기 페이지입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277964-2a03df82-7135-4f48-9551-b4ac4927b6f3.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : selectUserInfoDetail()<br>
+● 관리자가 회원 목록에서 해당 id에 있는 상세보기 링크를 클릭하면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 관리자 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문울 통해서 해당 테이블에서 해당 조건을 조회하여 데이터를 보냅니다. 그래서 조회된 데이터들을 가져와서 웹 페이지를 처리합니다. 
+<br>
+<br>
+9). 다른 회원 수정(관리자 페이지)<br>
+● 아래 사진은 다른 회원 상세보기를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134278092-93ebbb6b-20d1-4b89-b406-cc0a0282d9c0.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 다른 회원 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134278515-f8eaaa01-bc84-4b2f-b17d-914c9b186f19.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 다른 회원 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134278544-43e7cf22-fe99-4576-85b3-19363d3d0b8a.png" width="200" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 다른 회원 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134278562-46992be5-2e02-48bf-ac5a-fbcd6cd49dbe.png" width="200" height="50"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 다른 회원 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134277620-c1d98d17-5eba-4270-91ae-075dca801664.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 xml에서 다른 회원 수정 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134278662-eae79d3e-ccd8-4b18-ad79-ac89b4307a4e.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 다른 회원 수정 기능 처리한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134278856-1ea95a23-c0ed-4493-9d3d-86723431874a.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : updateUserInfo()
+<br>
+● 관리자가 해당 id의 회원 정보에서 입력할 값을 수정하여 회원 수정 버튼을 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 관리자 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문울 통해서 해당 테이블에 있는 데이터를 수정하여 회원목록 페이지로 이동합니다.
+<br>
+<br>
+10). 다른 회원 삭제(관리자 페이지)<br>
+● 아래 사진은 회원 목록을 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134279071-4ad079d9-bf8b-470f-bf98-b7832b679179.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 다른 회원 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134279230-82d9b479-0a22-4378-bfd8-8abddb8bca8f.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 다른 회원 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134279255-65253157-21db-446b-862a-78477d0ba281.png" width="200" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 다른 회원 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134279282-f0ea02e3-0524-4020-9661-8bf0fc33e103.png" width="200" height="50"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 다른 회원 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134279312-22276341-3ba9-4443-a42d-70d3fa13accb.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 xml에서 다른 회원 삭제 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134279334-e6d2570c-2935-40c3-9962-8c8ae6883df6.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 다른 회원 삭제 기능 처리한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134279940-e34e0524-dd6c-4837-8035-e536af8eec87.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : deleteUserInfo()
+<br>
+● 관리자가 회원 목록에서 해당 id의 삭제 링크을 클릭하면 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 관리자 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문울 통해서 해당 테이블에 있는 데이터를 삭제하여 회원목록 페이지로 이동합니다.
+<br>
+<br>
+11). 게시판 등록 <br>
+● 아래 사진은 게시판 등록을 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134280145-5e8f7dda-2892-46e9-80e8-dfdcef1b7733.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 게시판 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134280204-cfa67c3e-1f2c-41f3-b799-0987ef747236.png" width="600" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 게시판 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134280322-154e42b8-933b-4c4f-9896-f26244363d7b.png" width="600" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 게시판 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134280348-091dfff8-1d3f-4cd5-8cbf-3e9baf556983.png" width="600" height="150"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 게시판 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134280384-7fc95ae6-250c-4bea-bae1-499ae6ee0386.png" width="300" height="50"><br>
+<br>
+● 아래 사진은 xml에서 게시판 등록 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134280583-ed531542-9ac4-4e83-9670-a9f1741ff410.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 게시판 등록 기능을 처리한 화면입니다.(게시판 목록 페이지로 리다이렉트했습니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134280648-55d7c784-aff5-4136-ae2a-e60e6ffc9343.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : add(),addFile()
+<br>
+● 사용자가 게시판 등록 페이지에서 입력할 데이터를 입력하여 게시판 등록을 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 게시물 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 추가하여 게시판 목록 페이지로 리다이렉트합니다.
+<br>
+<br>
 
