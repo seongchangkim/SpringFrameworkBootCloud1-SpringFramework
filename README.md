@@ -343,4 +343,94 @@
 ● 사용자가 게시판 등록 페이지에서 입력할 데이터를 입력하여 게시판 등록을 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 게시물 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 추가하여 게시판 목록 페이지로 리다이렉트합니다.
 <br>
 <br>
-
+12). 게시판 목록 및 검색<br>
+● 아래 사진은 메인 페이지를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134445970-e60ab4c4-2c5e-4e07-99b3-c431b7d32a9a.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 게시판 목록 및 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134446117-d5fc7bdb-83f6-452a-83d2-d850c2327b36.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 게시판 목록 및 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134446263-cabf117e-3e5b-47be-9992-9ff0c31fb934.png" width="300" height="50"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 게시판 목록 및 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134446362-fbd58406-429c-4df3-8dd2-9e27b4219f08.png" width="300" height="150"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 게시판 목록 및 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134467127-64b3d289-f294-4616-9523-97f24d9d6a22.png" width="300" height="50"><br>
+<br>
+● 아래 사진은 xml에서 게시판 등록 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134467229-901bc505-8330-4381-814f-1ec7fbc687da.png" width="400" height="800"><br>
+<br>
+● 아래 사진은 Criteria라는 DTO 클래스를 만들어서 검색 및 페이지 관련된 URL를 추가하는 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134467751-bf3b9da6-eb2e-477f-98bc-3a999a5b2c13.png" width="500" height="100"><br>
+● 아래 사진은 게시판 목록을 이동하는 페이지입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134467846-4a6525b3-39f1-41e6-b600-9485abbd24aa.png" width="400" height="200"><br>
+● 아래 사진은 입력한 키워드로 검색하여 게시판 목록 처리 결과를 보여주는 페이지입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134468034-66ad4661-2df9-4481-856c-387ec44cf12b.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : list(), getTotal() 
+<br>
+● 사용자가 게시판 메뉴를 클릭하면 해당 url 요청을 보냅니다. 컨트롤러에서 게시물 서비스를 처리하게 합니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터들을 조회하여 게시판 목록 페이지로 이동합니다. 
+<br>
+● 게시판 목록 페이지에서 키워드를 입력하고 검색을 누르면 게시판 목록 들어갈 때 같지만 차이점은 Criteria 클래스에서 getListLink() 메서드를 통해서 자동적으로 url에다 매개변수를 추가합니다. 그리고 다시 게시판 목록 페이지로 리다이렉트합니다.  
+<br>
+<br>
+13). 해당 게시판 상세보기 및 댓글 목록<br>
+● 아래 사진은 게시판 목록을 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134468454-44cd6eae-1081-4c8a-9650-72055c3651a8.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 게시판 상세보기 및 댓글 목록 능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134468519-3485893a-c4cc-4ee2-a39e-a47beff07827.png" width="600" height="300"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 게시판 상세보기 및 댓글 목록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134468553-c246119c-bcff-4116-a7d1-1c41ec550784.png" width="500" height="150"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 게시판 상세보기 및 댓글 목록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134468620-8dc71dc6-1517-4d60-9d31-6c3ec0215e26.png" width="500" height="300"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 게시판 상세보기 및 댓글 목록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134468674-69e5bbd1-d5c8-4d8f-a911-b941f2132e5a.png" width="500" height="150"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 상세보기 및 댓글 목록 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134470101-03a42135-515d-4744-b745-39af9216e7ee.png" width="500" height="400"><br>
+<br>
+● 아래 사진은 해당 게시판 상세보기 및 댓글 목록 기능을 처리한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134469534-3a79289e-dbbd-43e9-a030-e13f9a977487.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : selectName(), updateReadCount(), selectBoard(), selectBoardFileList(),
+selectReplyList() 
+<br>
+● 사용자가 해당 게시판 제목을 클릭하면 요청한 해당 url 요청을 보냅니다. 컨트롤러에서 게시물 서비스를 처리하게 합니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터들을 조회하여 해당 게시판 첨부파일, 사용자 이름, 해당 게시판 정보 그리고 해당 게시물의 등록된 댓글을 가져옵니다. 해당 게시판 상세보기 페이지로 이동합니다. 그리고 해당 게시물의 조회수가  해당 게시물을 클릭할 때마다 1씩 올라갑니다. 
+<br>
+<br>
+14). 해당 게시판 수정<br>
+● 아래 사진은 해당 게시판 상세보기를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134469709-d75f017c-507b-446b-8132-0c221442ccb1.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 게시판 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134473763-5c298b38-1bed-4c02-a6b0-c26521967e6f.png" width="500" height="150"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 게시판 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134476214-f4a50aa3-c970-4bf1-bac2-cdd2ab553412.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 게시판 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134476617-d43574f1-c21a-4edc-8938-b2e97ef62164.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 게시판 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134476744-c29e0406-45ec-493b-84f4-4db23a747f3a.png" width="400" height="25"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 수정 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134476915-c0e31bff-b0d2-4956-947a-086dbe94994c.png" width="400" height="150"><br>
+<br>
+● 아래 사진은 해당 게시판 수정 기능을 처리한 화면입니다.(해당 게시판 상세보기 페이지로 리펙토링합니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134469534-3a79289e-dbbd-43e9-a030-e13f9a977487.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : updateBoard()
+<br>
+● 사용자가 해당 게시물에 수정할 값을 입력하여 수정을 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 게시물 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 수정하여 게시판 목록에 리다이렉트를 합니다. 
+<br>
+<br>
