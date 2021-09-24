@@ -434,3 +434,151 @@ selectReplyList()
 ● 사용자가 해당 게시물에 수정할 값을 입력하여 수정을 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 게시물 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 수정하여 게시판 목록에 리다이렉트를 합니다. 
 <br>
 <br>
+15). 해당 게시판 삭제<br>
+● 아래 사진은 해당 게시판 상세보기를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134469709-d75f017c-507b-446b-8132-0c221442ccb1.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 게시판 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134602245-a29b58f9-f298-49c9-a988-9b1117dd4072.png" width="550" height="200"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 게시판 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134602274-b4e27802-a30f-48b6-8641-c0ac608bfe61.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 게시판 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134602306-a2ea68e7-5362-4ef5-8928-4cf6969bfad8.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 게시판 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134602374-8ffc6cbc-e903-4e0f-a5f8-2147652426e8.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 삭제 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134602393-cbedc643-f228-4fd5-a614-2f021d0abde3.png" width="400" height="250"><br>
+<br>
+● 아래 사진은 FileUtil 클래스를 만들어 게시판 첨부파일을 삭제하는 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134602539-5366c9d2-4aac-4d92-9655-57a78bc7be73.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 해당 게시판 삭제 기능을 처리한 화면입니다.(게시판 목록 페이지로 리펙토링합니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134602463-d333f5dc-2b07-434b-a690-e927281b6525.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : deleteBoard(), deleteBoardFile()
+<br>
+● 사용자가  해당 게시물에 삭제을 누르면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 게시물 서비스를 처리하게 됩니다. 서비스는 해당 게시물의 첨부 파일가 있으면 첨부파일가 삭제하면서 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 삭제하여 게시판 목록에 리다이렉트를 합니다.
+<br>
+<br>
+16). 해당 게시판 첨부 다운로드<br>
+● 아래 사진은 해당 게시판 상세보기를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134469709-d75f017c-507b-446b-8132-0c221442ccb1.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 게시판 첨부 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134605302-f87b6595-1f6f-4ef6-a2b0-2a64b88a491c.png" width="500" height="200"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 게시판 첨부 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134605330-2aed330d-36ee-43b7-a730-0d3c80552adb.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 게시판 첨부 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134605358-5a18c700-d167-41ac-8d39-db96982c4873.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 게시판 첨부 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134605384-523af632-0be5-4092-bcd6-0e96297b79cc.png" width="400" height="25"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 첨부 다운로드 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134605719-64e40648-b274-4f40-9300-ea5b4a5f602e.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 FileDownloadView 클래스를 만들어 파일을 다운로드 기능을 처리하는 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134606933-0c8ce85a-e788-4eb4-a2f4-3c4610888368.png" width="700" height="600"><br>
+<br>
+● 아래 사진은 해당 해당 게시판 첨부 다운로드 기능을 처리한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134605953-947a7b5f-1602-4db7-9e21-978b701e5ca2.png" width="400" height="25"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : selectBoardFile()
+<br>
+● 사용자가 해당 게시물에 첨부 파일을 클릭하면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 게시물 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 조회하여 해당 첨부파일의 정보를 가져와서 fileDownloadView, downloadFile 빈을 뷰에 담아 다운로드하게 됩니다.
+<br>
+<br>
+17). 해당 게시판 댓글 등록<br>
+● 아래 사진은 해당 게시판 상세보기를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608023-ee58a787-e35a-40a4-af06-8e5704355cdd.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 게시판 댓글 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607289-1856ca98-a7d6-4ccf-8ec3-5fbc7fac76bd.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 게시판 댓글 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607216-d3eb5954-6d83-487a-8d4e-d78808523c83.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 게시판 댓글 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607407-33e79b2a-19a3-40a9-b0ad-6d4b70eed47a.png" width="400" height="150"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 게시판 댓글 등록 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607554-3d9a4704-0c33-42de-b6ad-c6b9a91d5c5a.png" width="500" height="50"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 댓글 등록 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607608-5811cf61-4dba-4366-b31e-c05b0f88311a.png" width="400" height="150"><br>
+<br>
+● 아래 사진은 해당 게시판 댓글 등록 기능을 처리한 화면입니다.(해당 게시판 상세보기 페이지로 리펙토링합니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607661-c704d525-80b2-4f7f-b6cb-d702ac8074cc.png" width="400" height="200"><br>
+● 아래 사진은 해당 게시판 댓글 수가 1만큼 증가하는 것을 나타나는 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607763-386d1bf7-1580-41fb-926f-f4d6b762c6c6.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : add(),upUpdateReplyCount()
+<br>
+● 사용자가 해당 게시판에서 댓글을 입력하여 등록을 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 댓글 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 추가하여 해당 게시물 상세보기 페이지로 리다이렉트합니다. 그리고 해당 게시물의 댓글 수을 1만큼 증가합니다.
+<br>
+<br>
+18). 해당 게시판 댓글 수정<br>
+● 아래 사진은 해당 게시판 상세보기를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607988-9e501f34-e570-429a-8791-822236ba23f8.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 게시판 댓글 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134607976-1c11fea9-7a1d-44c6-be3c-05daa9f22241.png" width="600" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 게시판 댓글 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608160-4dd16f00-85f7-4fcf-b3af-eca4a8814942.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 게시판 댓글 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608188-4c44724b-1f2b-4ab4-9cb8-9f7179d78a78.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 게시판 댓글 수정 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608219-c1be7493-6aac-475f-9b9e-7bc8847a9b5d.png" width="400" height="25"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 댓글 수정 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608239-1a7a75a1-75ae-435a-b56f-e25f07b1ef06.png" width="400" height="150"><br>
+<br>
+● 아래 사진은 해당 게시판 댓글 수정 기능을 처리한 화면입니다.(해당 게시판 상세보기 페이지로 리펙토링합니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608266-ca39f67e-267a-4bcd-89c7-0ada43f8a7c1.png" width="400" height="200"><br>
+<설명><br>
+● 매퍼 메서드 : updateReply()
+<br>
+● 사용자가 해당 게시물에서 수정할 댓글을 입력하여 수정을 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 댓글 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 수정하여 해당 게시물 상세보기 페이지로 리다이렉트합니다.
+<br>
+<br>
+19). 해당 게시판 댓글 삭제<br>
+● 아래 사진은 해당 게시판 상세보기를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608606-c71841df-7313-444b-b79c-a5ec3af28345.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 게시판 댓글 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134608619-ee7615e4-7145-45ac-9b09-5c8aaf5fb88d.png" width="600" height="200"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 게시판 댓글 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134614726-2c62f25b-2f99-46ae-a76f-1819c628e379.png" width="300" height="50"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 게시판 댓글 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134614749-93d726d0-65ed-4c99-a5c3-9f46e2242a9e.png" width="400" height="150"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 게시판 댓글 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134614777-58b655e7-7407-49f0-bb7d-57695e44ae3d.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 댓글 삭제 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134614925-58c645b3-560f-4037-8403-e45a8402c2ab.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 해당 게시판 댓글 삭제 기능을 처리한 화면입니다.(해당 게시판 상세보기 페이지로 리펙토링합니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134615022-5769ed80-83fd-4829-87be-2f69f67285dd.png" width="400" height="200"><br>
+● 아래 사진은 해당 게시판 댓글 수가 1만큼 감소하는 것을 나타나는 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134615077-9bbb4721-c6b7-4400-875e-17393fa82ba3.png" width="400" height="200"><br>
+<설명><br>
+● 매퍼 메서드 : deleteReply(),downUpdateReplyCount()
+<br>
+● 사용자가 해당 게시물에서 해당 댓글에 있는 삭제를 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 댓글 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 삭제하여 해당 게시물 상세보기 페이지로 리다이렉트합니다. 그리고 해당 게시물 댓글 수가 1만큼 감소합니다.
+<br>
+<br>
