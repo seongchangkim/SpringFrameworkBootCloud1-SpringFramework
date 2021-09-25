@@ -334,6 +334,9 @@
 ● 아래 사진은 xml에서 게시판 등록 기능을 구현하기 위한 코드입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134280583-ed531542-9ac4-4e83-9670-a9f1741ff410.png" width="400" height="200"><br>
 <br>
+● 아래 사진은 FileUtil 클래스를 만들어서 게시판 첨부 파일 업로드 기능 구현한 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134754382-ece4c881-e675-428f-acdd-cfd174306cad.png" width="800" height="800"><br>
+<br>
 ● 아래 사진은 게시판 등록 기능을 처리한 화면입니다.(게시판 목록 페이지로 리다이렉트했습니다.)<br>
 <img src="https://user-images.githubusercontent.com/74657556/134280648-55d7c784-aff5-4136-ae2a-e60e6ffc9343.png" width="400" height="200"><br>
 <br>
@@ -453,7 +456,7 @@ selectReplyList()
 ● 아래 사진은 xml에서 해당 게시판 삭제 기능을 구현하기 위한 코드입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134602393-cbedc643-f228-4fd5-a614-2f021d0abde3.png" width="400" height="250"><br>
 <br>
-● 아래 사진은 FileUtil 클래스를 만들어 게시판 첨부파일을 삭제하는 메소드입니다.<br>
+● 아래 사진은 FileUtil 클래스를 만들어 게시판 첨부파일 삭제 기능을  메소드입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134602539-5366c9d2-4aac-4d92-9655-57a78bc7be73.png" width="400" height="200"><br>
 <br>
 ● 아래 사진은 해당 게시판 삭제 기능을 처리한 화면입니다.(게시판 목록 페이지로 리펙토링합니다.)<br>
@@ -465,7 +468,7 @@ selectReplyList()
 ● 사용자가  해당 게시물에 삭제을 누르면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 게시물 서비스를 처리하게 됩니다. 서비스는 해당 게시물의 첨부 파일가 있으면 첨부파일가 삭제하면서 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 삭제하여 게시판 목록에 리다이렉트를 합니다.
 <br>
 <br>
-16). 해당 게시판 첨부 다운로드<br>
+16). 해당 게시판 첨부 파일 다운로드<br>
 ● 아래 사진은 해당 게시판 상세보기를 스타일 적용한 화면입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134469709-d75f017c-507b-446b-8132-0c221442ccb1.png" width="400" height="200"><br>
 <br>
@@ -484,10 +487,10 @@ selectReplyList()
 ● 아래 사진은 xml에서 해당 게시판 첨부 다운로드 기능을 구현하기 위한 코드입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134605719-64e40648-b274-4f40-9300-ea5b4a5f602e.png" width="400" height="50"><br>
 <br>
-● 아래 사진은 FileDownloadView 클래스를 만들어 파일을 다운로드 기능을 처리하는 메소드입니다.<br>
+● 아래 사진은 FileDownloadView 클래스를 만들어 파일 다운로드 기능을  메소드입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134606933-0c8ce85a-e788-4eb4-a2f4-3c4610888368.png" width="700" height="600"><br>
 <br>
-● 아래 사진은 해당 해당 게시판 첨부 다운로드 기능을 처리한 화면입니다.<br>
+● 아래 사진은 해당 해당 게시판 첨부 파일 다운로드 기능을 처리한 화면입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134605953-947a7b5f-1602-4db7-9e21-978b701e5ca2.png" width="400" height="25"><br>
 <br>
 <설명><br>
@@ -580,5 +583,98 @@ selectReplyList()
 ● 매퍼 메서드 : deleteReply(),downUpdateReplyCount()
 <br>
 ● 사용자가 해당 게시물에서 해당 댓글에 있는 삭제를 누르면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 댓글 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 삭제하여 해당 게시물 상세보기 페이지로 리다이렉트합니다. 그리고 해당 게시물 댓글 수가 1만큼 감소합니다.
+<br>
+<br>
+20). 파일 업로드<br>
+● 아래 사진은 메인 페이지를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134753987-69d3c42e-fb1c-4306-9eec-4f299a1af02c.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 파일 업로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755237-10775c3c-1ce9-41ae-a79a-c34d6d3e8a42.png" width="1000" height="400"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 파일 업로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755271-47471d81-e2b7-45bf-ac01-3a88964ee817.png" width="600" height="50"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 파일 업로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755309-32aee037-0c00-41ca-b0ab-2f69bdb5b299.png" width="600" height="400"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 파일 업로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134754045-9d7edd06-63bc-4b86-83f4-f055eb7aca7d.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 xml에서 파일 업로드 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134754049-5b9dc589-6536-4a77-b08d-ea37c518cfd4.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 FileUtil 클래스를 만들어서 파일 업로드 기능을 구현한 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755185-85f8dff6-e45d-4d77-acdf-f62e2b562061.png" width="800" height="800"><br>
+<br>
+● 아래 사진은 파일 업로드 기능을 처리한 화면입니다.(메인 페이지로 리다이렉트했습니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755346-2309b2fe-d184-4c3d-a695-260dbb35bec7.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 :  fileUpLoadProcess(),selectUserAuth(),getFileNameList(), getUploadUserList()
+<br>
+● 사용자가 메인 페이지에서 파일 업로드를 누르면 업로드한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 파일 서비스를 처리하게 되고 서비스는 parseFileList()를 통해 파일 업로드되면서 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 추가하여 메인 페이지로 리다이렉트합니다. 
+<br>
+<br>
+22). 해당 파일 다운로드<br>
+● 아래 사진은 메인 페이지를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755462-fca214cb-0544-4fcf-8a9d-3bd199536235.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 파일 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755474-0992967c-bd51-42b1-900d-5c4e7d691055.png" width="500" height="200"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 파일 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755484-3458bee6-5253-4563-a9a3-835077de4473.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 파일 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755487-e6c16cdf-ab0f-4557-8569-d1699ba1af11.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 파일 다운로드 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755502-06fb869e-0039-445d-a652-80f4665668c0.png" width="400" height="25"><br>
+<br>
+● 아래 사진은 xml에서 해당 게시판 첨부 다운로드 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755507-14856194-1a60-49b0-b885-fa1804584f19.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 FileDownloadView 클래스를 만들어 파일 다운로드 기능을 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134606933-0c8ce85a-e788-4eb4-a2f4-3c4610888368.png" width="700" height="600"><br>
+<br>
+● 아래 사진은 해당 파일 다운로드 기능을 처리한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755537-36a22148-137a-4bf7-844f-ba7b791f4570.png" width="400" height="25"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : selectFile()
+<br>
+● 사용자가 메인 페이지에서 해당 파일을 클릭하면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 파일 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 조회하여 해당 파일의 정보를 가져와서 fileDownloadView, downloadFile 빈을 뷰에 담아 다운로드하게 됩니다.
+<br>
+<br>
+23). 해당 파일 삭제<br>
+● 아래 사진은 메인 페이지를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755610-957b7ac7-a92f-471c-a8bf-a59ae4fe3d8c.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 파일 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755618-b11a0f28-f383-4275-ba1c-5e0212ec71b7.png" width="500" height="250"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 파일 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755626-a715f3c9-8489-45f8-a9d6-cf2f8cf6de03.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 파일 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755637-de9c5d71-5e0f-4c93-8300-219b06b76d01.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 파일 삭제 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755657-5db7c509-123c-43bf-b5f6-c557749b39c3.png" width="400" height="25"><br>
+<br>
+● 아래 사진은 xml에서 해당 파일 삭제 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755663-6d39bb91-cb63-466f-af73-655c23ebabbd.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 해당 파일 삭제 기능을 처리한 화면입니다.(메인 페이지로 리펙토링합니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755691-e1280e7b-156f-4fe8-9fc0-2253ff0426d3.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 해당 파일을 휴지통에 이동 처리한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755719-15458615-1792-41c4-9155-22b484cb1c46.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : deleteYNUpdateFile()
+<br>
+● 사용자가 메인 페이지에서 해당 파일에 삭제를 클릭하면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 파일 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 deleteYN 열의 값을 ‘Y’로 수정하여 메인 페이지에 리다이렉트하고 해당 파일은 휴지통 페이지로 이동하게 됩니다.
 <br>
 <br>
