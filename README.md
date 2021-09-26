@@ -26,6 +26,8 @@
 ![1](https://user-images.githubusercontent.com/74657556/133912094-263ff7df-a3fe-400b-a637-ccb11158343a.png)
 
 <h3># Back-End</h3>
+0). spring 설정<br>
+
 1). 회원 가입<br>
 ● 아래 사진은 회원가입을 스타일 적용한 화면입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/133960793-f6bd69e1-7018-4f1c-a002-53e06be04eb8.png" width="400" height="200"><br>
@@ -456,7 +458,7 @@ selectReplyList()
 ● 아래 사진은 xml에서 해당 게시판 삭제 기능을 구현하기 위한 코드입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134602393-cbedc643-f228-4fd5-a614-2f021d0abde3.png" width="400" height="250"><br>
 <br>
-● 아래 사진은 FileUtil 클래스를 만들어 게시판 첨부파일 삭제 기능을  메소드입니다.<br>
+● 아래 사진은 FileUtil 클래스를 만들어 게시판 첨부파일 삭제 기능을 메소드입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/134602539-5366c9d2-4aac-4d92-9655-57a78bc7be73.png" width="400" height="200"><br>
 <br>
 ● 아래 사진은 해당 게시판 삭제 기능을 처리한 화면입니다.(게시판 목록 페이지로 리펙토링합니다.)<br>
@@ -676,5 +678,92 @@ selectReplyList()
 ● 매퍼 메서드 : deleteYNUpdateFile()
 <br>
 ● 사용자가 메인 페이지에서 해당 파일에 삭제를 클릭하면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 파일 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 deleteYN 열의 값을 ‘Y’로 수정하여 메인 페이지에 리다이렉트하고 해당 파일은 휴지통 페이지로 이동하게 됩니다.
+<br>
+<br>
+24). 파일 검색<br>
+● 아래 사진은 메인 페이지를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134755610-957b7ac7-a92f-471c-a8bf-a59ae4fe3d8c.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 파일 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134795459-55eecba3-c4e1-4135-9028-305e3ee8c852.png" width="500" height="250"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 파일 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134795467-4fcad2e4-a9c9-46fc-a9a2-ab9e0a989bac.png" width="300" height="50"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 파일 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134795474-3779b165-663c-48a4-ae5f-5c0f664323c5.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 파일 검색 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134795488-28614512-a227-4f3d-99df-0567d3d7f1be.png" width="400" height="50"><br>
+<br>
+● 아래 사진은 xml에서 파일 검색 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799392-4a89256e-a512-4540-beb7-1eff49f381f5.png" width="400" height="100"><br>
+<br>
+● 아래 사진은 파일 검색 기능을 처리한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799406-ff1e18dc-22b5-48f3-94fd-207bd711e48c.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : getKeyWordFileList(), getFileSize()
+<br>
+● 사용자가 메인 페이지에서 키워드를 입력하고 검색을 클릭하면 입력한 데이터를 가지고 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 파일 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 조회하여 해당 파일의 정보들을 목록으로 가져와서 메인 페이지에 입력한 키워드로 검색합니다.
+<br>
+<br>
+25). 해당 파일 비우기<br>
+● 아래 사진은 휴지통 페이지를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799532-100f946d-1f96-4036-8f94-0f6dddd759b8.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 파일 비우기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799542-86d1bd81-cbda-437d-b78b-5a0ef807a50d.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 파일 비우기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799571-6bc6d02a-8b52-4bf3-9403-cf1fd1f05f76.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 파일 비우기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799590-b00f18b6-3282-4f25-b770-e35ebf079a17.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 파일 비우기 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799602-bc7e6498-9901-4f11-ad5c-dc677f18c95e.png" width="400" height="25"><br>
+<br>
+● 아래 사진은 xml에서 해당 파일 비우기 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799615-f0c69e9c-ce9f-4ada-ad07-60e60cc1bea7.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 FileUtil 클래스를 만들어 해당 파일 삭제 기능을 메소드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799710-16a7c74d-3f0c-4257-b53f-5c1276449fa0.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 해당 파일 비우기 기능을 처리한 화면입니다.(휴지통 페이지로 리다이렉트했습니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134799812-ba60aa6c-d67b-45b9-bb61-91ec47f7e5d6.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : deleteEmptyTrash()
+<br>
+● 사용자가 휴지통 페이지에서 해당 파일에 있는 비우기를 클릭하면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 파일 서비스를 처리하게 됩니다. 서비스는 isRemoveFile를 통해 해당 경로에서 파일을 삭제되고 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 데이터를 삭제하여 휴지통 페이지로 리다이렉트합니다.
+<br>
+<br>
+26). 해당 파일 복구<br>
+● 아래 사진은 휴지통 페이지를 스타일 적용한 화면입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134800440-8d4c2994-7822-4307-8eeb-36e4297539a9.png" width="400" height="200"><br>
+<br>
+● 아래 사진은 컨트룰러에서 해당 파일 복구 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134801565-1ca83901-d84f-48ec-aaa2-65330b6afb22.png" width="800" height="600"><br>
+<br>
+● 아래 사진은 서비스 인터페이스에서 해당 파일 복구 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134800538-76b8ddaa-ef97-483c-a059-013185cbba07.png" width="300" height="25"><br>
+<br>
+● 아래 사진은 서비스 인터페이스를 구현한 클래스에서 해당 파일 복구 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134800542-666d099f-0da4-4196-b242-2086bd9c65cb.png" width="300" height="100"><br>
+<br>
+● 아래 사진은 매퍼 인터페이스에서 해당 파일 복구 기능을 구현한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134800555-dabe64c5-95fa-47a3-a09e-51a1e44c4479.png" width="400" height="25"><br>
+<br>
+● 아래 사진은 xml에서 해당 파일 복구 기능을 구현하기 위한 코드입니다.<br>
+<img src="https://user-images.githubusercontent.com/74657556/134800562-4aeddc27-9476-496a-b5d9-76d192a4bc6d.png" width="300" height="150"><br>
+<br>
+● 아래 사진은 해당 파일 복구 기능을 처리한 화면입니다.(메인 페이지로 리다이렉트했습니다.)<br>
+<img src="https://user-images.githubusercontent.com/74657556/134800572-8e1019f6-e2db-4f85-8505-43b6c4ed3e33.png" width="400" height="200"><br>
+<br>
+<설명><br>
+● 매퍼 메서드 : restore()
+<br>
+● 사용자가 휴지통 페이지에서 해당 파일에 있는 복구를 클릭하면 해당 URL 요청을 보냅니다. URL이 일치하는 컨트롤러에서 파일 서비스를 처리하게 됩니다. 서비스는 매퍼 클래스에게 DB접근을 위임합니다. 다음, mapper.xml를 이용하여 SQL 구문을 통해서 해당 테이블에 있는 deleteyn를 ‘N’로 수정하여 메인 페이지로 리다이렉트하면서 메인 페이지로 복구합니다.
 <br>
 <br>
