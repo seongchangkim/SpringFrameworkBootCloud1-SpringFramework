@@ -27,7 +27,46 @@
 
 <h3># Back-End</h3>
 0). spring 설정<br>
-
+<div>
+  <div>
+      <img src="https://user-images.githubusercontent.com/74657556/134861149-525d327e-a572-4b1f-b273-ac5bbebc2f84.png" align=center>
+  </div>
+  <div>
+      <p align=center>[web.xml]</p>
+  </div>
+</div>
+<div>
+  <div>
+      <img src="https://user-images.githubusercontent.com/74657556/134862063-265e82fc-652d-4ecd-8547-4ac02cfaebef.png" align=center>
+  </div>
+  <div>
+      <p align=center>[root-context.xml]</p>
+  </div>
+</div>
+<div>
+  <div>
+      <img src="https://user-images.githubusercontent.com/74657556/134862196-0b4bfe13-7658-49a5-bfb4-d42dfcd099ab.png" align=center>
+  </div>
+  <div>
+      <p align=center>[security-context.xml]</p>
+  </div>
+</div>
+<div>
+  <div>
+      <img src="https://user-images.githubusercontent.com/74657556/134862274-2aa6efed-1938-41f1-948e-7a3df3d10b36.png" align=center>
+  </div>
+  <div>
+      <p align=center>[servlet-context.xml]</p>
+  </div>
+</div>
+<div>
+  <div>
+      <img src="https://user-images.githubusercontent.com/74657556/134862352-f8c504b9-41e0-45d2-ad12-110dac455d7d.png" align=center>
+  </div>
+  <div>
+      <p align=center>[pom.xml]</p>
+  </div>
+</div>
 1). 회원 가입<br>
 ● 아래 사진은 회원가입을 스타일 적용한 화면입니다.<br>
 <img src="https://user-images.githubusercontent.com/74657556/133960793-f6bd69e1-7018-4f1c-a002-53e06be04eb8.png" width="400" height="200"><br>
