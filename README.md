@@ -20,12 +20,24 @@
 ● Maven 2.9<br>
 <br>
 
-# 설계 구조<br> 
-![1](https://user-images.githubusercontent.com/74657556/133912052-95680412-f7b4-4b27-8b30-bff8cd64743c.JPG)
+<h2>설계 구조</h2>
+<img src="https://user-images.githubusercontent.com/74657556/135004871-a5113251-e3d7-49b0-9233-fe1da43059f9.JPG">
 
-![1](https://user-images.githubusercontent.com/74657556/133912094-263ff7df-a3fe-400b-a637-ccb11158343a.png)
+<img src="https://user-images.githubusercontent.com/74657556/133912094-263ff7df-a3fe-400b-a637-ccb11158343a.png">
 
-<h3># Back-End</h3>
+<h2>사이트 맵</h2>
+<img src="https://user-images.githubusercontent.com/74657556/135008664-ab21e76f-a911-48a6-bded-8ae44e855c45.png">
+
+<h2>Front-End 주요 기능</h2>
+<b># JavaScript으로 유효성 검사</b>
+<img src="https://user-images.githubusercontent.com/74657556/135009576-5846cbdd-9417-4d01-9a01-e1ac30501ea5.JPG">
+<img src="https://user-images.githubusercontent.com/74657556/135009591-d47df665-40ac-41de-b648-05bb62398633.JPG">
+
+<b># Jquery로 숫자만 입력할 수 있는 기능 및 전화번호 4자리, 8자리 입력 시 하이폰 자동 추가 기능</b>
+<img src="https://user-images.githubusercontent.com/74657556/135048759-9fd97684-149a-4fd7-b744-fc45d6134517.gif">
+
+# 숫자만 입력하기
+<h2>Back-End</h2>
 0). spring 설정<br>
 <div>
   <div>
