@@ -20,6 +20,66 @@
 ● Maven 2.9<br>
 <br>
 
+## API 소개
+### 1. User API
+|Url|Http Method|기능|Parameter
+|:---|:---:|:---:|:---:|
+|/cloud/register|POST|회원가입|○id(String)<br/> ○password(String)<br/> ○name(String)<br/> ○email(String)<br/> ○tel(String)<br/>
+|/cloud/login|POST|로그인|○id(String)<br/> ○password(String)
+|/logout|GET|로그아웃|-
+|/cloud/findingId|POST|아이디 찾기|○email(String), ○tel(String), ○name(String),
+|/cloud/findingPassword|POST|비밀번호 찾기|○id(String)<br/> ○name(String)<br/> ○email(String)<br/> ○tel(String)<br/> 
+|/cloud/updatePassword|POST|비밀번호 수정|○id(String)<br/> ○password(String)<br/> ○v_pw(String)
+|/cloud/user/profile|GET|프로필 상세보기|○id(String)<br/>
+|/cloud/user/updateUserInfo|POST|프로필 수정|○id(String)<br/> ○name(String)<br/> ○email(String)<br/> ○tel(String)<br/>
+|/cloud/user/updateUserInfoPasswordVerify|POST|프로필 수정 비밀번호 확인|○id(String)<br/> ○password(String)
+|/cloud/user/deleteUserInfoPasswordVerify|POST|비밀번호 확인 후 회원 탈퇴|○id(String)<br/> ○password(String)
+<br/>
+
+### 2. Admin API
+|Url|Http Method|기능|Parameter
+|:---|:---:|:---:|:---:|
+|/cloud/admin/userList|GET|회원 목록(페이징 처리 및 검색)|- 
+|/cloud/admin/selectUserInfoDetail|GET|회원 상세보기|○id(String)
+|/cloud/admin/profile|GET|관리자 프로필 상세보기|○id(String)
+|/cloud/admin/updateUserInfo|POST|회원 수정|○id(String)<br/> ○email(String)<br/> ○name(String)<br/> ○tel(String)<br/>
+|/cloud/admin/updateUserInfoYourself|POST|로그인된 회원 수정|○id(String)<br/> ○email(String)<br/> ○name(String)<br/> ○tel(String)<br/>
+|/cloud/admin/deleteUserInfo|GET|회원 삭제|○id(String)<br/>
+|/cloud/admin/updateUserInfoPasswordVerify|POST|회원 수정 비밀번호 확인|○id(String)<br/> ○password(String)
+|/cloud/admin/deleteUserInfoPasswordVerify|POST|회원 삭제 비밀번호 확인|○id(String)<br/> ○password(String)
+<br/>
+
+### 3. Board API
+|Url|Http Method|기능|Parameter
+|:---|:---:|:---:|:---:|
+|/cloud/board/list|GET|게시판 목록(페이징 처리 및 검색)|○pageNum(number)<br/> ○amount(number)<br/> ○type(String)<br/> ○keyword(String)<br/>
+|/cloud/board/add|POST|게시판 생성|○id(String)<br/> ○name(String)<br/> ○title(String)<br/> ○files(Array<File>)<br/> ○content(String)<br/>
+|/cloud/board/openBoard|GET|게시판 상세보기|○bno(number)<br/> ○pageNum(number)<br/> ○amount(number)<br/> ○type(String)<br/> ○keyword(String)<br/>
+|/cloud/board/updateBoard|POST|게시판 수정|○bno(number)<br/> ○title(String)<br/> ○content(String)<br/> ○pageNum(number)<br/> ○amount(number)<br/> ○type(String)<br/> ○keyword(String)<br/>
+|/cloud/board/deleteBoard|POST|게시판 삭제|○bno(number)<br/> ○title(String)<br/> ○content(String)<br/> ○pageNum(number)<br/> ○amount(number)<br/> ○type(String)<br/> ○keyword(String)<br/>
+|/cloud/board/downloadFile|GET|게시판 첨부파일 다운로드|○idx(number)<br/>
+<br/>
+
+### 4. Reply API
+|Url|Http Method|기능|Parameter
+|:---|:---:|:---:|:---:|
+|/cloud/reply/add|POST|댓글 추가|○id(String)<br/> ○name(String)<br/> ○bno(number)<br/> ○reply(String)<br/>
+|/cloud/reply/updateReply|POST|댓글 수정|○bno(number)<br/> ○rno(number)<br/> ○reply(String)<br/> 
+|/cloud/reply/deleteReply|POST|댓글 삭제|○bno(number)<br/> ○rno(number)<br/> ○reply(String)<br/> 
+
+### 5. File API
+|Url|Http Method|기능|Parameter
+|:---|:---:|:---:|:---:|
+|/cloud/upload|POST|파일 업로드|○id(String)<br/> ○files(Array<File>)<br/>
+|/cloud/download|GET|파일 다운로드|○fno(number)<br/>
+|/cloud/deleteYNUpdateFile|GET|파일 휴지통 이동|○fno(number)<br/>
+|/cloud/fileKeyWord|GET|파일 검색|○keyWord(String)<br/>
+|/cloud/recycleBin|GET|웹 드라이브 휴지통 조회|-
+|/cloud/emptytrash|GET|웹 드라이브 휴지통 비우기|○fno(number)<br/>
+|/cloud/restore|GET|파일 복구|○fno(number)<br/>
+<br/>
+※ 속성이 email이고 데이터 타입이 String이면 email(String)으로 작성했습니다.
+
 <h2>설계 구조</h2>
 <img src="https://user-images.githubusercontent.com/74657556/135004871-a5113251-e3d7-49b0-9233-fe1da43059f9.JPG">
 
