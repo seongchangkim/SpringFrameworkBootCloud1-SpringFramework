@@ -4,7 +4,7 @@
 # Front-End<br>
 ● HTML5<br>
 ● CSS3<br>
-● JavaScript(ES6)<br>
+● JavaScript<br>
 ● Bootstrap 4.0<br>
 ● jQuery 3.6.0<br>
 <br>
